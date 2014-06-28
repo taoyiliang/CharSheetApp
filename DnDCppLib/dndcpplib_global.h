@@ -1,0 +1,12 @@
+#ifndef DNDCPPLIB_GLOBAL_H
+#define DNDCPPLIB_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(DNDCPPLIB_LIBRARY)
+#  define DNDCPPLIBSHARED_EXPORT Q_DECL_EXPORT
+#else
+#  define DNDCPPLIBSHARED_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // DNDCPPLIB_GLOBAL_H
