@@ -7,7 +7,7 @@
 
 #include "character.h"
 #include "roller.h"
-#include "vecmod.h"
+#include "tools.h"
 #include "factory.h"
 
 int main(int argc, char *argv[])
@@ -15,9 +15,10 @@ int main(int argc, char *argv[])
     //QApplication a(argc, argv);
     Roller roller;
     Factory factory(roller);
-    Character graak=factory.character("john");
-    vector<int> val = roller.parseMod("3d8+2+-1");
-    std::cout<<graak.player<<" "<<val<<std::endl;
+    Character bob=factory.loadCharacter("bob.xml");
+    //vector<int> val = roller.parseMod("3d8+2+-1");
+    std::cout<<bob<<" "<<std::endl;
+    bob.writeXML();
     //CharWindow w;
     //w.show();
 

@@ -22,4 +22,10 @@ public:
   Ability(){};
 };
 
+inline std::ostream& operator<<(std::ostream& stream, const Skill skill)
+{
+    stream << skill.name<<" "<<skill.trained<<" "<<skill.master<<" "<<skill.misc;
+    return stream;
+}
+
 #endif // SKILL_H

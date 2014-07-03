@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='us-ascii'?>
+<character
+  name = "Buff Bob"
+  player = "DnD Dave"
+  gender = "Male"
+  deity = "Ao"
+  hair = "Black"
+  eyes = "Brown"
+  height = "6.1"
+  weight = "240"
+  age = "42"
+  lawful = "50"
+  good = "45"
+
+  hp="50 75"
+  xp="199"
+  gp="10"
+  sp="9"
+  cp="8"
+  sp_counter_names="ki "
+  sp_counter_vals="2"
+
+  STR="12"
+  DEX="10"
+  CON="11"
+  INT="9"
+  WIS="14"
+  CHA="13"
+  languages="Mongolian Common"
+  vision="Lowlight"
+  ideals="Don't like getting pushed. | Slippery when wet."
+  flaws="single | white | male"
+  notes="note 1 | note2 | another note"
+>
+</character>

@@ -48,13 +48,15 @@ SOURCES       = ..\CharSheets\main.cpp \
 		..\CharSheets\character.cpp \
 		..\CharSheets\spell.cpp \
 		..\CharSheets\roller.cpp \
-		..\CharSheets\factory.cpp release\moc_charwindow.cpp
+		..\CharSheets\factory.cpp \
+		..\CharSheets\xmlwriter.cpp release\moc_charwindow.cpp
 OBJECTS       = release/main.o \
 		release/charwindow.o \
 		release/character.o \
 		release/spell.o \
 		release/roller.o \
 		release/factory.o \
+		release/xmlwriter.o \
 		release/moc_charwindow.o
 
 DIST          = 
@@ -84,7 +86,7 @@ DESTDIR_TARGET = release\CharSheets.exe
 first: all
 all: Makefile.Release  $(DESTDIR_TARGET)
 
-$(DESTDIR_TARGET): ui_charwindow.h $(OBJECTS) 
+$(DESTDIR_TARGET): ui_charwindow.h ui_genericroller.h $(OBJECTS) 
 	$(LINKER) $(LFLAGS) -o $(DESTDIR_TARGET) $(OBJECTS)  $(LIBS)
 
 qmake: FORCE
@@ -96,7 +98,7 @@ dist:
 	$(ZIP) CharSheets.zip $(SOURCES) $(DIST) ..\CharSheets\CharSheets.pro ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\features\spec_pre.prf ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\qdevice.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\features\device_config.prf ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\common\shell-win32.conf ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\qconfig.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_axbase.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_axbase_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_axcontainer.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_axcontainer_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_axserver.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_axserver_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_bluetooth.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_bluetooth_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_bootstrap_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_clucene_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_concurrent.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_concurrent_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_core.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_core_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_declarative.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_declarative_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_designer.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_designer_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_designercomponents_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_enginio.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_enginio_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_gui.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_gui_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_help.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_help_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_multimedia.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_multimedia_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_multimediawidgets.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_network.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_network_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_nfc.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_nfc_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_opengl.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_opengl_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_openglextensions.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_openglextensions_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_platformsupport_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_positioning.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_positioning_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_printsupport.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_printsupport_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_qml.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_qml_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_qmldevtools_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_qmltest.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_qmltest_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_quick.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_quick_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_quickparticles_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_quickwidgets.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_quickwidgets_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_script.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_script_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_scripttools.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_scripttools_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_sensors.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_sensors_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_serialport.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_serialport_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_sql.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_sql_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_svg.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_svg_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_testlib.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_testlib_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_uitools.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_uitools_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_webkit.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_webkit_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_webkitwidgets.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_webkitwidgets_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_websockets.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_websockets_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_widgets.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_widgets_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_winextras.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_winextras_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_xml.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_xml_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_xmlpatterns.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\features\qt_functions.prf ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\features\qt_config.prf ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\features\win32\qt_config.prf ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\win32-g++\qmake.conf ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\features\spec_post.prf ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\features\exclusive_builds.prf ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\features\default_pre.prf ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\features\win32\default_pre.prf ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\features\resolve_config.prf ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\features\exclusive_builds_post.prf ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\features\default_post.prf ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\features\build_pass.prf ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\features\c++11.prf ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\features\win32\rtti.prf ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\features\precompile_header.prf ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\features\warn_on.prf ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\features\qt.prf ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\features\resources.prf ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\features\moc.prf ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\features\win32\opengl.prf ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\features\uic.prf ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\features\win32\windows.prf ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\features\testcase_targets.prf ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\features\exceptions.prf ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\features\yacc.prf ..\..\..\..\ProgramFiles\Qt\5.3\mingw482_32\mkspecs\features\lex.prf ..\CharSheets\CharSheets.pro G:/ProgramFiles/Qt/5.3/mingw482_32/lib/Qt5Widgets.prl G:/ProgramFiles/Qt/5.3/mingw482_32/lib/Qt5Gui.prl G:/ProgramFiles/Qt/5.3/mingw482_32/lib/Qt5Core.prl  NO_PCH_SOURCES RESOURCES HEADERS SOURCES OBJECTIVE_SOURCES FORMS YACCSOURCES YACCSOURCES LEXSOURCES 
 
 clean: compiler_clean 
-	-$(DEL_FILE) release\main.o release\charwindow.o release\character.o release\spell.o release\roller.o release\factory.o release\moc_charwindow.o
+	-$(DEL_FILE) release\main.o release\charwindow.o release\character.o release\spell.o release\roller.o release\factory.o release\xmlwriter.o release\moc_charwindow.o
 
 distclean: clean 
 	-$(DEL_FILE) $(DESTDIR_TARGET)
@@ -223,11 +225,14 @@ release/moc_charwindow.cpp: ../../../../ProgramFiles/Qt/5.3/mingw482_32/include/
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_charwindow.h
+compiler_uic_make_all: ui_charwindow.h ui_genericroller.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_charwindow.h
+	-$(DEL_FILE) ui_charwindow.h ui_genericroller.h
 ui_charwindow.h: ../CharSheets/charwindow.ui
 	G:\ProgramFiles\Qt\5.3\mingw482_32\bin\uic.exe ..\CharSheets\charwindow.ui -o ui_charwindow.h
+
+ui_genericroller.h: ../CharSheets/genericroller.ui
+	G:\ProgramFiles\Qt\5.3\mingw482_32\bin\uic.exe ..\CharSheets\genericroller.ui -o ui_genericroller.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -353,15 +358,19 @@ release/main.o: ../CharSheets/main.cpp ../CharSheets/charwindow.h \
 		../../../../ProgramFiles/Qt/5.3/mingw482_32/include/QtGui/qguiapplication.h \
 		../../../../ProgramFiles/Qt/5.3/mingw482_32/include/QtGui/qinputmethod.h \
 		../CharSheets/character.h \
+		../CharSheets/rapidxml.hpp \
+		../CharSheets/rapidxml_utils.hpp \
+		../CharSheets/rapidxml_print.hpp \
+		../CharSheets/xmlwriter.h \
 		../CharSheets/skill.h \
 		../CharSheets/item.h \
 		../CharSheets/race.h \
 		../CharSheets/attribute.h \
 		../CharSheets/cclass.h \
 		../CharSheets/spell.h \
-		../CharSheets/factory.h \
 		../CharSheets/roller.h \
-		../CharSheets/vecmod.h
+		../CharSheets/tools.h \
+		../CharSheets/factory.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o ..\CharSheets\main.cpp
 
 release/charwindow.o: ../CharSheets/charwindow.cpp ../CharSheets/charwindow.h \
@@ -510,14 +519,18 @@ release/charwindow.o: ../CharSheets/charwindow.cpp ../CharSheets/charwindow.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\charwindow.o ..\CharSheets\charwindow.cpp
 
 release/character.o: ../CharSheets/character.cpp ../CharSheets/character.h \
+		../CharSheets/rapidxml.hpp \
+		../CharSheets/rapidxml_utils.hpp \
+		../CharSheets/rapidxml_print.hpp \
+		../CharSheets/xmlwriter.h \
 		../CharSheets/skill.h \
 		../CharSheets/item.h \
 		../CharSheets/race.h \
 		../CharSheets/attribute.h \
 		../CharSheets/cclass.h \
 		../CharSheets/spell.h \
-		../CharSheets/factory.h \
-		../CharSheets/roller.h
+		../CharSheets/roller.h \
+		../CharSheets/tools.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\character.o ..\CharSheets\character.cpp
 
 release/spell.o: ../CharSheets/spell.cpp ../CharSheets/spell.h
@@ -527,15 +540,23 @@ release/roller.o: ../CharSheets/roller.cpp ../CharSheets/roller.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\roller.o ..\CharSheets\roller.cpp
 
 release/factory.o: ../CharSheets/factory.cpp ../CharSheets/factory.h \
-		../CharSheets/roller.h \
+		../CharSheets/character.h \
+		../CharSheets/rapidxml.hpp \
+		../CharSheets/rapidxml_utils.hpp \
+		../CharSheets/rapidxml_print.hpp \
+		../CharSheets/xmlwriter.h \
 		../CharSheets/skill.h \
 		../CharSheets/item.h \
 		../CharSheets/race.h \
 		../CharSheets/attribute.h \
-		../CharSheets/character.h \
 		../CharSheets/cclass.h \
-		../CharSheets/spell.h
+		../CharSheets/spell.h \
+		../CharSheets/roller.h \
+		../CharSheets/tools.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\factory.o ..\CharSheets\factory.cpp
+
+release/xmlwriter.o: ../CharSheets/xmlwriter.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\xmlwriter.o ..\CharSheets\xmlwriter.cpp
 
 release/moc_charwindow.o: release/moc_charwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\moc_charwindow.o release\moc_charwindow.cpp
