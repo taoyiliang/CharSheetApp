@@ -6,589 +6,1005 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>673</width>
-    <height>957</height>
+    <width>563</width>
+    <height>887</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>CharWindow</string>
+   <string>Character Sheet</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QGroupBox" name="gbCharacteristics">
+   <widget class="QTabWidget" name="tbxCharSheet">
     <property name="geometry">
      <rect>
       <x>10</x>
       <y>40</y>
-      <width>511</width>
-      <height>151</height>
+      <width>541</width>
+      <height>501</height>
      </rect>
     </property>
-    <property name="title">
-     <string>Characteristics</string>
+    <property name="tabPosition">
+     <enum>QTabWidget::North</enum>
     </property>
-    <widget class="QWidget" name="">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>20</y>
-       <width>491</width>
-       <height>121</height>
-      </rect>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout">
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout">
-        <item>
-         <widget class="QLabel" name="lblSize">
-          <property name="text">
-           <string>Size</string>
-          </property>
-         </widget>
+    <property name="tabShape">
+     <enum>QTabWidget::Rounded</enum>
+    </property>
+    <property name="currentIndex">
+     <number>1</number>
+    </property>
+    <widget class="QWidget" name="tbCharacter">
+     <attribute name="title">
+      <string>Character</string>
+     </attribute>
+     <widget class="QGroupBox" name="gbCharacteristics">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>511</width>
+        <height>141</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Characteristics</string>
+      </property>
+      <widget class="QWidget" name="">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>491</width>
+         <height>111</height>
+        </rect>
+       </property>
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="0" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QLabel" name="lblRace">
+            <property name="text">
+             <string>Race</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="lblRaceVal">
+            <property name="text">
+             <string>Value</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
-        <item>
-         <widget class="QLabel" name="lblAge">
-          <property name="text">
-           <string>Age</string>
-          </property>
-         </widget>
+        <item row="0" column="1">
+         <layout class="QHBoxLayout" name="horizontalLayout_16">
+          <item>
+           <widget class="QLabel" name="lblSize">
+            <property name="text">
+             <string>Size</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="lblSizeVal">
+            <property name="text">
+             <string>Value</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
-        <item>
-         <widget class="QLabel" name="lblGender">
-          <property name="text">
-           <string>Gender</string>
-          </property>
-         </widget>
+        <item row="0" column="2">
+         <layout class="QHBoxLayout" name="horizontalLayout_18">
+          <item>
+           <widget class="QLabel" name="lblPlayerName">
+            <property name="text">
+             <string>Player Name</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="lblPlayerNameVal">
+            <property name="text">
+             <string>Value</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
-        <item>
-         <widget class="QLabel" name="lblHeight">
-          <property name="text">
-           <string>Height</string>
-          </property>
-         </widget>
+        <item row="1" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <item>
+           <widget class="QLabel" name="lblClass">
+            <property name="text">
+             <string>Class</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="lblClassVal">
+            <property name="text">
+             <string>Value</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
-        <item>
-         <widget class="QLabel" name="lblWeight">
-          <property name="text">
-           <string>Weight</string>
-          </property>
-         </widget>
+        <item row="1" column="1">
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QLabel" name="lblAge">
+            <property name="text">
+             <string>Age</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="lblAgeVal">
+            <property name="text">
+             <string>Value</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
-        <item>
-         <widget class="QLabel" name="lblPlayerName">
-          <property name="text">
-           <string>Player Name</string>
-          </property>
-         </widget>
+        <item row="1" column="2">
+         <layout class="QHBoxLayout" name="horizontalLayout_20">
+          <item>
+           <widget class="QLabel" name="lblAlignment">
+            <property name="text">
+             <string>Alignment</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="lblAlignmentVal">
+            <property name="text">
+             <string>Value</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="2" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_19">
+          <item>
+           <widget class="QLabel" name="lbl2ndClass">
+            <property name="text">
+             <string>2nd Class</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="lbl2ndClassVal">
+            <property name="text">
+             <string>Value</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="2" column="1">
+         <layout class="QHBoxLayout" name="horizontalLayout_17">
+          <item>
+           <widget class="QLabel" name="lblGender">
+            <property name="text">
+             <string>Gender</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="lblGenderVal">
+            <property name="text">
+             <string>Value</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="2" column="2">
+         <layout class="QHBoxLayout" name="horizontalLayout_21">
+          <item>
+           <widget class="QLabel" name="lblDeity">
+            <property name="text">
+             <string>Deity</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="lblDeityVal">
+            <property name="text">
+             <string>Value</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="3" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <widget class="QLabel" name="lblHeight">
+            <property name="text">
+             <string>Height</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="lblHeightVal">
+            <property name="text">
+             <string>Value</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="3" column="1">
+         <layout class="QHBoxLayout" name="horizontalLayout_22">
+          <item>
+           <widget class="QLabel" name="lblHair">
+            <property name="text">
+             <string>Hair</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="lblHairVal">
+            <property name="text">
+             <string>Value</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="4" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_15">
+          <item>
+           <widget class="QLabel" name="lblWeight">
+            <property name="text">
+             <string>Weight</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="lblWeightVal">
+            <property name="text">
+             <string>Value</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="4" column="1">
+         <layout class="QHBoxLayout" name="horizontalLayout_23">
+          <item>
+           <widget class="QLabel" name="lblEyes">
+            <property name="text">
+             <string>Eyes</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="lblEyesVal">
+            <property name="text">
+             <string>value</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
        </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_3">
-        <item>
-         <widget class="QLabel" name="lblSizeVal">
+      </widget>
+     </widget>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>160</y>
+        <width>511</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_14">
+       <item>
+        <widget class="QGroupBox" name="gbAbilityScores">
+         <property name="title">
+          <string>Ability Scores</string>
+         </property>
+         <widget class="QWidget" name="">
+          <property name="geometry">
+           <rect>
+            <x>12</x>
+            <y>22</y>
+            <width>141</width>
+            <height>121</height>
+           </rect>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_2">
+           <item row="0" column="0">
+            <widget class="QLabel" name="lblSTRVal">
+             <property name="text">
+              <string>Value</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLabel" name="lblSTR">
+             <property name="text">
+              <string>STR</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QLabel" name="lblSTRMod">
+             <property name="text">
+              <string>Value</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="lblDEXVal">
+             <property name="text">
+              <string>Value</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLabel" name="lblDEX">
+             <property name="text">
+              <string>DEX</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="2">
+            <widget class="QLabel" name="lblDEXMod">
+             <property name="text">
+              <string>Value</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="lblCONVal">
+             <property name="text">
+              <string>Value</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QLabel" name="lblCON">
+             <property name="text">
+              <string>CON</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="2">
+            <widget class="QLabel" name="lblCONMod">
+             <property name="text">
+              <string>Value</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="lblINTVal">
+             <property name="text">
+              <string>Value</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QLabel" name="lblINT">
+             <property name="text">
+              <string>INT</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="2">
+            <widget class="QLabel" name="lblINTMod">
+             <property name="text">
+              <string>Value</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="lblWISVal">
+             <property name="text">
+              <string>Value</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QLabel" name="lblWIS">
+             <property name="text">
+              <string>WIS</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="2">
+            <widget class="QLabel" name="lblWISMod">
+             <property name="text">
+              <string>Value</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="0">
+            <widget class="QLabel" name="lblCHAVal">
+             <property name="text">
+              <string>Value</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="1">
+            <widget class="QLabel" name="lblCHA">
+             <property name="text">
+              <string>CHA</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="2">
+            <widget class="QLabel" name="lblCHAMod">
+             <property name="text">
+              <string>Value</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="gbExperience">
+         <property name="title">
+          <string>Experience</string>
+         </property>
+         <widget class="QWidget" name="">
+          <property name="geometry">
+           <rect>
+            <x>12</x>
+            <y>22</y>
+            <width>141</width>
+            <height>121</height>
+           </rect>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_3">
+           <item row="0" column="0">
+            <widget class="QLabel" name="lblLevel">
+             <property name="text">
+              <string>Level</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLabel" name="lblLevelVal">
+             <property name="text">
+              <string>Value</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="lblCurrXP">
+             <property name="text">
+              <string>Current XP</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLabel" name="lblCurrXPVal">
+             <property name="text">
+              <string>Value</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="lblNextLvlXP">
+             <property name="text">
+              <string>Next Lvl XP</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QLabel" name="lblNextLvlXPVal">
+             <property name="text">
+              <string>Value</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="gbMoney">
+         <property name="title">
+          <string>Money</string>
+         </property>
+         <widget class="QWidget" name="">
+          <property name="geometry">
+           <rect>
+            <x>12</x>
+            <y>22</y>
+            <width>141</width>
+            <height>121</height>
+           </rect>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_4">
+           <item row="0" column="0">
+            <widget class="QLabel" name="lblGold">
+             <property name="text">
+              <string>Gold</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLabel" name="lblGoldVal">
+             <property name="text">
+              <string>Value</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="lblSilver">
+             <property name="text">
+              <string>Silver</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLabel" name="lblSilverVal">
+             <property name="text">
+              <string>Value</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="lblCopper">
+             <property name="text">
+              <string>Copper</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QLabel" name="lblCopperVal">
+             <property name="text">
+              <string>Value</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="lblMoneyTotal">
+             <property name="text">
+              <string>Total</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QLabel" name="lblMoneyTotalVal">
+             <property name="text">
+              <string>Value</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>330</y>
+        <width>511</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_6">
+       <item>
+        <widget class="QGroupBox" name="gbHP">
+         <property name="title">
+          <string>Hit Points</string>
+         </property>
+         <widget class="QWidget" name="">
+          <property name="geometry">
+           <rect>
+            <x>12</x>
+            <y>22</y>
+            <width>141</width>
+            <height>34</height>
+           </rect>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_5">
+           <item row="0" column="0">
+            <widget class="QLabel" name="lblCurrHP">
+             <property name="text">
+              <string>Current HP</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLabel" name="lblCurrHPVal">
+             <property name="text">
+              <string>Value</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="lblMaxHP">
+             <property name="text">
+              <string>Max HP</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLabel" name="lblMaxHPVal">
+             <property name="text">
+              <string>Value</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="gbCarriedWeight">
+         <property name="title">
+          <string>Carried Weight</string>
+         </property>
+         <widget class="QWidget" name="">
+          <property name="geometry">
+           <rect>
+            <x>12</x>
+            <y>20</y>
+            <width>141</width>
+            <height>34</height>
+           </rect>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_6">
+           <item row="0" column="0">
+            <widget class="QLabel" name="lblCarriedWeight">
+             <property name="text">
+              <string>Carried Weight</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLabel" name="lblCarriedWeightVal">
+             <property name="text">
+              <string>Value</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="lblWeightCapacity">
+             <property name="text">
+              <string>Weight Capacity</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLabel" name="lblWeightCapacityVal">
+             <property name="text">
+              <string>Value</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="gbSpeed">
+         <property name="title">
+          <string>Speed</string>
+         </property>
+         <widget class="QWidget" name="">
+          <property name="geometry">
+           <rect>
+            <x>11</x>
+            <y>21</y>
+            <width>141</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_7">
+           <item row="0" column="0">
+            <widget class="QLabel" name="lblYardsMomentVal">
+             <property name="text">
+              <string>Value</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLabel" name="lblYardsMoment">
+             <property name="text">
+              <string>yards/moment</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>410</y>
+        <width>511</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_7">
+       <item>
+        <widget class="QGroupBox" name="gbBaseAttack">
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="title">
+          <string>Base Attack</string>
+         </property>
+         <widget class="QLabel" name="lblBaseAttackVal">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>20</y>
+            <width>31</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::LeftToRight</enum>
+          </property>
           <property name="text">
            <string>Value</string>
           </property>
          </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="lblAgeVal">
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="gbDifficultyToHit">
+         <property name="title">
+          <string>Difficulty to Hit</string>
+         </property>
+         <widget class="QLabel" name="lblDifficultyToHitVal">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>20</y>
+            <width>31</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::LeftToRight</enum>
+          </property>
           <property name="text">
            <string>Value</string>
           </property>
          </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="lblGenderVal">
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="gbInitiative">
+         <property name="title">
+          <string>Initiative</string>
+         </property>
+         <widget class="QLabel" name="lblInitVal">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>20</y>
+            <width>31</width>
+            <height>16</height>
+           </rect>
+          </property>
           <property name="text">
            <string>Value</string>
           </property>
          </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="lblHeightVal">
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="gbSpecialVision">
+         <property name="title">
+          <string>Special Vision</string>
+         </property>
+         <widget class="QLabel" name="lblSpecialVisionVal">
+          <property name="geometry">
+           <rect>
+            <x>11</x>
+            <y>20</y>
+            <width>101</width>
+            <height>16</height>
+           </rect>
+          </property>
           <property name="text">
            <string>Value</string>
           </property>
          </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="lblWeightVal">
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="gbLanguages">
+         <property name="title">
+          <string>Languages</string>
+         </property>
+         <widget class="QLabel" name="lblLanguagesVal">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>20</y>
+            <width>121</width>
+            <height>16</height>
+           </rect>
+          </property>
           <property name="text">
            <string>Value</string>
           </property>
          </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="lblPlayerNameVal">
-          <property name="text">
-           <string>Value</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <widget class="Line" name="line">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tbEqupment">
+     <attribute name="title">
+      <string>Equipment</string>
+     </attribute>
+     <widget class="QScrollArea" name="scrollArea">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>521</width>
+        <height>461</height>
+       </rect>
+      </property>
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>519</width>
+         <height>459</height>
+        </rect>
+       </property>
+       <widget class="QWidget" name="gridLayoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>501</width>
+          <height>441</height>
+         </rect>
         </property>
+        <layout class="QGridLayout" name="gridLayout_8">
+         <item row="0" column="0">
+          <widget class="QLabel" name="lblItemName">
+           <property name="text">
+            <string>Item Name</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="3">
+          <widget class="QLabel" name="lblValue">
+           <property name="text">
+            <string>Value</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLabel" name="lblItemDescription">
+           <property name="text">
+            <string>Description</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QLabel" name="lblqty">
+           <property name="text">
+            <string>Qty</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="4">
+          <widget class="QLabel" name="lblWeight_2">
+           <property name="text">
+            <string>Weight</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="5">
+          <widget class="QLabel" name="lblEquipped">
+           <property name="text">
+            <string>Equipped?</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_2">
-        <item>
-         <widget class="QLabel" name="lblRace">
-          <property name="text">
-           <string>Race</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="lblClass">
-          <property name="text">
-           <string>Class</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="lbl2ndClass">
-          <property name="text">
-           <string>2nd Class</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="lblAlignment">
-          <property name="text">
-           <string>Alignment</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="lblDeity">
-          <property name="text">
-           <string>Deity</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="lblHair">
-          <property name="text">
-           <string>Hair</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="lblEyes">
-          <property name="text">
-           <string>Eyes</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_4">
-        <item>
-         <widget class="QLabel" name="lblRaceVal">
-          <property name="text">
-           <string>Value</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="lblClassVal">
-          <property name="text">
-           <string>Value</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="lbl2ndClassVal">
-          <property name="text">
-           <string>Value</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="lblAlignmentVal">
-          <property name="text">
-           <string>Value</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="lblDeityVal">
-          <property name="text">
-           <string>Value</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="lblHairVal">
-          <property name="text">
-           <string>Value</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="lblEyesVal">
-          <property name="text">
-           <string>value</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-     </layout>
+      </widget>
+     </widget>
     </widget>
-   </widget>
-   <widget class="QGroupBox" name="gbSpeed">
-    <property name="geometry">
-     <rect>
-      <x>360</x>
-      <y>540</y>
-      <width>121</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Speed</string>
-    </property>
-    <widget class="QWidget" name="">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>20</y>
-       <width>101</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <layout class="QHBoxLayout" name="horizontalLayout_10">
-      <item>
-       <widget class="QLabel" name="lblYardsMomentVal">
-        <property name="text">
-         <string>Value</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="lblYardsMoment">
-        <property name="text">
-         <string>yards/moment</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="gbCarriedWeight">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>480</y>
-      <width>161</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Carried Weight</string>
-    </property>
-    <widget class="QWidget" name="">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>20</y>
-       <width>141</width>
-       <height>36</height>
-      </rect>
-     </property>
-     <layout class="QHBoxLayout" name="horizontalLayout_11">
-      <item>
-       <layout class="QVBoxLayout" name="verticalLayout_12">
+    <widget class="QWidget" name="tbFeats">
+     <attribute name="title">
+      <string>Feats</string>
+     </attribute>
+     <widget class="QGroupBox" name="gbClassAbility">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>181</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Class Ability</string>
+      </property>
+      <widget class="QWidget" name="">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>161</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_13">
         <item>
-         <widget class="QLabel" name="lblCarriedWeight">
+         <widget class="QLabel" name="lblClassAbility">
           <property name="text">
-           <string>Carried Weight</string>
+           <string>Ability Name</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="lblWeightCapacity">
-          <property name="text">
-           <string>Weight Capacity</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QVBoxLayout" name="verticalLayout_11">
-        <item>
-         <widget class="QLabel" name="lblCarriedWeightVal">
-          <property name="text">
-           <string>Value</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="lblWeightCapacityVal">
+         <widget class="QLabel" name="lblClassAbilityVal">
           <property name="text">
            <string>Value</string>
           </property>
          </widget>
         </item>
        </layout>
-      </item>
-     </layout>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tbSkills">
+     <attribute name="title">
+      <string>Skills</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="tbSpellbook">
+     <attribute name="title">
+      <string>Spellbook</string>
+     </attribute>
     </widget>
    </widget>
-   <widget class="QGroupBox" name="gbDifficultyToHit">
-    <property name="geometry">
-     <rect>
-      <x>360</x>
-      <y>600</y>
-      <width>91</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Difficulty to Hit</string>
-    </property>
-    <widget class="QLabel" name="lblDifficultyToHitVal">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>20</y>
-       <width>31</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="layoutDirection">
-      <enum>Qt::LeftToRight</enum>
-     </property>
-     <property name="text">
-      <string>Value</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="gbBaseAttack">
-    <property name="geometry">
-     <rect>
-      <x>360</x>
-      <y>660</y>
-      <width>81</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
-    <property name="title">
-     <string>Base Attack</string>
-    </property>
-    <widget class="QLabel" name="lblBaseAttackVal">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>20</y>
-       <width>31</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="layoutDirection">
-      <enum>Qt::LeftToRight</enum>
-     </property>
-     <property name="text">
-      <string>Value</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="gbHP">
-    <property name="geometry">
-     <rect>
-      <x>490</x>
-      <y>540</y>
-      <width>111</width>
-      <height>71</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Hit Points</string>
-    </property>
-    <widget class="QWidget" name="">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>20</y>
-       <width>90</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <layout class="QHBoxLayout" name="horizontalLayout_12">
-      <item>
-       <layout class="QVBoxLayout" name="verticalLayout_14">
-        <item>
-         <widget class="QLabel" name="lblCurrHP">
-          <property name="text">
-           <string>Current HP</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="lblMaxHP">
-          <property name="text">
-           <string>Max HP</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QVBoxLayout" name="verticalLayout_13">
-        <item>
-         <widget class="QLabel" name="lblCurrHPVal">
-          <property name="text">
-           <string>Value</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="lblMaxHPVal">
-          <property name="text">
-           <string>Value</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-     </layout>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="gbSpecialVision">
-    <property name="geometry">
-     <rect>
-      <x>460</x>
-      <y>620</y>
-      <width>120</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Special Vision</string>
-    </property>
-    <widget class="QLabel" name="lblSpecialVisionVal">
-     <property name="geometry">
-      <rect>
-       <x>11</x>
-       <y>20</y>
-       <width>101</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Value</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="gbLanguages">
+   <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
       <x>450</x>
-      <y>680</y>
-      <width>141</width>
-      <height>51</height>
+      <y>10</y>
+      <width>101</width>
+      <height>23</height>
      </rect>
     </property>
-    <property name="title">
-     <string>Languages</string>
+    <property name="text">
+     <string>Change Character</string>
     </property>
-    <widget class="QLabel" name="lblLanguagesVal">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>20</y>
-       <width>121</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Value</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="gbClassAbility">
-    <property name="geometry">
-     <rect>
-      <x>360</x>
-      <y>740</y>
-      <width>181</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Class Ability</string>
-    </property>
-    <widget class="QWidget" name="">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>20</y>
-       <width>161</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <layout class="QHBoxLayout" name="horizontalLayout_13">
-      <item>
-       <widget class="QLabel" name="lblClassAbility">
-        <property name="text">
-         <string>Ability Name</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="lblClassAbilityVal">
-        <property name="text">
-         <string>Value</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="gbInitiative">
-    <property name="geometry">
-     <rect>
-      <x>360</x>
-      <y>800</y>
-      <width>61</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Initiative</string>
-    </property>
-    <widget class="QLabel" name="lblInitVal">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>20</y>
-       <width>31</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Value</string>
-     </property>
-    </widget>
    </widget>
    <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>321</width>
+      <width>431</width>
       <height>16</height>
      </rect>
     </property>
@@ -609,334 +1025,13 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>200</y>
-      <width>501</width>
-      <height>161</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_14">
-     <item>
-      <widget class="QGroupBox" name="gbAbilityScores">
-       <property name="title">
-        <string>Ability Scores</string>
-       </property>
-       <widget class="QWidget" name="">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>20</y>
-          <width>141</width>
-          <height>131</height>
-         </rect>
-        </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_7">
-         <item>
-          <layout class="QVBoxLayout" name="verticalLayout_6">
-           <item>
-            <widget class="QLabel" name="lblSTRVal">
-             <property name="text">
-              <string>Value</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="lblDEXVal">
-             <property name="text">
-              <string>Value</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="lblCONVal">
-             <property name="text">
-              <string>Value</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="lblINTVal">
-             <property name="text">
-              <string>Value</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="lblWISVal">
-             <property name="text">
-              <string>Value</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="lblCHAVal">
-             <property name="text">
-              <string>Value</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QVBoxLayout" name="verticalLayout_2">
-           <item>
-            <widget class="QLabel" name="lblSTR">
-             <property name="text">
-              <string>STR</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="lblDEX">
-             <property name="text">
-              <string>DEX</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="lblCON">
-             <property name="text">
-              <string>CON</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="lblINT">
-             <property name="text">
-              <string>INT</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="lblWIS">
-             <property name="text">
-              <string>WIS</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="lblCHA">
-             <property name="text">
-              <string>CHA</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QVBoxLayout" name="verticalLayout_5">
-           <item>
-            <widget class="QLabel" name="lblSTRMod">
-             <property name="text">
-              <string>Value</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="lblDEXMod">
-             <property name="text">
-              <string>Value</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="lblCONMod">
-             <property name="text">
-              <string>Value</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="lblINTMod">
-             <property name="text">
-              <string>Value</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="lblWISMod">
-             <property name="text">
-              <string>Value</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="lblCHAMod">
-             <property name="text">
-              <string>Value</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </widget>
-      </widget>
-     </item>
-     <item>
-      <widget class="QGroupBox" name="gbExperience">
-       <property name="title">
-        <string>Experience</string>
-       </property>
-       <widget class="QWidget" name="">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>20</y>
-          <width>111</width>
-          <height>71</height>
-         </rect>
-        </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_6">
-         <item>
-          <layout class="QVBoxLayout" name="verticalLayout_4">
-           <item>
-            <widget class="QLabel" name="lblLevel">
-             <property name="text">
-              <string>Level</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="lblCurrXP">
-             <property name="text">
-              <string>Current XP</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="lblNextLvlXP">
-             <property name="text">
-              <string>Next Lvl XP</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QVBoxLayout" name="verticalLayout_3">
-           <item>
-            <widget class="QLabel" name="lblLevelVal">
-             <property name="text">
-              <string>Value</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="lblCurrXPVal">
-             <property name="text">
-              <string>Value</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="lblNextLvlXPVal">
-             <property name="text">
-              <string>Value</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </widget>
-      </widget>
-     </item>
-     <item>
-      <widget class="QGroupBox" name="gbMoney">
-       <property name="title">
-        <string>Money</string>
-       </property>
-       <widget class="QWidget" name="">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>20</y>
-          <width>121</width>
-          <height>101</height>
-         </rect>
-        </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_9">
-         <item>
-          <layout class="QVBoxLayout" name="verticalLayout_10">
-           <item>
-            <widget class="QLabel" name="lblGold">
-             <property name="text">
-              <string>Gold</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="lblSilver">
-             <property name="text">
-              <string>Silver</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="lblCopper">
-             <property name="text">
-              <string>Copper</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="lblMoneyTotal">
-             <property name="text">
-              <string>Total</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QVBoxLayout" name="verticalLayout_9">
-           <item>
-            <widget class="QLabel" name="lblGoldVal">
-             <property name="text">
-              <string>Value</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="lblSilverVal">
-             <property name="text">
-              <string>Value</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="lblCopperVal">
-             <property name="text">
-              <string>Value</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="lblMoneyTotalVal">
-             <property name="text">
-              <string>Value</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </widget>
-      </widget>
-     </item>
-    </layout>
-   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>673</width>
+     <width>563</width>
      <height>21</height>
     </rect>
    </property>
