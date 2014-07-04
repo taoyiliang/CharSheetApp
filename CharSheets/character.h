@@ -69,7 +69,8 @@ class Character
     vector<Spell> daily_spells;
 
     vector<Item> equipment;
-    vector<Item> weapons;
+    vector<Weapon> weapons;
+    vector<Armor> armors;
 
 
 
@@ -86,7 +87,7 @@ class Character
     int rollAttack(Weapon,bool,int);
     int rollDamage(Weapon,int,int);
     int rollSkill(Skill,bool,int);
-    int rollSave(Ability,bool,int);
+    int rollSave(string,bool,int);
     void writeXML();
 
 };
@@ -124,10 +125,10 @@ inline std::ostream& operator<<(std::ostream& stream, const Character& c)
   stream << "| []\n| \n";
   //skills
   stream << "| [Skills]\n";
-  //for (size_t i=0;i<skills.size();i++)
-  //{
-  //  stream << "  "<<skills[i]<<"\n";
- // }
+  for (size_t i=0;i<c.skills.size();i++)
+  {
+    stream << "  "<<c.skills[i]<<"\n";
+  }
   stream << "| []\n| \n";
 
   stream <<"END CHARACTER OUTPUT\n";

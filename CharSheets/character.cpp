@@ -44,7 +44,7 @@ int Character::rollSkill(Skill skill, bool adv, int misc)
    return 0;//TODO
 }
 
-int Character::rollSave(Ability abil, bool adv, int misc)
+int Character::rollSave(string abil, bool adv, int misc)
 {
    return 0;//TODO
 }
@@ -56,6 +56,7 @@ void Character::writeXML()
   xml_node<> *node = doc.allocate_node(node_element, "character");
   doc.append_node(node);
   xml_attribute<> *attr;
+  /////////////////////////////////////////basics///////////////////////////////////////////
   attr = doc.allocate_attribute("name"  ,name  .c_str()); node->append_attribute(attr);
   attr = doc.allocate_attribute("player",player.c_str()); node->append_attribute(attr);
   attr = doc.allocate_attribute("gender",gender.c_str()); node->append_attribute(attr);
@@ -85,7 +86,7 @@ void Character::writeXML()
     names+=string(sp_counter_names[i])+" ";
     values+=to_string(sp_counter_vals[i])+" ";
   }
-  cout << names.c_str()<<" "<<values.c_str()<<endl;
+  //cout << names.c_str()<<" "<<values.c_str()<<endl;
   attr = doc.allocate_attribute("sp_counter_names",names.c_str()); node->append_attribute(attr);
   attr = doc.allocate_attribute("sp_counter_vals" ,values.c_str()); node->append_attribute(attr);
 
@@ -133,8 +134,38 @@ void Character::writeXML()
     if (i!=notes.size()-1){note+=" | ";}
   }
   attr = doc.allocate_attribute("notes",note.c_str()); node->append_attribute(attr);
-
-
+  /////////////////////////////////////////classes///////////////////////////////////////////
+  xml_node<> *snode;
+  for (size_t i=0;i<skills.size();i++)
+  {
+    snode = doc.allocate_node(node_element,"skill");
+    skills[i].xml_write(&doc,&*snode);
+    node->append_node(snode);
+  }
+  for (size_t i=0;i<attributes.size();i++)
+  {
+    snode = doc.allocate_node(node_element,"attribute");
+    attributes[i].xml_write(&doc,&*snode);
+    node->append_node(snode);
+  }
+  for (size_t i=0;i<equipment.size();i++)
+  {
+    snode = doc.allocate_node(node_element,"item");
+    equipment[i].xml_write(&doc,&*snode);
+    node->append_node(snode);
+  }
+  for (size_t i=0;i<weapons.size();i++)
+  {
+    snode = doc.allocate_node(node_element,"weapon");
+    weapons[i].xml_write(&doc,&*snode);
+    node->append_node(snode);
+  }
+  for (size_t i=0;i<armors.size();i++)
+  {
+    snode = doc.allocate_node(node_element,"armor");
+    armors[i].xml_write(&doc,&*snode);
+    node->append_node(snode);
+  }
 
   ofstream outfile;
   outfile.open(name+"2.xml");

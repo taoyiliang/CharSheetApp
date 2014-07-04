@@ -56,5 +56,11 @@ inline char* double2char(xml_document<> *doc,int value)
   sprintf(tmpval,"%i",value);
   return doc->allocate_string(tmpval);
 }
+inline char* double2char(xml_document<> *doc,bool value)
+{
+  char tmpval[1000];
+  sprintf(tmpval,"%d",value);
+  return doc->allocate_string(tmpval);
+}
 #endif // TOOLS_H
 

@@ -1,0 +1,13 @@
+INPUT(
+./debug\main.o
+./debug\charwindow.o
+./debug\character.o
+./debug\spell.o
+./debug\roller.o
+./debug\factory.o
+./debug\xmlwriter.o
+./debug\skill.o
+./debug\attribute.o
+./debug\item.o
+./debug\moc_charwindow.o
+);

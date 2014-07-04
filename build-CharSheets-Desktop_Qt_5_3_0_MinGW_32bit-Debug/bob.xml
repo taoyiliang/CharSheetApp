@@ -1,35 +1,13 @@
 <?xml version='1.0' encoding='us-ascii'?>
-<character
-  name = "Buff Bob"
-  player = "DnD Dave"
-  gender = "Male"
-  deity = "Ao"
-  hair = "Black"
-  eyes = "Brown"
-  height = "6.1"
-  weight = "240"
-  age = "42"
-  lawful = "50"
-  good = "45"
-
-  hp="50 75"
-  xp="199"
-  gp="10"
-  sp="9"
-  cp="8"
-  sp_counter_names="ki "
-  sp_counter_vals="2"
-
-  STR="12"
-  DEX="10"
-  CON="11"
-  INT="9"
-  WIS="14"
-  CHA="13"
-  languages="Mongolian Common"
-  vision="Lowlight"
-  ideals="Don't like getting pushed. | Slippery when wet."
-  flaws="single | white | male"
-  notes="note 1 | note2 | another note"
->
+<character name = "Buff Bob" player = "DnD Dave" gender = "Male" deity = "Ao" hair = "Black" eyes = "Brown" height = "6.1" weight = "240" age = "42" lawful = "50" good = "45" hp="50 75" xp="199" gp="10" sp="9" cp="8" sp_counter_names="ki" sp_counter_vals="2" STR="12" DEX="10" CON="11" INT="9" WIS="14" CHA="13" languages="Mongolian Common" vision="Lowlight" ideals="Don't like getting pushed. | Slippery when wet." flaws="single | white | male" notes="note 1 | note2 | another note">
+  <skill name="sneak" trained="1" master="0" misc="3"/>
+  <skill name="sneeze" trained="0" master="0" misc="0"/>
+  <attribute name="sunburned" level="0" details="1d3 fire damage on touch"/>
+  <spellbook></spellbook>
+  <daily_spells></daily_spells>
+  <item name="pencil" description="No. 2" weight="0.1"/>
+  <weapon name="football" description="oblong" weight="1.0" dmg="1d4" type="bludgeon" init="2" prep="2" enh="0" crit="20" range="70" prof="1" master="0"/>
+  <armor name="bike helmet" description="Schwinn" weight="1" type="head" resistances="1 0 1" maxdex="12" durability="10"/>
+  <cclass></cclass>
+  <race></race>
 </character>

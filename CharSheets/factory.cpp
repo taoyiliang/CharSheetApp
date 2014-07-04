@@ -110,7 +110,48 @@ Character Factory::loadCharacter(char *filename)
      else {cout<<"Not found: "<<attr->name()<<": "<<attr->value()<<endl;}
    }
    /////////////////////////////////Member Functions///////////////////////////////
-
+  for (xml_node<> *snode=node->first_node();snode;snode=snode->next_sibling())
+  {
+    if (!strcmp(snode->name(),"skill"))
+    {
+      Skill newskill = skill();
+      //cout <<snode->name()<<endl;
+      newskill.xml_read(&doc,&*snode);
+      bob.skills.push_back(newskill);
+    }
+    else if (!strcmp(snode->name(),"attribute"))
+    {
+      Attribute newattr = attr();
+      newattr.xml_read(&doc,&*snode);
+      bob.attributes.push_back(newattr);
+    }
+    else if (!strcmp(snode->name(),"item"))
+    {
+      Item newitem = item();
+      newitem.xml_read(&doc,&*snode);
+      bob.equipment.push_back(newitem);
+    }
+    else if (!strcmp(snode->name(),"weapon"))
+    {
+      Weapon newitem = weapon();
+      newitem.xml_read(&doc,&*snode);
+      bob.weapons.push_back(newitem);
+    }
+    else if (!strcmp(snode->name(),"armor"))
+    {
+      Armor newitem = armor();
+      newitem.xml_read(&doc,&*snode);
+      bob.armors.push_back(newitem);
+    }
+    else if (!strcmp(snode->name(),"cclass"))
+    {}
+    else if (!strcmp(snode->name(),"race"))
+    {}
+    else if (!strcmp(snode->name(),"spellbook"))
+    {}
+    else if (!strcmp(snode->name(),"daily_spells"))
+    {}
+  }
 
    return bob;
 }
@@ -125,19 +166,18 @@ Skill Factory::skill()
   return Skill();
 }
 
-Ability Factory::ability()
-{
-  return Ability();
-}
 
 Item Factory::item()
 {
   return Item();
 }
-
 Weapon Factory::weapon()
 {
   return Weapon();
+}
+Armor Factory::armor()
+{
+  return Armor();
 }
 
 Race Factory::race()

@@ -1,0 +1,29 @@
+[Basics]
+  Name: Bob Beran
+  Player: DnD Dave
+  Gender: Male
+  Deity: Cheese
+  Hair: Mohawk
+  Eyes: Vacant
+  Height: 6'2
+  Weight: 140
+  Age: 42
+  Align: 50 45
+[]
+
+[Counters]
+  HP: 34 50
+  XP: 199 250
+  Currency: 10 9 8
+  SpecialNames: Ki
+  SpecialValues: 2
+[]
+
+[Attributes]
+  Abilities: 12 10 11 9 14 13
+  Languages: Mongolian Common
+  Vision: Lowlight
+[]
+
+[Skills]
+[]

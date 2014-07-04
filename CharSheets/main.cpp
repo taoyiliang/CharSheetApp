@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
     Factory factory(roller);
     Character bob=factory.loadCharacter("bob.xml");
     //vector<int> val = roller.parseMod("3d8+2+-1");
-    std::cout<<bob<<" "<<std::endl;
+    //std::cout<<bob<<" "<<std::endl;
     bob.writeXML();
     //CharWindow w;
     //w.show();

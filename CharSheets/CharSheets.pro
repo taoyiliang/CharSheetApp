@@ -18,7 +18,11 @@ SOURCES += main.cpp\
     character.cpp \
     spell.cpp \
     roller.cpp \
-    factory.cpp
+    factory.cpp \
+    xmlwriter.cpp \
+    skill.cpp \
+    attribute.cpp \
+    item.cpp
 
 HEADERS  += charwindow.h \
     character.h \
@@ -29,7 +33,12 @@ HEADERS  += charwindow.h \
     cclass.h \
     spell.h \
     roller.h \
-    vecmod.h \
-    factory.h
+    factory.h \
+    tools.h \
+    xmlwriter.h
 
-FORMS    += charwindow.ui
+FORMS    += charwindow.ui \
+    genericroller.ui
+
+OTHER_FILES += \
+    ../build-CharSheets-Desktop_Qt_5_3_0_MinGW_32bit-Debug/bob.xml

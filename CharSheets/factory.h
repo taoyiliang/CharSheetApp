@@ -27,9 +27,9 @@ public:
     Character loadCharacter(char* filename);
     Character character(string playername);
     Skill skill();
-    Ability ability();
     Item item();
     Weapon weapon();
+    Armor armor();
     Race race();
     CClass cclass();
     Attribute attr();
