@@ -22,7 +22,8 @@ SOURCES += main.cpp\
     xmlwriter.cpp \
     skill.cpp \
     attribute.cpp \
-    item.cpp
+    item.cpp \
+    cclass.cpp
 
 HEADERS  += charwindow.h \
     character.h \

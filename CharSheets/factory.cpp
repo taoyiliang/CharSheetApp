@@ -144,7 +144,11 @@ Character Factory::loadCharacter(char *filename)
       bob.armors.push_back(newitem);
     }
     else if (!strcmp(snode->name(),"cclass"))
-    {}
+    {
+      CClass newclass = cclass();
+      newclass.xml_read(&doc,&*snode);
+      bob.cclass = newclass;
+    }
     else if (!strcmp(snode->name(),"race"))
     {}
     else if (!strcmp(snode->name(),"spellbook"))

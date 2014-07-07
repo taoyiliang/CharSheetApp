@@ -30,12 +30,12 @@ void Item::xml_read(xml_document<>* doc,xml_node<>* node)
   for (xml_node<> *snode=node->first_node();snode;snode=snode->next_sibling())
   {
 
-   /*TODO if (!strcmp(snode->name(),"attribute"))
-      {
-        Attribute newattr = attr();
-        newattr.xml_read(&*doc,&*snode);
-        attributes.push_back(newattr);
-      }*/
+   if (!strcmp(snode->name(),"attribute"))
+    {
+      Attribute newattr;
+      newattr.xml_read(&*doc,&*snode);
+      attributes.push_back(newattr);
+    }
   }
 }
 
@@ -82,11 +82,13 @@ void Armor::xml_write(xml_document<> * doc, xml_node<> * node)
   char *node_name = doc->allocate_string(type.c_str());
   attr = doc->allocate_attribute("type"  ,node_name); node->append_attribute(attr);
   string res("");
+  cout<<resistances<<endl;
   for (size_t i=0;i<resistances.size();i++)
   {
     res+=to_string(resistances[i])+" ";
   }
-  attr = doc->allocate_attribute("resistances",res.c_str())                  ; node->append_attribute(attr);
+  node_name = doc->allocate_string(res.c_str());
+  attr = doc->allocate_attribute("resistances",node_name)                    ; node->append_attribute(attr);
   attr = doc->allocate_attribute("maxdex"     ,double2char(&*doc,maxdex))    ; node->append_attribute(attr);
   attr = doc->allocate_attribute("durability" ,double2char(&*doc,durability)); node->append_attribute(attr);
 }

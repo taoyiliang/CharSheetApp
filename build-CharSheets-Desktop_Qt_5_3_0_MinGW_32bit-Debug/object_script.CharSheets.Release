@@ -9,5 +9,6 @@ INPUT(
 ./release\skill.o
 ./release\attribute.o
 ./release\item.o
+./release\cclass.o
 ./release\moc_charwindow.o
 );

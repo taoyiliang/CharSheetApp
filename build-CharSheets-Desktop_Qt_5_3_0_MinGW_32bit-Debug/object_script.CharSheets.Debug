@@ -9,5 +9,6 @@ INPUT(
 ./debug\skill.o
 ./debug\attribute.o
 ./debug\item.o
+./debug\cclass.o
 ./debug\moc_charwindow.o
 );

@@ -56,13 +56,20 @@ void Character::writeXML()
   xml_node<> *node = doc.allocate_node(node_element, "character");
   doc.append_node(node);
   xml_attribute<> *attr;
+  char *node_name;
   /////////////////////////////////////////basics///////////////////////////////////////////
-  attr = doc.allocate_attribute("name"  ,name  .c_str()); node->append_attribute(attr);
-  attr = doc.allocate_attribute("player",player.c_str()); node->append_attribute(attr);
-  attr = doc.allocate_attribute("gender",gender.c_str()); node->append_attribute(attr);
-  attr = doc.allocate_attribute("deity" ,deity .c_str()); node->append_attribute(attr);
-  attr = doc.allocate_attribute("hair"  ,hair  .c_str()); node->append_attribute(attr);
-  attr = doc.allocate_attribute("eyes"  ,eyes  .c_str()); node->append_attribute(attr);
+  node_name = doc.allocate_string(name.c_str());
+  attr = doc.allocate_attribute("name"  ,node_name); node->append_attribute(attr);
+  node_name = doc.allocate_string(player.c_str());
+  attr = doc.allocate_attribute("player",node_name); node->append_attribute(attr);
+  node_name = doc.allocate_string(gender.c_str());
+  attr = doc.allocate_attribute("gender",node_name); node->append_attribute(attr);
+  node_name = doc.allocate_string(deity.c_str());
+  attr = doc.allocate_attribute("deity" ,node_name); node->append_attribute(attr);
+  node_name = doc.allocate_string(hair.c_str());
+  attr = doc.allocate_attribute("hair"  ,node_name); node->append_attribute(attr);
+  node_name = doc.allocate_string(eyes.c_str());
+  attr = doc.allocate_attribute("eyes"  ,node_name); node->append_attribute(attr);
 
   attr = doc.allocate_attribute("height"  ,double2char(&doc,height      )); node->append_attribute(attr);
   attr = doc.allocate_attribute("weight"  ,double2char(&doc,weight      )); node->append_attribute(attr);
@@ -87,7 +94,8 @@ void Character::writeXML()
     values+=to_string(sp_counter_vals[i])+" ";
   }
   //cout << names.c_str()<<" "<<values.c_str()<<endl;
-  attr = doc.allocate_attribute("sp_counter_names",names.c_str()); node->append_attribute(attr);
+  node_name = doc.allocate_string(names.c_str());
+  attr = doc.allocate_attribute("sp_counter_names",node_name); node->append_attribute(attr);
   attr = doc.allocate_attribute("sp_counter_vals" ,values.c_str()); node->append_attribute(attr);
 
   attr = doc.allocate_attribute("STR",double2char(&doc,STR)); node->append_attribute(attr);
@@ -100,16 +108,18 @@ void Character::writeXML()
   string langs("");
   for (size_t i=0;i<languages.size();i++)
   {
-    names+=languages[i]+" ";
+    langs+=languages[i]+" ";
   }
-  attr = doc.allocate_attribute("languages",langs.c_str()); node->append_attribute(attr);
+  node_name = doc.allocate_string(langs.c_str());
+  attr = doc.allocate_attribute("languages",node_name); node->append_attribute(attr);
 
   string vis("");
   for (size_t i=0;i<vision.size();i++)
   {
-    names+=vis[i]+" ";
+    vis+=vision[i]+" ";
   }
-  attr = doc.allocate_attribute("vision",vis.c_str()); node->append_attribute(attr);
+  node_name = doc.allocate_string(vis.c_str());
+  attr = doc.allocate_attribute("vision",node_name); node->append_attribute(attr);
 
   string idl("");
   for (size_t i=0;i<ideals.size();i++)
@@ -117,7 +127,8 @@ void Character::writeXML()
     idl+=ideals[i];
     if (i!=ideals.size()-1){idl+=" | ";}
   }
-  attr = doc.allocate_attribute("ideals",idl.c_str()); node->append_attribute(attr);
+  node_name = doc.allocate_string(idl.c_str());
+  attr = doc.allocate_attribute("ideals",node_name); node->append_attribute(attr);
 
   string flw("");
   for (size_t i=0;i<flaws.size();i++)
@@ -125,7 +136,8 @@ void Character::writeXML()
     flw+=flaws[i];
     if (i!=flaws.size()-1){flw+=" | ";}
   }
-  attr = doc.allocate_attribute("flaws",flw.c_str()); node->append_attribute(attr);
+  node_name = doc.allocate_string(flw.c_str());
+  attr = doc.allocate_attribute("flaws",node_name); node->append_attribute(attr);
 
   string note("");
   for (size_t i=0;i<notes.size();i++)
@@ -133,7 +145,8 @@ void Character::writeXML()
     note+=notes[i];
     if (i!=notes.size()-1){note+=" | ";}
   }
-  attr = doc.allocate_attribute("notes",note.c_str()); node->append_attribute(attr);
+  node_name = doc.allocate_string(note.c_str());
+  attr = doc.allocate_attribute("notes",node_name); node->append_attribute(attr);
   /////////////////////////////////////////classes///////////////////////////////////////////
   xml_node<> *snode;
   for (size_t i=0;i<skills.size();i++)
@@ -166,6 +179,10 @@ void Character::writeXML()
     armors[i].xml_write(&doc,&*snode);
     node->append_node(snode);
   }
+
+  snode = doc.allocate_node(node_element,"cclass");
+  cclass.xml_write(&doc,&*snode);
+  node->append_node(snode);
 
   ofstream outfile;
   outfile.open(name+"2.xml");
