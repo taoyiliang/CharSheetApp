@@ -23,9 +23,9 @@ public:
   vector<string> skills;
   vector<Attribute> attributes;
   shared_ptr<CClass> subclass;
-  CClass(){}
   vector<Attribute> levelAttributes(int);
-  void xml_write(xml_document<> * doc, xml_node<> * node);
+  CClass(){}
+  void xml_write(xml_document<> * doc, xml_node<> * node );
   void xml_read (xml_document<> * doc, xml_node<> * node );
 };
 

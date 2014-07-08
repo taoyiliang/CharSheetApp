@@ -16,5 +16,13 @@
 	  <attribute name="Oratory" level="5" details="+2 to endurance checks while speaking"/>
 	</subclass>
   </cclass>
-  <race></race>
+  <race name="frosh" size="M" speed="6" bonus_abil="0 2 0 2 0 0">
+    <attribute name="wasteful" details="um, something." level="2"/>
+	<subrace name="American" bonus_abil="0 0 2 0 0 0">
+		<attribute name="free!" details="stars and stripes" level="0"/>
+	</subrace>
+  </race>
+  <spellbook name="daily">
+    <spell name="long shot" cclasses="linebacker, running back" materials="football, grass, V,M" type="offense" save="blitz save" damage="1d7+2" dmgtype="piercing" empowered="+10 yards/3lvl" short_desc="throw and run" long_desc="throw the ball and run toward the endzone" range="30 yards" casttime="40 seconds" duration="5 minutes" num_result="1" level="2" init="45" ritual="1" concentration="1" halfdmg="0" />
+  </spellbook>
 </character>

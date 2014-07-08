@@ -49,6 +49,14 @@ int Character::rollSave(string abil, bool adv, int misc)
    return 0;//TODO
 }
 
+
+void Character::addToSpellbook(Spellbook sb,Spell s)
+{
+  DailySpell newspell(s);
+  sb.spells.push_back(newspell);
+}
+
+
 void Character::writeXML()
 {
   //ofstream outfile;
@@ -183,6 +191,21 @@ void Character::writeXML()
   snode = doc.allocate_node(node_element,"cclass");
   cclass.xml_write(&doc,&*snode);
   node->append_node(snode);
+
+  snode = doc.allocate_node(node_element,"race");
+  race.xml_write(&doc,&*snode);
+  node->append_node(snode);
+
+
+  snode = doc.allocate_node(node_element,"spellbook");
+  spellbook.xml_write(&doc,&*snode);
+  node->append_node(snode);
+
+
+  snode = doc.allocate_node(node_element,"spellbook");
+  spellbook.xml_write(&doc,&*snode);
+  node->append_node(snode);
+
 
   ofstream outfile;
   outfile.open(name+"2.xml");

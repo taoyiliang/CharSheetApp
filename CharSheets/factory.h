@@ -35,6 +35,7 @@ public:
     Attribute attr();
     Spell spell();
     Spellbook spellbook();
+    SpellDatabase spelldb();
 };
 
 #endif // FACTORY_H

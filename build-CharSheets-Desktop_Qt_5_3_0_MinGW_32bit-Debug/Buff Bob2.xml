@@ -13,5 +13,17 @@
 			<attribute name="Oratory" details="+2 to endurance checks while speaking" level="5"/>
 		</subclass>
 	</cclass>
+	<race name="frosh" size="M" speed="6" bonus_abil=" 0 2 0 2 0 0 ">
+		<attribute name="wasteful" details="um, something." level="2"/>
+		<subrace name="American" size="" speed="0" bonus_abil=" 0 0 2 0 0 0 ">
+			<attribute name="free!" details="stars and stripes" level="0"/>
+		</subrace>
+	</race>
+	<spellbook name="daily">
+		<spell name="long shot" kind="" casttime="40 seconds" duration="5 minutes" range="30 yards" save="blitz save" damage="1d7+2" dmgtype="piercing" number="" empower="" shortdesc="" longdesc="" level="2" uselevel="0" avail="0" ritual="1" init="45" conc="135" halfdmg="0" cclass="" components=""/>
+	</spellbook>
+	<spellbook name="daily">
+		<spell name="long shot" kind="" casttime="40 seconds" duration="5 minutes" range="30 yards" save="blitz save" damage="1d7+2" dmgtype="piercing" number="" empower="" shortdesc="" longdesc="" level="2" uselevel="0" avail="0" ritual="1" init="45" conc="135" halfdmg="0" cclass="" components=""/>
+	</spellbook>
 </character>
 

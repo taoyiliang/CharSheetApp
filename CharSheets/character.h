@@ -66,7 +66,7 @@ class Character
     vector<Attribute> attributes;
 
     Spellbook spellbook;
-    vector<Spell> daily_spells;
+    Spellbook daily_spells;
 
     vector<Item> equipment;
     vector<Weapon> weapons;
@@ -83,11 +83,15 @@ class Character
     void addXp(int xp){curxp+=xp;}
     void addCurrency(vector<int>);
     void addCurrency(double);
+
     int rollInit(Weapon,bool,bool,int,bool);
     int rollAttack(Weapon,bool,int);
     int rollDamage(Weapon,int,int);
     int rollSkill(Skill,bool,int);
     int rollSave(string,bool,int);
+
+    void addToSpellbook(Spellbook sb, Spell s);
+
     void writeXML();
 
 };

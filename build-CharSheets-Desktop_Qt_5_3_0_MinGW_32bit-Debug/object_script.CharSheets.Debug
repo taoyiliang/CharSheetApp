@@ -10,5 +10,6 @@ INPUT(
 ./debug\attribute.o
 ./debug\item.o
 ./debug\cclass.o
+./debug\race.o
 ./debug\moc_charwindow.o
 );

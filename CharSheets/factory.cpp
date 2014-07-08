@@ -150,9 +150,17 @@ Character Factory::loadCharacter(char *filename)
       bob.cclass = newclass;
     }
     else if (!strcmp(snode->name(),"race"))
-    {}
+    {
+      Race newrace = race();
+      newrace.xml_read(&doc,&*snode);
+      bob.race = newrace;
+    }
     else if (!strcmp(snode->name(),"spellbook"))
-    {}
+    {
+      Spellbook spb = spellbook();
+      spb.xml_read(&doc,&*snode);
+      bob.spellbook=spb;
+    }
     else if (!strcmp(snode->name(),"daily_spells"))
     {}
   }
@@ -207,4 +215,9 @@ Spell Factory::spell()
 Spellbook Factory::spellbook()
 {
   return Spellbook();
+}
+
+SpellDatabase Factory::spelldb()
+{
+  return SpellDatabase();
 }

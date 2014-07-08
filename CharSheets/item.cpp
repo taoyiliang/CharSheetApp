@@ -54,7 +54,6 @@ void Weapon::xml_write(xml_document<> * doc, xml_node<> * node)
   attr = doc->allocate_attribute("range" ,double2char(&*doc,range)); node->append_attribute(attr);
   attr = doc->allocate_attribute("prof"  ,double2char(&*doc,prof)); node->append_attribute(attr);
   attr = doc->allocate_attribute("master",double2char(&*doc,master)); node->append_attribute(attr);
-
 }
 
 void Weapon::xml_read(xml_document<>* doc,xml_node<>* node)

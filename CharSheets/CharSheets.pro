@@ -23,7 +23,8 @@ SOURCES += main.cpp\
     skill.cpp \
     attribute.cpp \
     item.cpp \
-    cclass.cpp
+    cclass.cpp \
+    race.cpp
 
 HEADERS  += charwindow.h \
     character.h \
