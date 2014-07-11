@@ -218,7 +218,7 @@ public class charsheet extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Characteristics"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Characteristics", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
         jPanel1.setLayout(new java.awt.GridLayout(5, 6));
 
         jLabel1.setText("Race");
@@ -301,7 +301,7 @@ public class charsheet extends javax.swing.JFrame {
 
         jPanel9.setLayout(new java.awt.GridLayout());
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Ability Scores"));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ability Scores", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
         jPanel2.setLayout(new java.awt.GridLayout(6, 3));
 
         lblSTRVal.setText("Value");
@@ -360,7 +360,7 @@ public class charsheet extends javax.swing.JFrame {
 
         jPanel9.add(jPanel2);
 
-        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Experience"));
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Experience", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
         jPanel7.setLayout(new java.awt.GridLayout(3, 2));
 
         jLabel14.setText("Level");
@@ -383,7 +383,7 @@ public class charsheet extends javax.swing.JFrame {
 
         jPanel9.add(jPanel7);
 
-        jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder("Money"));
+        jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Money", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
         jPanel8.setLayout(new java.awt.GridLayout(4, 2));
 
         jLabel17.setText("Gold");
@@ -414,7 +414,7 @@ public class charsheet extends javax.swing.JFrame {
 
         jPanel10.setLayout(new java.awt.GridLayout());
 
-        jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder("Hit Points"));
+        jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Hit Points", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
         jPanel11.setLayout(new java.awt.GridLayout(2, 2));
 
         jLabel22.setText("Current HP");
@@ -431,7 +431,7 @@ public class charsheet extends javax.swing.JFrame {
 
         jPanel10.add(jPanel11);
 
-        jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder("Carried Weight"));
+        jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Carried Weight", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
         jPanel12.setLayout(new java.awt.GridLayout(2, 2));
 
         jLabel34.setText("Carried Weight");
@@ -448,7 +448,7 @@ public class charsheet extends javax.swing.JFrame {
 
         jPanel10.add(jPanel12);
 
-        jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder("Speed"));
+        jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Speed", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
         jPanel13.setLayout(new java.awt.GridLayout(1, 2));
 
         lblSpeedVal.setText("Value");
@@ -461,7 +461,7 @@ public class charsheet extends javax.swing.JFrame {
 
         jPanel15.setLayout(new java.awt.GridLayout());
 
-        jPanel16.setBorder(javax.swing.BorderFactory.createTitledBorder("Difficulty to Hit"));
+        jPanel16.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Difficulty to Hit", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
         jPanel16.setLayout(new java.awt.GridLayout(1, 1));
 
         lblDifficultyToHitVal.setText("Value");
@@ -469,7 +469,7 @@ public class charsheet extends javax.swing.JFrame {
 
         jPanel15.add(jPanel16);
 
-        jPanel17.setBorder(javax.swing.BorderFactory.createTitledBorder("Special Vision"));
+        jPanel17.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Special Vision", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
         jPanel17.setLayout(new java.awt.GridLayout(1, 1));
 
         lblSpecialVisionVal.setText("Value");
@@ -477,7 +477,7 @@ public class charsheet extends javax.swing.JFrame {
 
         jPanel15.add(jPanel17);
 
-        jPanel18.setBorder(javax.swing.BorderFactory.createTitledBorder("Languages"));
+        jPanel18.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Languages", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
         jPanel18.setLayout(new java.awt.GridLayout());
 
         lblLanguagesVal.setText("Value");
@@ -542,9 +542,9 @@ public class charsheet extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Equipment", jPanel3);
 
-        sbFeats.setBorder(javax.swing.BorderFactory.createTitledBorder("Feats"));
+        sbFeats.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Feats", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
-        jPanel19.setBorder(javax.swing.BorderFactory.createTitledBorder("Class Ability"));
+        jPanel19.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Class Ability", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
         jPanel19.setLayout(new java.awt.GridLayout(1, 2));
 
         lblClassAbilityName.setText("Ability Name");
