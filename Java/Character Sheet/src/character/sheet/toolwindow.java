@@ -221,7 +221,7 @@ public class toolwindow extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder("Choose Weapon"));
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Choose Weapon", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         chkAlertness.setText("Alertness Feat");
 
@@ -236,7 +236,7 @@ public class toolwindow extends javax.swing.JFrame {
             }
         });
 
-        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Initiative"));
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Initiative", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         chkFirstRound.setText("First Round");
         chkFirstRound.addActionListener(new java.awt.event.ActionListener() {
@@ -310,7 +310,7 @@ public class toolwindow extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder("Attack"));
+        jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Attack", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         jLabel4.setText("Advantage");
 
@@ -370,7 +370,7 @@ public class toolwindow extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder("Damage"));
+        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Damage", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         jLabel7.setText("Criticals");
 
@@ -1037,7 +1037,7 @@ public class toolwindow extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Misc.", jPanel5);
 
-        jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder("Initiative Tracker"));
+        jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Initiative Tracker", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         btnRefreshInit.setText("Refresh");
 
@@ -1062,7 +1062,7 @@ public class toolwindow extends javax.swing.JFrame {
                 .addComponent(btnRefreshInit))
         );
 
-        jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder("HP Tracker"));
+        jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "HP Tracker", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         jLabel12.setText("DTH:");
 
@@ -1164,7 +1164,7 @@ public class toolwindow extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder("Notes"));
+        jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Notes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         btnSaveNotes.setText("Save");
 
@@ -1190,7 +1190,7 @@ public class toolwindow extends javax.swing.JFrame {
                 .addComponent(btnSaveNotes))
         );
 
-        jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder("Generic Roller"));
+        jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Generic Roller", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         jLabel17.setText("Input Roll");
 
