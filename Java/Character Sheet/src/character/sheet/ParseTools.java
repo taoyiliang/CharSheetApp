@@ -23,12 +23,14 @@ public class ParseTools {
   public HashMap<String,Integer> readMap(String str)
   {
     HashMap<String,Integer> newmap = new HashMap<>();
-    List<String> list = Arrays.asList(str.substring(1,str.length()-2).split(","));
+    
+    List<String> list = Arrays.asList(str.substring(1,str.length()-1).split(","));
     for (String list1 : list) {
-      String name = list1.split("=")[0];
-      Integer val = Integer.valueOf(list1.split("=")[1]);
+      String name = list1.split("=")[0].trim();
+      Integer val = Integer.valueOf(list1.split("=")[1].trim());
       newmap.put(name,val);
     }
+    
     return newmap;
   }
   

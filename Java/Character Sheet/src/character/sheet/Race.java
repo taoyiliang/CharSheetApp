@@ -9,36 +9,32 @@ package character.sheet;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-
 /**
  *
  * @author TaoYiLiang
  */
-public class CClass {
-  public String name, hitdie;
-  public List<String> profs  = new ArrayList<>();
-  public List<String> skills  = new ArrayList<>();
+public class Race {
+  public String name,size;
+  public Integer speed;
   public List<Attribute> attributes  = new ArrayList<>();
-  public Subclass subclass;
-  public CClass(){}
-    
+  public Subrace subrace;
+  
+  public Race(){}
+  
   public void writeXML(Document doc,Element elem)
   {
     elem.setAttribute("name"  ,               name   );
-    elem.setAttribute("hitdie",String.valueOf(hitdie));
-    elem.setAttribute("profs" ,String.valueOf(profs ));
-    elem.setAttribute("skills",String.valueOf(skills ));
+    elem.setAttribute("size"  ,               size   );
+    elem.setAttribute("speed" ,String.valueOf(speed ));
     for (Attribute attribute : attributes) {
       attribute.writeXML(doc, elem);
     }
-    subclass.writeXML(doc, elem);
+    subrace.writeXML(doc, elem);
   }
   
   public void readXML(Document doc,Node node)
@@ -48,10 +44,9 @@ public class CClass {
     {
       switch (nodeMap.item(i).getNodeName()) 
       {
-        case "name"  :name   =                 nodeMap.item(i).getTextContent()            ;break;
-        case "hitdie":hitdie =                 nodeMap.item(i).getTextContent()            ;break;
-        case "profs" :profs  = Arrays.asList(  nodeMap.item(i).getTextContent().split(","));break;
-        case "skills":skills = Arrays.asList(  nodeMap.item(i).getTextContent().split(","));break;
+        case "name"  :name  =                 nodeMap.item(i).getTextContent() ;break;
+        case "size"  :size  =                 nodeMap.item(i).getTextContent() ;break;
+        case "speed" :speed = Integer.valueOf(nodeMap.item(i).getTextContent());break;
       }
     }
     NodeList nodeList = node.getChildNodes();
@@ -65,9 +60,9 @@ public class CClass {
           attr.readXML(doc, snode);
           attributes.add(attr);
         break;
-        case "subclass":
-          subclass = new Subclass(this);
-          subclass.readXML(doc,snode);
+        case "subrace":
+          subrace = new Subrace(this);
+          subrace.readXML(doc,snode);
         break;
       }
     }
@@ -77,13 +72,12 @@ public class CClass {
   @Override
   public String toString()
   {
-    String str = "{name="+name+", hitdie="+String.valueOf(hitdie)+", profs="+String.valueOf(profs)
-            +", skills="+String.valueOf(skills);
+    String str = "{name="+name+", size="+size+", speed="+String.valueOf(speed);
     for (Attribute attr: attributes)
     {
       str+=", attr["+attr.toString()+"]";
     }
-    if (subclass!=null){str+=", subclass: "+subclass.toString();}
+    if (subrace!=null){str+=", subrace: "+subrace.toString();}
     return str+"}";
   }
 }

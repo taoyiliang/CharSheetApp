@@ -9,7 +9,7 @@
     <attribute name="sharpened" details="+2 to SAT checks" level="0"/>
   </item>
   <weapon name="football" description="oblong" weight="1.0" dmg="1d4" type="bludgeon" init="2" prep="2" enh="0" crit="20" range="70" prof="1" master="0"/>
-  <armor name="bike helmet" description="Schwinn" weight="1" type="head" size="M" resistances="{bludgeon=1, piercing=2, slashing=3}" maxdex="12" durability="10"/>
+  <armor name="bike helmet" description="Schwinn" weight="1" type="head" size="M" resistance="{bludgeon=1, piercing=2, slashing=3}" maxdex="12" durability="10"/>
   <cclass name = "student" hitdie="d6" profs="Rexburg streets | cafeteria food" skills="partying | not studying">
     <attribute name="Upper Classman" details="+2 to CHA checks" level="3"/>
 	<subclass name = "English major" profs="English literature" skills="grading papers | unemployment">

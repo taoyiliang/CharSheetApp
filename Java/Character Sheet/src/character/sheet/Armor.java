@@ -56,6 +56,7 @@ public class Armor extends Item{
   @Override
   public void readXML(Document doc,Node node)
   {
+    super.readXML(doc,node);
     NamedNodeMap nodeMap = node.getAttributes();
     for (int i=0;i<nodeMap.getLength();i++)
     {

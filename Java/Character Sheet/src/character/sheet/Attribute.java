@@ -22,6 +22,8 @@ public class Attribute {
     public String name,details;
     public Integer level;
     
+    //TODO appliesTo() and apply() functions
+    
     public Attribute(){}
     public void writeXML(Document doc,Element elem)
     {

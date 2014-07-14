@@ -46,6 +46,9 @@ public class Character
     public List<Item>      equipment  = new ArrayList<>();
     public List<Weapon>    weapons    = new ArrayList<>();
     public List<Armor>     armor    = new ArrayList<>();
+    
+    public CClass cclass = new CClass();
+    public Race   race   = new Race();
     /* TODO
     Race race;
     CClass class;
@@ -160,6 +163,16 @@ public class Character
             Armor newarmor = new Armor();
             newarmor.readXML(doc,node);
             armor.add(newarmor);
+            break;
+          case "cclass":
+            CClass newclass = new CClass();
+            newclass.readXML(doc,node);
+            cclass= newclass;
+            break;
+          case "race":
+            Race newrace = new Race();
+            newrace.readXML(doc,node);
+            race= newrace;
             break;
         }
       }
