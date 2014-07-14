@@ -10,15 +10,21 @@ package character.sheet;
  *
  * @author Reid
  */
-public class charsheet extends javax.swing.JFrame {
+
+
+
+public class Charsheet extends javax.swing.JFrame {
 
     /**
      * Creates new form charsheet
      */
-    public charsheet() {
+    public Charsheet() {
         initComponents();
     }
 
+    //Open up the Charsheet form
+
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,7 +33,6 @@ public class charsheet extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jTextField1 = new javax.swing.JTextField();
         jInternalFrame1 = new javax.swing.JInternalFrame();
@@ -141,6 +146,7 @@ public class charsheet extends javax.swing.JFrame {
         btnChangeCharacter = new javax.swing.JButton();
         btnSaveCharacter = new javax.swing.JButton();
         btnLaunchToolsWindow = new javax.swing.JButton();
+        btnExitCharacter = new javax.swing.JButton();
 
         jTextField1.setText("jTextField1");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -217,6 +223,7 @@ public class charsheet extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Character Sheet");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Characteristics", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
         jPanel1.setLayout(new java.awt.GridLayout(5, 6));
@@ -299,7 +306,7 @@ public class charsheet extends javax.swing.JFrame {
         lblWeight.setText("Value");
         jPanel1.add(lblWeight);
 
-        jPanel9.setLayout(new java.awt.GridLayout());
+        jPanel9.setLayout(new java.awt.GridLayout(1, 0));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ability Scores", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
         jPanel2.setLayout(new java.awt.GridLayout(6, 3));
@@ -412,7 +419,7 @@ public class charsheet extends javax.swing.JFrame {
 
         jPanel9.add(jPanel8);
 
-        jPanel10.setLayout(new java.awt.GridLayout());
+        jPanel10.setLayout(new java.awt.GridLayout(1, 0));
 
         jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Hit Points", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
         jPanel11.setLayout(new java.awt.GridLayout(2, 2));
@@ -459,7 +466,7 @@ public class charsheet extends javax.swing.JFrame {
 
         jPanel10.add(jPanel13);
 
-        jPanel15.setLayout(new java.awt.GridLayout());
+        jPanel15.setLayout(new java.awt.GridLayout(1, 0));
 
         jPanel16.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Difficulty to Hit", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
         jPanel16.setLayout(new java.awt.GridLayout(1, 1));
@@ -478,7 +485,7 @@ public class charsheet extends javax.swing.JFrame {
         jPanel15.add(jPanel17);
 
         jPanel18.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Languages", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
-        jPanel18.setLayout(new java.awt.GridLayout());
+        jPanel18.setLayout(new java.awt.GridLayout(1, 0));
 
         lblLanguagesVal.setText("Value");
         jPanel18.add(lblLanguagesVal);
@@ -578,7 +585,7 @@ public class charsheet extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Feats", jPanel4);
 
-        pnlSkills.setLayout(new java.awt.GridLayout());
+        pnlSkills.setLayout(new java.awt.GridLayout(1, 0));
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -638,6 +645,13 @@ public class charsheet extends javax.swing.JFrame {
 
         btnLaunchToolsWindow.setText("Launch Tools Window");
 
+        btnExitCharacter.setText("Exit");
+        btnExitCharacter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitCharacterActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -646,22 +660,24 @@ public class charsheet extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel6)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblCharName)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnSaveCharacter)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnChangeCharacter, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblCharName)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnSaveCharacter)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnChangeCharacter, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnLaunchToolsWindow)
+                        .addGap(142, 142, 142)
+                        .addComponent(btnExitCharacter)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnLaunchToolsWindow)
-                .addGap(225, 225, 225))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnChangeCharacter, btnSaveCharacter});
@@ -680,7 +696,9 @@ public class charsheet extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 427, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnLaunchToolsWindow)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnLaunchToolsWindow)
+                    .addComponent(btnExitCharacter))
                 .addGap(5, 5, 5))
         );
 
@@ -701,6 +719,10 @@ public class charsheet extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSaveCharacterActionPerformed
 
+    private void btnExitCharacterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitCharacterActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnExitCharacterActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -718,26 +740,27 @@ public class charsheet extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(charsheet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Charsheet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(charsheet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Charsheet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(charsheet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Charsheet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(charsheet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Charsheet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new charsheet().setVisible(true);
+                new Charsheet().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChangeCharacter;
+    private javax.swing.JButton btnExitCharacter;
     private javax.swing.JButton btnLaunchToolsWindow;
     private javax.swing.JButton btnSaveCharacter;
     private javax.swing.JInternalFrame jInternalFrame1;
