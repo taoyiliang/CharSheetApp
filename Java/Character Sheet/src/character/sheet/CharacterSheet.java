@@ -6,6 +6,9 @@
 
 package character.sheet;
 
+import java.io.File;
+import java.lang.reflect.Field;
+
 /**
  *
  * @author Reid
@@ -15,8 +18,14 @@ public class CharacterSheet {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public static void main(String[] args) throws IllegalAccessException {
+        System.out.println("Hi.");
+        ParseTools parser = new ParseTools();
+        Character bob = new Character("DnD Dave");
+        File charfile = new File("bob.xml");
+        bob.readXML(charfile);
+        System.out.println(parser.classToString(bob));
+
     }
     
 }
