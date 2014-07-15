@@ -6,6 +6,9 @@
 
 package character.sheet;
 
+import java.io.File;
+import javax.swing.UIManager;
+
 /**
  *
  * @author Reid
@@ -16,7 +19,7 @@ package character.sheet;
 public class Charsheet extends javax.swing.JFrame {
 
     /**
-     * Creates new form charsheet
+     * Creates new form Charsheet
      */
     public Charsheet() {
         initComponents();
@@ -147,6 +150,7 @@ public class Charsheet extends javax.swing.JFrame {
         btnSaveCharacter = new javax.swing.JButton();
         btnLaunchToolsWindow = new javax.swing.JButton();
         btnExitCharacter = new javax.swing.JButton();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
 
         jTextField1.setText("jTextField1");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -567,10 +571,11 @@ public class Charsheet extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(sbFeats, javax.swing.GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 394, Short.MAX_VALUE))
-                    .addComponent(sbFeats))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -644,6 +649,11 @@ public class Charsheet extends javax.swing.JFrame {
         });
 
         btnLaunchToolsWindow.setText("Launch Tools Window");
+        btnLaunchToolsWindow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLaunchToolsWindowActionPerformed(evt);
+            }
+        });
 
         btnExitCharacter.setText("Exit");
         btnExitCharacter.addActionListener(new java.awt.event.ActionListener() {
@@ -675,7 +685,9 @@ public class Charsheet extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnLaunchToolsWindow)
-                        .addGap(142, 142, 142)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnExitCharacter)))
                 .addContainerGap())
         );
@@ -696,10 +708,15 @@ public class Charsheet extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 427, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnLaunchToolsWindow)
-                    .addComponent(btnExitCharacter))
-                .addGap(5, 5, 5))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnLaunchToolsWindow)
+                            .addComponent(btnExitCharacter))
+                        .addGap(5, 5, 5))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
 
         jTabbedPane1.getAccessibleContext().setAccessibleName("tbCharacter");
@@ -722,6 +739,31 @@ public class Charsheet extends javax.swing.JFrame {
     private void btnExitCharacterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitCharacterActionPerformed
         System.exit(0);
     }//GEN-LAST:event_btnExitCharacterActionPerformed
+
+    private void btnLaunchToolsWindowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaunchToolsWindowActionPerformed
+        try {
+            // Set System L&F
+            UIManager.setLookAndFeel(
+                    UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(ToolWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(ToolWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(ToolWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(ToolWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+
+        
+        //run Tools Window
+        //Charsheet newcharsheet = new Charsheet();
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new ToolWindow().setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_btnLaunchToolsWindowActionPerformed
 
     /**
      * @param args the command line arguments
@@ -763,6 +805,7 @@ public class Charsheet extends javax.swing.JFrame {
     private javax.swing.JButton btnExitCharacter;
     private javax.swing.JButton btnLaunchToolsWindow;
     private javax.swing.JButton btnSaveCharacter;
+    private javax.swing.Box.Filler filler1;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
