@@ -47,6 +47,7 @@ public class Charsheet extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jPanel20 = new javax.swing.JPanel();
+        jSeparator1 = new javax.swing.JSeparator();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         tbCharacter = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -237,6 +238,7 @@ public class Charsheet extends javax.swing.JFrame {
 
         lblRace.setText("Value");
         jPanel1.add(lblRace);
+        lblRace.getAccessibleContext().setAccessibleDescription("");
 
         jLabel8.setText("Size");
         jPanel1.add(jLabel8);
@@ -510,7 +512,7 @@ public class Charsheet extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(tbCharacterLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE)
+                .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, 569, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(tbCharacterLayout.createSequentialGroup()
                 .addContainerGap()
@@ -540,14 +542,14 @@ public class Charsheet extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(sbEquipment, javax.swing.GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE)
+                .addComponent(sbEquipment, javax.swing.GroupLayout.DEFAULT_SIZE, 569, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(sbEquipment, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
+                .addComponent(sbEquipment, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -571,7 +573,7 @@ public class Charsheet extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(sbFeats, javax.swing.GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE)
+                    .addComponent(sbFeats, javax.swing.GroupLayout.DEFAULT_SIZE, 569, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -605,7 +607,7 @@ public class Charsheet extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pnlSkills, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
+                .addComponent(pnlSkills, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -617,14 +619,14 @@ public class Charsheet extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(sbSpellbook, javax.swing.GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE)
+                .addComponent(sbSpellbook, javax.swing.GroupLayout.DEFAULT_SIZE, 569, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(sbSpellbook, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
+                .addComponent(sbSpellbook, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -667,27 +669,23 @@ public class Charsheet extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(18, 18, 18)
-                                .addComponent(lblCharName)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnSaveCharacter)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnChangeCharacter, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                        .addComponent(jLabel6)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblCharName)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSaveCharacter)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnChangeCharacter, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(213, 213, 213)
                         .addComponent(btnLaunchToolsWindow)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 189, Short.MAX_VALUE)
                         .addComponent(btnExitCharacter)))
                 .addContainerGap())
         );
@@ -706,8 +704,8 @@ public class Charsheet extends javax.swing.JFrame {
                         .addComponent(jLabel6)
                         .addComponent(lblCharName)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 427, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 466, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -801,10 +799,10 @@ public class Charsheet extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnChangeCharacter;
-    private javax.swing.JButton btnExitCharacter;
-    private javax.swing.JButton btnLaunchToolsWindow;
-    private javax.swing.JButton btnSaveCharacter;
+    public javax.swing.JButton btnChangeCharacter;
+    public javax.swing.JButton btnExitCharacter;
+    public javax.swing.JButton btnLaunchToolsWindow;
+    public javax.swing.JButton btnSaveCharacter;
     private javax.swing.Box.Filler filler1;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
@@ -863,57 +861,58 @@ public class Charsheet extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JLabel lbl2ndClass;
-    private javax.swing.JLabel lblAge;
-    private javax.swing.JLabel lblAlignment;
-    private javax.swing.JLabel lblCHAModVal;
-    private javax.swing.JLabel lblCHAVal;
-    private javax.swing.JLabel lblCONModVal;
-    private javax.swing.JLabel lblCONVal;
-    private javax.swing.JLabel lblCarriedWeightVal;
-    private javax.swing.JLabel lblCharName;
-    private javax.swing.JLabel lblClass;
+    public javax.swing.JLabel lbl2ndClass;
+    public javax.swing.JLabel lblAge;
+    public javax.swing.JLabel lblAlignment;
+    public javax.swing.JLabel lblCHAModVal;
+    public javax.swing.JLabel lblCHAVal;
+    public javax.swing.JLabel lblCONModVal;
+    public javax.swing.JLabel lblCONVal;
+    public javax.swing.JLabel lblCarriedWeightVal;
+    public javax.swing.JLabel lblCharName;
+    public javax.swing.JLabel lblClass;
     private javax.swing.JLabel lblClassAbilityName;
-    private javax.swing.JLabel lblClassAbilityVal;
-    private javax.swing.JLabel lblCopperVal;
-    private javax.swing.JLabel lblCurrHPVal;
-    private javax.swing.JLabel lblCurrentXP;
-    private javax.swing.JLabel lblDEXModVal;
-    private javax.swing.JLabel lblDEXVal;
-    private javax.swing.JLabel lblDeity;
-    private javax.swing.JLabel lblDifficultyToHitVal;
-    private javax.swing.JLabel lblExpLevel;
-    private javax.swing.JLabel lblEyes;
-    private javax.swing.JLabel lblGender;
-    private javax.swing.JLabel lblGoldVal;
-    private javax.swing.JLabel lblHair;
-    private javax.swing.JLabel lblHeight;
-    private javax.swing.JLabel lblINTModVal;
-    private javax.swing.JLabel lblINTVal;
-    private javax.swing.JLabel lblLanguagesVal;
-    private javax.swing.JLabel lblMaxHPVal;
-    private javax.swing.JLabel lblNextLvlXP;
-    private javax.swing.JLabel lblPlayerName;
-    private javax.swing.JLabel lblRace;
-    private javax.swing.JLabel lblSTRModVal;
-    private javax.swing.JLabel lblSTRVal;
-    private javax.swing.JLabel lblSilverVal;
-    private javax.swing.JLabel lblSize;
-    private javax.swing.JLabel lblSpecialVisionVal;
-    private javax.swing.JLabel lblSpeedVal;
-    private javax.swing.JLabel lblTotalMoneyVal;
-    private javax.swing.JLabel lblWISModVal;
-    private javax.swing.JLabel lblWISVal;
-    private javax.swing.JLabel lblWeight;
-    private javax.swing.JLabel lblWeightCapacityVal;
-    private javax.swing.JPanel pnlSkills;
-    private javax.swing.JScrollPane sbEquipment;
-    private javax.swing.JScrollPane sbFeats;
-    private javax.swing.JScrollPane sbSpellbook;
+    public javax.swing.JLabel lblClassAbilityVal;
+    public javax.swing.JLabel lblCopperVal;
+    public javax.swing.JLabel lblCurrHPVal;
+    public javax.swing.JLabel lblCurrentXP;
+    public javax.swing.JLabel lblDEXModVal;
+    public javax.swing.JLabel lblDEXVal;
+    public javax.swing.JLabel lblDeity;
+    public javax.swing.JLabel lblDifficultyToHitVal;
+    public javax.swing.JLabel lblExpLevel;
+    public javax.swing.JLabel lblEyes;
+    public javax.swing.JLabel lblGender;
+    public javax.swing.JLabel lblGoldVal;
+    public javax.swing.JLabel lblHair;
+    public javax.swing.JLabel lblHeight;
+    public javax.swing.JLabel lblINTModVal;
+    public javax.swing.JLabel lblINTVal;
+    public javax.swing.JLabel lblLanguagesVal;
+    public javax.swing.JLabel lblMaxHPVal;
+    public javax.swing.JLabel lblNextLvlXP;
+    public javax.swing.JLabel lblPlayerName;
+    public javax.swing.JLabel lblRace;
+    public javax.swing.JLabel lblSTRModVal;
+    public javax.swing.JLabel lblSTRVal;
+    public javax.swing.JLabel lblSilverVal;
+    public javax.swing.JLabel lblSize;
+    public javax.swing.JLabel lblSpecialVisionVal;
+    public javax.swing.JLabel lblSpeedVal;
+    public javax.swing.JLabel lblTotalMoneyVal;
+    public javax.swing.JLabel lblWISModVal;
+    public javax.swing.JLabel lblWISVal;
+    public javax.swing.JLabel lblWeight;
+    public javax.swing.JLabel lblWeightCapacityVal;
+    public javax.swing.JPanel pnlSkills;
+    public javax.swing.JScrollPane sbEquipment;
+    public javax.swing.JScrollPane sbFeats;
+    public javax.swing.JScrollPane sbSpellbook;
     private javax.swing.JPanel tbCharacter;
     // End of variables declaration//GEN-END:variables
 }

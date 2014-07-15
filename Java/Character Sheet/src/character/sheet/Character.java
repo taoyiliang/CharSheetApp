@@ -84,6 +84,31 @@ public class Character
     public Character(String playername){player=playername;}
     public void addXp(int xp){curxp+=xp;}
     
+    //Lawful and good parses
+    public String lawfulParse() {
+        String strLawful = "";
+        if (lawful > 66) {
+            strLawful += "L (" + lawful + ")";
+        } else if (lawful > 32) {
+            strLawful += "N (" + lawful + ")";
+        } else {
+            strLawful += "C (" + lawful + ")";
+        }
+        return strLawful;
+    }
+    
+    public String goodParse() {
+        String strGood = "";
+        if (good > 66) {
+            strGood += "G (" + good + ")";
+        } else if (good > 32) {
+            strGood += "N (" + good + ")";
+        } else {
+            strGood += "E (" + good + ")";
+        }
+        return strGood;
+    }
+    
     public void readXML(File file)
     {
       try{
