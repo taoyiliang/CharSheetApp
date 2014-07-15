@@ -53,4 +53,15 @@ public class ParseTools {
     str+="END PRINTOUT "+String.valueOf(item)+"\n";
     return str;
   }
+  
+  public static <T> String strjoin(List<T> list, String delim)
+  {
+    String str="";
+    if (list.size()>0){str+=list.get(0);}
+    for (int i=1;i<list.size();i++)
+    {
+      str+=delim+list.get(i).toString();
+    }
+    return str;
+  }
 }

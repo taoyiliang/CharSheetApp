@@ -6,16 +6,27 @@
 
 package character.sheet;
 
-import java.util.*;
 import java.io.File;
+import java.io.IOException;
+
+import java.lang.reflect.Field;
+import java.util.*;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-
-import java.lang.reflect.Field;
 
 
 
@@ -49,6 +60,8 @@ public class Character
     
     public CClass cclass = new CClass();
     public Race   race   = new Race();
+    public Spellbook spellbook = new Spellbook();
+    public Spellbook dailyspells = new Spellbook();
     /* TODO
     Race race;
     CClass class;
@@ -199,11 +212,118 @@ public class Character
             newrace.readXML(doc,node);
             race= newrace;
             break;
+          case "spellbook":
+            Spellbook newbook = new Spellbook();
+            newbook.readXML(doc,node);
+            spellbook = newbook;
+            break;
+          case "daily":
+            Spellbook daybook = new Spellbook();
+            daybook.readXML(doc,node);
+            dailyspells = daybook;
+            break;
         }
       }
       } catch (Exception ex){ ex.printStackTrace();}
     }
     
+    public int writeXML(File file) throws ParserConfigurationException, TransformerConfigurationException, TransformerException
+    {
+      ParseTools parser = new ParseTools();
+      DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+      DocumentBuilder builder = factory.newDocumentBuilder();
+      Document doc = builder.newDocument();
+      Element character = doc.createElement("character");
+      doc.appendChild(character);
+      Attr attr;
+      attr = doc.createAttribute("name"  );attr.setValue(name  );character.setAttributeNode(attr);
+      attr = doc.createAttribute("player");attr.setValue(player);character.setAttributeNode(attr);
+      attr = doc.createAttribute("gender");attr.setValue(gender);character.setAttributeNode(attr);
+      attr = doc.createAttribute("deity" );attr.setValue(deity );character.setAttributeNode(attr);
+      attr = doc.createAttribute("hair"  );attr.setValue(hair  );character.setAttributeNode(attr);
+      attr = doc.createAttribute("eyes"  );attr.setValue(eyes  );character.setAttributeNode(attr);
+          
+      attr = doc.createAttribute("height");attr.setValue(String.valueOf(height));character.setAttributeNode(attr);
+      attr = doc.createAttribute("weight");attr.setValue(String.valueOf(weight));character.setAttributeNode(attr);
+      attr = doc.createAttribute("age"   );attr.setValue(String.valueOf(age   ));character.setAttributeNode(attr);
+      attr = doc.createAttribute("lawful");attr.setValue(String.valueOf(lawful));character.setAttributeNode(attr);
+      attr = doc.createAttribute("good"  );attr.setValue(String.valueOf(good  ));character.setAttributeNode(attr);
+           
+      attr = doc.createAttribute("gp"   );attr.setValue(String.valueOf(gp   ));character.setAttributeNode(attr);
+      attr = doc.createAttribute("sp"   );attr.setValue(String.valueOf(sp   ));character.setAttributeNode(attr);
+      attr = doc.createAttribute("cp"   );attr.setValue(String.valueOf(cp   ));character.setAttributeNode(attr);
+      attr = doc.createAttribute("curxp");attr.setValue(String.valueOf(curxp));character.setAttributeNode(attr);
+      attr = doc.createAttribute("curhp");attr.setValue(String.valueOf(curhp));character.setAttributeNode(attr);
+      attr = doc.createAttribute("maxhp");attr.setValue(String.valueOf(maxhp));character.setAttributeNode(attr);
+           
+      attr = doc.createAttribute("special_names" );attr.setValue(String.valueOf(special_names ));character.setAttributeNode(attr);
+      attr = doc.createAttribute("special_values");attr.setValue(String.valueOf(special_values));character.setAttributeNode(attr);
+      
+      
+      attr = doc.createAttribute("STR");attr.setValue(String.valueOf(STR));character.setAttributeNode(attr);
+      attr = doc.createAttribute("DEX");attr.setValue(String.valueOf(DEX));character.setAttributeNode(attr);
+      attr = doc.createAttribute("CON");attr.setValue(String.valueOf(CON));character.setAttributeNode(attr);
+      attr = doc.createAttribute("INT");attr.setValue(String.valueOf(INT));character.setAttributeNode(attr);
+      attr = doc.createAttribute("WIS");attr.setValue(String.valueOf(WIS));character.setAttributeNode(attr);
+      attr = doc.createAttribute("CHA");attr.setValue(String.valueOf(CHA));character.setAttributeNode(attr);
+      
+      attr = doc.createAttribute("languages");attr.setValue(parser.strjoin(languages,", "));character.setAttributeNode(attr);
+      attr = doc.createAttribute("vision"   );attr.setValue(parser.strjoin(vision   ,", "));character.setAttributeNode(attr);
+      attr = doc.createAttribute("traits"   );attr.setValue(parser.strjoin(traits   ,", "));character.setAttributeNode(attr);
+      attr = doc.createAttribute("ideals"   );attr.setValue(parser.strjoin(ideals   ,", "));character.setAttributeNode(attr);
+      attr = doc.createAttribute("bonds"    );attr.setValue(parser.strjoin(bonds    ,", "));character.setAttributeNode(attr);
+      attr = doc.createAttribute("flaws"    );attr.setValue(parser.strjoin(flaws    ,", "));character.setAttributeNode(attr);
+      attr = doc.createAttribute("notes"    );attr.setValue(parser.strjoin(notes    ,", "));character.setAttributeNode(attr);
+    
+      for (Attribute atrib:attributes)
+      {
+        Element newnode = doc.createElement("attribute");
+        atrib.writeXML(doc, newnode);
+        character.appendChild(newnode);
+      }
+      for (Item item:equipment)
+      {
+        Element newnode = doc.createElement("item");
+        item.writeXML(doc, newnode);
+        character.appendChild(newnode);
+      }
+      for (Weapon weapon:weapons)
+      {
+        Element newnode = doc.createElement("weapon");
+        weapon.writeXML(doc, newnode);
+        character.appendChild(newnode);
+      }
+      for (Armor aarmor:armor)
+      {
+        Element newnode = doc.createElement("armor");
+        aarmor.writeXML(doc, newnode);
+        character.appendChild(newnode);
+      }
+      
+      Element newnode;
+      newnode = doc.createElement("cclass"   );cclass     .writeXML(doc, newnode);character.appendChild(newnode);
+      newnode = doc.createElement("race"     );race       .writeXML(doc, newnode);character.appendChild(newnode);
+      newnode = doc.createElement("spellbook");spellbook  .writeXML(doc, newnode);character.appendChild(newnode);
+      newnode = doc.createElement("daily"    );dailyspells.writeXML(doc, newnode);character.appendChild(newnode);
+      
+      TransformerFactory transfactory = TransformerFactory.newInstance();
+      Transformer transformer = transfactory.newTransformer();
+      transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+      transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount","4");
+      DOMSource source = new DOMSource(doc);
+      try
+      {
+        file.createNewFile();
+      } 
+      catch (IOException ioe){}
+      StreamResult result = new StreamResult(file);
+      StreamResult res = new StreamResult(System.out);
+      
+      transformer.transform(source, result);
+      System.out.println("Successfully saved.");
+      return 0;
+      
+    }
 }
 
 

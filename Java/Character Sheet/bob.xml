@@ -8,6 +8,9 @@
   <item name="pencil" description="No. 2" weight="0.1">
     <attribute name="sharpened" details="+2 to SAT checks" level="0"/>
   </item>
+  <item name="eraser" description="pink" weight="0.1">
+    <attribute name="worn" details="-1 to defence" level="0"/>
+  </item>
   <weapon name="football" description="oblong" weight="1.0" dmg="1d4" type="bludgeon" init="2" prep="2" enh="0" crit="20" range="70" prof="1" master="0"/>
   <armor name="bike helmet" description="Schwinn" weight="1" type="head" size="M" resistance="{bludgeon=1, piercing=2, slashing=3}" maxdex="12" durability="10"/>
   <cclass name = "student" hitdie="d6" profs="Rexburg streets | cafeteria food" skills="partying | not studying">
@@ -22,7 +25,10 @@
 		<attribute name="free!" details="stars and stripes" level="0"/>
 	</subrace>
   </race>
-  <spellbook name="daily">
+  <spellbook name="playbook">
     <spell name="long shot" cclasses="linebacker, running back" materials="football, grass, V,M" type="offense" save="blitz save" damage="1d7+2" dmgtype="piercing" empowered="+10 yards/3lvl" short_desc="throw and run" long_desc="throw the ball and run toward the endzone" range="30 yards" casttime="40 seconds" duration="5 minutes" num_result="1" level="2" init="45" ritual="1" concentration="1" halfdmg="0" />
   </spellbook>
+  <daily name="daily" >
+    <daily name="long shot" cclasses="linebacker, running back" materials="football, grass, V,M" type="offense" save="blitz save" damage="1d7+2" dmgtype="piercing" empowered="+10 yards/3lvl" short_desc="throw and run" long_desc="throw the ball and run toward the endzone" range="30 yards" casttime="40 seconds" duration="5 minutes" num_result="1" level="2" init="45" ritual="1" concentration="1" halfdmg="0" level_taken="9" available="true" never_used="false" />
+  </daily>
 </character>

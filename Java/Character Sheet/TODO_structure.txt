@@ -1,4 +1,5 @@
 
+ - Currency needs to be able to return a double and accept a double
 
  - Make spells have a never-used toggle for cantrips
  - Make domain spells that don't count against total daily

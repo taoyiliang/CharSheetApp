@@ -31,9 +31,16 @@ public class Race {
     elem.setAttribute("size"  ,               size   );
     elem.setAttribute("speed" ,String.valueOf(speed ));
     for (Attribute attribute : attributes) {
-      attribute.writeXML(doc, elem);
+      Element newnode = doc.createElement("attribute");
+      attribute.writeXML(doc, newnode);
+      elem.appendChild(newnode);
     }
-    subrace.writeXML(doc, elem);
+    if (subrace!=null)
+    {
+      Element newnode = doc.createElement("subrace");
+      subrace.writeXML(doc, newnode);
+      elem.appendChild(newnode);
+    }
   }
   
   public void readXML(Document doc,Node node)

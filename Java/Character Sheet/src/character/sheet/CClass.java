@@ -36,9 +36,16 @@ public class CClass {
     elem.setAttribute("profs" ,String.valueOf(profs ));
     elem.setAttribute("skills",String.valueOf(skills ));
     for (Attribute attribute : attributes) {
-      attribute.writeXML(doc, elem);
+      Element newnode = doc.createElement("attribute");
+      attribute.writeXML(doc, newnode);
+      elem.appendChild(newnode);
     }
-    subclass.writeXML(doc, elem);
+    if (subclass!=null)
+    {
+      Element newnode = doc.createElement("subclass");
+      subclass.writeXML(doc, newnode);
+      elem.appendChild(newnode);
+    }
   }
   
   public void readXML(Document doc,Node node)

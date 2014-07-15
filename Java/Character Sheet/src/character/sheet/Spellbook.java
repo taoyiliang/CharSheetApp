@@ -29,11 +29,16 @@ public class Spellbook {
   public void writeXML(Document doc,Element elem)
   {
     elem.setAttribute("name", name);
-    for (Spell spell : spells) {
-      spell.writeXML(doc, elem);
+    for (Spell spell : spells) 
+    {
+      Element newnode = doc.createElement("spell");
+      spell.writeXML(doc, newnode);
+      elem.appendChild(newnode);
     }
     for (Attribute attribute : attributes) {
-      attribute.writeXML(doc, elem);
+      Element newnode = doc.createElement("attribute");
+      attribute.writeXML(doc, newnode);
+      elem.appendChild(newnode);
     }
   }
   
@@ -62,6 +67,11 @@ public class Spellbook {
           Spell newspell = new Spell();
           newspell.readXML(doc,snode);
           spells.add(newspell);
+        break;
+      case "daily":
+          Dailyspell dayspell = new Dailyspell(new Spell());
+          dayspell.readXML(doc,snode);
+          spells.add(dayspell);
         break;
       }
     }

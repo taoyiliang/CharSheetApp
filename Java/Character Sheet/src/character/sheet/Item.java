@@ -30,8 +30,11 @@ public class Item {
         elem.setAttribute("name"  ,               name   );
         elem.setAttribute("desc"  ,               desc   );
         elem.setAttribute("weight",String.valueOf(weight));
-      for (Attribute attribute : attributes) {
-        attribute.writeXML(doc, elem);
+      for (Attribute attribute : attributes) 
+      {
+        Element newnode = doc.createElement("attribute");
+        attribute.writeXML(doc, newnode);
+        elem.appendChild(newnode);
       }
     }
     public void readXML(Document doc,Node node)
