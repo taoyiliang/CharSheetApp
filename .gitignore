@@ -29,3 +29,6 @@ CharSheets/CharSheets.pro.user
 CharSheets/CharSheets.pro.user
 CharSheets/xmlwriter.h
 /Java/Character Sheet/build/
+/Java/Character Sheet/dist/
+Java/Character Sheet/nbproject/private/private.xml
+Java/Character Sheet/nbproject/private/private.properties

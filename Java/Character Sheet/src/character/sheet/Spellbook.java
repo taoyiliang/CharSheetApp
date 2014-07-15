@@ -7,33 +7,34 @@
 package character.sheet;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+
 /**
  *
  * @author TaoYiLiang
  */
-public class Race {
-  public String name,size;
-  public Integer speed;
-  public List<Attribute> attributes  = new ArrayList<>();
-  public Subrace subrace;
+public class Spellbook {
+  public String name;
+  public List<Spell> spells = new ArrayList<>();
+  public List<Attribute> attributes = new ArrayList<>();
   
-  public Race(){}
+  public Spellbook(){}
   
   public void writeXML(Document doc,Element elem)
   {
-    elem.setAttribute("name"  ,               name   );
-    elem.setAttribute("size"  ,               size   );
-    elem.setAttribute("speed" ,String.valueOf(speed ));
+    elem.setAttribute("name", name);
+    for (Spell spell : spells) {
+      spell.writeXML(doc, elem);
+    }
     for (Attribute attribute : attributes) {
       attribute.writeXML(doc, elem);
     }
-    subrace.writeXML(doc, elem);
   }
   
   public void readXML(Document doc,Node node)
@@ -43,9 +44,7 @@ public class Race {
     {
       switch (nodeMap.item(i).getNodeName()) 
       {
-        case "name"  :name  =                 nodeMap.item(i).getTextContent() ;break;
-        case "size"  :size  =                 nodeMap.item(i).getTextContent() ;break;
-        case "speed" :speed = Integer.valueOf(nodeMap.item(i).getTextContent());break;
+        case "name": name = nodeMap.item(i).getTextContent();break;
       }
     }
     NodeList nodeList = node.getChildNodes();
@@ -59,24 +58,28 @@ public class Race {
           attr.readXML(doc, snode);
           attributes.add(attr);
         break;
-        case "subrace":
-          subrace = new Subrace(this);
-          subrace.readXML(doc,snode);
+        case "spell":
+          Spell newspell = new Spell();
+          newspell.readXML(doc,snode);
+          spells.add(newspell);
         break;
       }
     }
   }
-    
-    
+  
   @Override
   public String toString()
   {
-    String str = "{name="+name+", size="+size+", speed="+String.valueOf(speed);
+    String str="";
+    str+="{name: "+name;
     for (Attribute attr: attributes)
     {
       str+=", attr["+attr.toString()+"]";
     }
-    if (subrace!=null){str+=", subrace: "+subrace.toString();}
+    for (Spell spell: spells)
+    {
+      str+=", spell["+spell.toString()+"]";
+    }
     return str+"}";
   }
 }

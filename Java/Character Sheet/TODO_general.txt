@@ -1,0 +1,6 @@
+
+
+  - Make allowances for multiclassing
+     - Include choosing where experience is allocated
+	 - Include multiple multiclasses?
+	 
