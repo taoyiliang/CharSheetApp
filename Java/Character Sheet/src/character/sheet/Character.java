@@ -262,7 +262,7 @@ public class Character
            
       attr = doc.createAttribute("gp"   );attr.setValue(String.valueOf(gp   ));character.setAttributeNode(attr);
       attr = doc.createAttribute("sp"   );attr.setValue(String.valueOf(sp   ));character.setAttributeNode(attr);
-      attr = doc.createAttribute("cp"   );attr.setValue(String.valueOf(cp   ));character.setAttributeNode(attr);
+      attr = doc.createAttribute("pp"   );attr.setValue(String.valueOf(pp   ));character.setAttributeNode(attr);
       attr = doc.createAttribute("curxp");attr.setValue(String.valueOf(curxp));character.setAttributeNode(attr);
       attr = doc.createAttribute("curhp");attr.setValue(String.valueOf(curhp));character.setAttributeNode(attr);
       attr = doc.createAttribute("maxhp");attr.setValue(String.valueOf(maxhp));character.setAttributeNode(attr);
