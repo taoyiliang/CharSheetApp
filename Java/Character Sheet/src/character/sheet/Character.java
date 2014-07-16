@@ -157,9 +157,9 @@ public class Character
               case "lawful":lawful = Integer.valueOf(attr.getTextContent());break;
               case "good"  :good   = Integer.valueOf(attr.getTextContent());break;
               
+              case "pp"    :pp   =Integer.valueOf(attr.getTextContent());break;
               case "gp"    :gp   =Integer.valueOf(attr.getTextContent());break;
               case "sp"    :sp   =Integer.valueOf(attr.getTextContent());break;
-              case "cp"    :cp   =Integer.valueOf(attr.getTextContent());break;
               case "xp"    :curxp=Integer.valueOf(attr.getTextContent());break;
               case "hp"    :curhp=Integer.valueOf(attr.getTextContent());break;
               case "maxhp" :maxhp=Integer.valueOf(attr.getTextContent());break;
