@@ -8,6 +8,8 @@ package character.sheet;
 
 import java.io.File;
 import java.io.IOException;
+import static java.lang.Math.ceil;
+import static java.lang.Math.floor;
 
 import java.lang.reflect.Field;
 import java.util.*;
@@ -38,7 +40,7 @@ public class Character
 {
     public String name,gender,player,deity,hair,eyes;
     public double height,weight,carrying,capacity,speed;
-    public int age,level,curxp,nextxp,init,gp,sp,cp,curhp,maxhp,DTH;
+    public int age,level,curxp,nextxp,init,pp,gp,sp,curhp,maxhp,DTH;
     public int STR,DEX,CON,INT,WIS,CHA,strmod,dexmod,conmod,intmod,wismod,chamod;
     public int lawful,good;
     
@@ -63,18 +65,6 @@ public class Character
     public Spellbook spellbook = new Spellbook();
     public Spellbook dailyspells = new Spellbook();
     /* TODO
-    Race race;
-    CClass class;
-    Spellbook spellbook;
-    Spellbook dailyspells;
-    Roller roller;
-    
-    List<Skill>     skills     = new ArrayList<Skill>;
-    List<Attribute> attributes = new ArrayList<Attributes>;
-    List<Item>      equipment  = new ArrayList<Item>;
-    List<Weapon>    weapons    = new ArrayList<Weapon>;
-    List<Armor>     armor      = new ArrayList<Armor>;
-    
     List<Minion>    minions    = new ArrayList<Minion>;
     
     public void addCurrency(ArrayList<Integer> newcurr){}
@@ -88,14 +78,33 @@ public class Character
     
     public void addToSpellbook(Spellbook,Spell)
     
-    public void writeXML();
-    
-    
      - Action class needs defining, with subs useWeapon, simple, castSpell
     public Integer rollInit(Action,
     */
     public Character(String playername){player=playername;}
     public void addXp(int xp){curxp+=xp;}
+ 
+    public Double totalCurrency()
+    {
+      return 100*pp+gp+sp/100.;
+    }
+    
+    
+    public void setMods()
+    {
+      if (STR-10>0){strmod = (int) floor((STR-10.)/2.);}
+      else {strmod = (int) ceil((STR-10)/2);}
+      if (DEX-10>0){dexmod = (int) floor((DEX-10.)/2.);}
+      else {dexmod = (int) ceil((DEX-10)/2);}
+      if (CON-10>0){conmod = (int) floor((CON-10.)/2.);}
+      else {conmod = (int) ceil((CON-10)/2);}
+      if (INT-10>0){intmod = (int) floor((INT-10.)/2.);}
+      else {intmod = (int) ceil((INT-10)/2);}
+      if (WIS-10>0){wismod = (int) floor((WIS-10.)/2.);}
+      else {wismod = (int) ceil((WIS-10)/2);}
+      if (CHA-10>0){chamod = (int) floor((CHA-10.)/2.);}
+      else {chamod = (int) ceil((CHA-10)/2);}
+    }
     
     //Lawful and good parses
     public String lawfulParse() {
@@ -109,7 +118,6 @@ public class Character
         }
         return strLawful;
     }
-    
     public String goodParse() {
         String strGood = "";
         if (good > 66) {
@@ -177,6 +185,9 @@ public class Character
               case "notes"    : notes     = Arrays.asList(attr.getTextContent().split(",,"));break;
           }
       }
+      //set statistics
+      setMods();
+      
       for (int i=0;i<nodeList.getLength();i++)
       {
         Node node = nodeList.item(i);
@@ -269,11 +280,11 @@ public class Character
       
       attr = doc.createAttribute("languages");attr.setValue(parser.strjoin(languages,", "));character.setAttributeNode(attr);
       attr = doc.createAttribute("vision"   );attr.setValue(parser.strjoin(vision   ,", "));character.setAttributeNode(attr);
-      attr = doc.createAttribute("traits"   );attr.setValue(parser.strjoin(traits   ,", "));character.setAttributeNode(attr);
-      attr = doc.createAttribute("ideals"   );attr.setValue(parser.strjoin(ideals   ,", "));character.setAttributeNode(attr);
-      attr = doc.createAttribute("bonds"    );attr.setValue(parser.strjoin(bonds    ,", "));character.setAttributeNode(attr);
-      attr = doc.createAttribute("flaws"    );attr.setValue(parser.strjoin(flaws    ,", "));character.setAttributeNode(attr);
-      attr = doc.createAttribute("notes"    );attr.setValue(parser.strjoin(notes    ,", "));character.setAttributeNode(attr);
+      attr = doc.createAttribute("traits"   );attr.setValue(parser.strjoin(traits   ,",, "));character.setAttributeNode(attr);
+      attr = doc.createAttribute("ideals"   );attr.setValue(parser.strjoin(ideals   ,",, "));character.setAttributeNode(attr);
+      attr = doc.createAttribute("bonds"    );attr.setValue(parser.strjoin(bonds    ,",, "));character.setAttributeNode(attr);
+      attr = doc.createAttribute("flaws"    );attr.setValue(parser.strjoin(flaws    ,",, "));character.setAttributeNode(attr);
+      attr = doc.createAttribute("notes"    );attr.setValue(parser.strjoin(notes    ,",, "));character.setAttributeNode(attr);
     
       for (Attribute atrib:attributes)
       {

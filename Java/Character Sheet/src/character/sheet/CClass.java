@@ -33,8 +33,8 @@ public class CClass {
   {
     elem.setAttribute("name"  ,               name   );
     elem.setAttribute("hitdie",String.valueOf(hitdie));
-    elem.setAttribute("profs" ,String.valueOf(profs ));
-    elem.setAttribute("skills",String.valueOf(skills ));
+    elem.setAttribute("profs" ,String.valueOf(profs ).substring(1,String.valueOf(profs ).length()-1));
+    elem.setAttribute("skills",String.valueOf(skills).substring(1,String.valueOf(skills).length()-1));
     for (Attribute attribute : attributes) {
       Element newnode = doc.createElement("attribute");
       attribute.writeXML(doc, newnode);

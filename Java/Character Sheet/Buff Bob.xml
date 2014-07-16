@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<character CHA="13" CON="11" DEX="10" INT="9" STR="12" WIS="14" age="42" bonds="" cp="8" curhp="50" curxp="199" deity="Ao" eyes="Brown" flaws="single ,  white ,  male" gender="Male" good="45" gp="10" hair="Black" height="6.1" ideals="Don't like getting pushed. ,  Slippery when wet." languages="Mongolian,  Common" lawful="50" maxhp="75" name="Buff Bob" notes="note 1 ,  note2 ,  another note" player="DnD Dave" sp="9" special_names="[ki]" special_values="[2]" traits="" vision="Lowlight" weight="240.0">
+<character CHA="13" CON="11" DEX="10" INT="9" STR="12" WIS="14" age="42" bonds="" cp="8" curhp="50" curxp="199" deity="Ao" eyes="Brown" flaws="single ,,  white ,,  male" gender="Male" good="45" gp="10" hair="Black" height="6.1" ideals="Don't like getting pushed. ,,  Slippery when wet." languages="Mongolian,  Common" lawful="50" maxhp="75" name="Buff Bob" notes="note 1 ,,  note2 ,,  another note" player="DnD Dave" sp="9" special_names="[ki]" special_values="[2]" traits="" vision="Lowlight" weight="240.0">
     <attribute details="1d3 fire damage on touch" level="0" name="sunburned"/>
     <item desc="No. 2" name="pencil" weight="0.1">
         <attribute details="+2 to SAT checks" level="0" name="sharpened"/>
@@ -8,10 +8,10 @@
         <attribute details="-1 to defence" level="0" name="worn"/>
     </item>
     <weapon crit="20" desc="oblong" dmg="1d4" dmgtype="oblong" enh="0" init="2" master="false" name="football" prep="2" prof="false" range="70" weight="1.0"/>
-    <armor desc="Schwinn" durability="10" maxdex="12" name="bike helmet" resistance="[0, 0, 0, 2, 0, 0, 0, 0, 3, 0, 1, 0, 0]" size="M" type="head" weight="1.0"/>
-    <cclass hitdie="d6" name="student" profs="[Rexburg streets | cafeteria food]" skills="[partying | not studying]">
+    <armor desc="Schwinn" durability="10" maxdex="12" name="bike helmet" resistance="{lightning=0, necrotic=0, poison=0, piercing=2, cold=0, thunder=0, radiant=0, acid=0, slashing=3, fire=0, bludgeon=1, force=0, psychic=0}" size="M" type="head" weight="1.0"/>
+    <cclass hitdie="d6" name="student" profs="Rexburg streets ,  cafeteria food" skills="partying ,  not studying">
         <attribute details="+2 to CHA checks" level="3" name="Upper Classman"/>
-        <subclass hitdie="null" name="English major" profs="[English literature]" skills="[grading papers | unemployment]">
+        <subclass hitdie="null" name="English major" profs="English literature" skills="grading papers ,  unemployment">
             <attribute details="+2 to endurance checks while speaking" level="5" name="Oratory"/>
         </subclass>
     </cclass>
@@ -22,9 +22,9 @@
         </subrace>
     </race>
     <spellbook name="playbook">
-        <spell casttime="40 seconds" cclasses="[linebacker,  running back]" concentration="false" damage="1d7+2" dmgtype="piercing" duration="5 minutes" empowered="+10 yards/3lvl" halfsave="null" init="45" level="2" long_desc="throw the ball and run toward the endzone" materials="[football,  grass,  V, M]" name="long shot" num_results="" range="30 yards" ritual="false" save="blitz save" short_desc="throw and run" type="offense"/>
+        <spell casttime="40 seconds" cclasses="linebacker,  running back" concentration="false" damage="1d7+2" dmgtype="piercing" duration="5 minutes" empowered="+10 yards/3lvl" halfsave="null" init="45" level="2" long_desc="throw the ball and run toward the endzone" materials="football,  grass,  V, M" name="long shot" num_results="" range="30 yards" ritual="false" save="blitz save" short_desc="throw and run" type="offense"/>
     </spellbook>
     <daily name="daily">
-        <spell available="true" casttime="40 seconds" cclasses="[linebacker,  running back]" concentration="false" damage="1d7+2" dmgtype="piercing" duration="5 minutes" empowered="+10 yards/3lvl" halfsave="null" init="45" level="2" level_taken="9" long_desc="throw the ball and run toward the endzone" materials="[football,  grass,  V, M]" name="long shot" num_results="" range="30 yards" ritual="false" save="blitz save" short_desc="throw and run" type="offense"/>
+        <spell available="true" casttime="40 seconds" cclasses="linebacker,  running back" concentration="false" damage="1d7+2" dmgtype="piercing" duration="5 minutes" empowered="+10 yards/3lvl" halfsave="null" init="45" level="2" level_taken="9" long_desc="throw the ball and run toward the endzone" materials="football,  grass,  V, M" name="long shot" num_results="" range="30 yards" ritual="false" save="blitz save" short_desc="throw and run" type="offense"/>
     </daily>
 </character>

@@ -24,7 +24,7 @@ public class Item {
     public double weight;
     public List<Attribute> attributes = new ArrayList<>();
     public Boolean worn = false;
-    public Integer quantity = 0;
+    public Integer quantity = 1;
     public Item(){}
     
     public void writeXML(Document doc,Element elem)

@@ -49,7 +49,7 @@ public class Armor extends Item{
     elem.setAttribute("size"      ,               size                );
     elem.setAttribute("maxdex"    ,String.valueOf(maxdex             ));
     elem.setAttribute("durability",String.valueOf(durability         ));
-    elem.setAttribute("resistance",String.valueOf(resistance.values()));
+    elem.setAttribute("resistance",String.valueOf(resistance));
   }
   
   //TODO this isn't working yet.  Resists aren't reading in, and super isn't reading in.

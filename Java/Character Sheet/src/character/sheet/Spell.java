@@ -50,8 +50,8 @@ public class Spell {
     elem.setAttribute("concentration" ,String.valueOf(concentration));
     elem.setAttribute("halfsave"      ,String.valueOf(halfsave)     );
     
-    elem.setAttribute("cclasses"  ,String.valueOf(cclasses ));
-    elem.setAttribute("materials" ,String.valueOf(materials));
+    elem.setAttribute("cclasses"  ,String.valueOf(cclasses ).substring(1,String.valueOf(cclasses ).length()-1));
+    elem.setAttribute("materials" ,String.valueOf(materials).substring(1,String.valueOf(materials).length()-1));
   }
   
   public void readXML(Document doc,Node node)
@@ -80,8 +80,8 @@ public class Spell {
         case "concentration":concentration= Boolean.valueOf(nodeMap.item(i).getTextContent());break;
         case "halfsave"     :halfsave     = Boolean.valueOf(nodeMap.item(i).getTextContent());break;
           
-        case "cclasses" :cclasses = Arrays.asList(  nodeMap.item(i).getTextContent().split(","));break;
-        case "materials":materials= Arrays.asList(  nodeMap.item(i).getTextContent().split(","));break;
+        case "cclasses" :cclasses = Arrays.asList(nodeMap.item(i).getTextContent().split(","));break;
+        case "materials":materials= Arrays.asList(nodeMap.item(i).getTextContent().split(","));break;
       }
     }
     /*NodeList nodeList = node.getChildNodes();
