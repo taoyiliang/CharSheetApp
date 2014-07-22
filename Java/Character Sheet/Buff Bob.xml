@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<character CHA="13" CON="11" DEX="10" INT="9" STR="12" WIS="14" age="42" bonds="" cp="8" curhp="50" curxp="199" deity="Ao" eyes="Brown" flaws="single ,,  white ,,  male" gender="Male" good="45" gp="10" hair="Black" height="6.1" ideals="Don't like getting pushed. ,,  Slippery when wet." languages="Mongolian,  Common" lawful="50" maxhp="75" name="Buff Bob" notes="note 1 ,,  note2 ,,  another note" player="DnD Dave" sp="9" special_names="[ki]" special_values="[2]" traits="" vision="Lowlight" weight="240.0">
+<character CHA="13" CON="11" DEX="10" INT="9" STR="12" WIS="14" age="42" bonds="" curhp="50" curxp="199" deity="Ao" eyes="Brown" flaws="single ,,  white ,,  male" gender="Male" good="45" gp="10" hair="Black" height="6.1" ideals="Don't like getting pushed. ,,  Slippery when wet." languages="Mongolian,  Common" lawful="50" maxhp="75" name="Buff Bob" notes="note 1 ,,  note2 ,,  another note" player="DnD Dave" pp="8" sp="9" special_names="[ki]" special_values="[2]" traits="" vision="Lowlight" weight="240.0">
     <attribute details="1d3 fire damage on touch" level="0" name="sunburned"/>
     <item desc="No. 2" name="pencil" weight="0.1">
         <attribute details="+2 to SAT checks" level="0" name="sharpened"/>

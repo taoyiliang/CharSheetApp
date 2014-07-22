@@ -64,23 +64,9 @@ public class Character
     public Race   race   = new Race();
     public Spellbook spellbook = new Spellbook();
     public Spellbook dailyspells = new Spellbook();
-    /* TODO
-    List<Minion>    minions    = new ArrayList<Minion>;
+
+    public List<Roll> rollhist     = new ArrayList<>();
     
-    public void addCurrency(ArrayList<Integer> newcurr){}
-    public void addCurrency(double newcurr){}
-    
-    public Integer rollInit(Roller,Action)
-    public Integer rollAttack(Roller,Action)
-    public Integer rollDamage(Roller,Action)
-    public Integer rollSkill(Skill,Action)
-    public Integer rollSave(String)
-    
-    public void addToSpellbook(Spellbook,Spell)
-    
-     - Action class needs defining, with subs useWeapon, simple, castSpell
-    public Integer rollInit(Action,
-    */
     public Character(String playername){player=playername;}
     public void addXp(int xp){curxp+=xp;}
  
@@ -89,6 +75,14 @@ public class Character
       return 100*pp+gp+sp/100.;
     }
     
+    public void addToHistory(Roll roll)
+    {
+      rollhist.add(0,roll);
+      if (rollhist.size()>20)
+      {
+        rollhist = rollhist.subList(0, 20);
+      }
+    }
     
     public void setMods()
     {

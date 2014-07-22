@@ -26,6 +26,14 @@ public class Spellbook {
   
   public Spellbook(){}
   
+  public Integer addDaily(Spell spell)
+  {
+    for (Spell esp:spells){if (spell.name.equals(esp.name)){return 1;}}
+    Dailyspell ds = new Dailyspell(spell);
+    spells.add(ds);
+    return 0;
+  }
+  
   public void writeXML(Document doc,Element elem)
   {
     elem.setAttribute("name", name);
