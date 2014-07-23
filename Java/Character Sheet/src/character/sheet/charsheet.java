@@ -156,6 +156,7 @@ public class Charsheet extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         sbFeats = new javax.swing.JScrollPane();
+        pnlFeats = new javax.swing.JPanel();
         jPanel19 = new javax.swing.JPanel();
         lblClassAbilityName = new javax.swing.JLabel();
         lblClassAbilityVal = new javax.swing.JLabel();
@@ -667,6 +668,19 @@ public class Charsheet extends javax.swing.JFrame {
 
         sbFeats.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Feats", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
+        javax.swing.GroupLayout pnlFeatsLayout = new javax.swing.GroupLayout(pnlFeats);
+        pnlFeats.setLayout(pnlFeatsLayout);
+        pnlFeatsLayout.setHorizontalGroup(
+            pnlFeatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 557, Short.MAX_VALUE)
+        );
+        pnlFeatsLayout.setVerticalGroup(
+            pnlFeatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 334, Short.MAX_VALUE)
+        );
+
+        sbFeats.setViewportView(pnlFeats);
+
         jPanel19.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Class Ability", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
         jPanel19.setLayout(new java.awt.GridLayout(1, 2));
 
@@ -1112,7 +1126,7 @@ public class Charsheet extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
-    private javax.swing.JPanel jPanel19;
+    public javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel21;
@@ -1122,7 +1136,7 @@ public class Charsheet extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel27;
     private javax.swing.JPanel jPanel28;
     private javax.swing.JPanel jPanel29;
-    private javax.swing.JPanel jPanel4;
+    public javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
@@ -1155,7 +1169,7 @@ public class Charsheet extends javax.swing.JFrame {
     public javax.swing.JLabel lblCarriedWeightVal;
     public javax.swing.JLabel lblCharName;
     public javax.swing.JLabel lblClass;
-    private javax.swing.JLabel lblClassAbilityName;
+    public javax.swing.JLabel lblClassAbilityName;
     public javax.swing.JLabel lblClassAbilityVal;
     public javax.swing.JLabel lblCopperVal;
     public javax.swing.JLabel lblCurrHPVal;
@@ -1189,6 +1203,7 @@ public class Charsheet extends javax.swing.JFrame {
     public javax.swing.JLabel lblWeight;
     public javax.swing.JLabel lblWeightCapacityVal;
     public javax.swing.JPanel pnlEquipment;
+    public javax.swing.JPanel pnlFeats;
     public javax.swing.JPanel pnlSkills;
     public javax.swing.JScrollPane sbEquipment;
     public javax.swing.JScrollPane sbFeats;
