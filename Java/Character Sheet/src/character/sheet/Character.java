@@ -56,6 +56,7 @@ public class Character
     public HashMap<String,Integer> resistance = new HashMap<>();
 
     public List<Attribute> attributes = new ArrayList<>();
+    public List<Attribute> feats      = new ArrayList<>();
     public List<Item>      equipment  = new ArrayList<>();
     public List<Weapon>    weapons    = new ArrayList<>();
     public List<Armor>     armor    = new ArrayList<>();
@@ -192,6 +193,11 @@ public class Character
             attr.readXML(doc, node);
             attributes.add(attr);
             break;
+         case "feat":
+            Attribute feat = new Attribute();
+            feat.readXML(doc, node);
+            feats.add(feat);
+            break;
           case "item":
             Item item = new Item();
             item.readXML(doc,node);
@@ -283,6 +289,12 @@ public class Character
       for (Attribute atrib:attributes)
       {
         Element newnode = doc.createElement("attribute");
+        atrib.writeXML(doc, newnode);
+        character.appendChild(newnode);
+      }
+      for (Attribute atrib:feats)
+      {
+        Element newnode = doc.createElement("feat");
         atrib.writeXML(doc, newnode);
         character.appendChild(newnode);
       }

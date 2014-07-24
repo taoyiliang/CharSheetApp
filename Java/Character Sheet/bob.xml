@@ -3,6 +3,7 @@
   <skill name="sneak" trained="1" master="0" misc="3"/>
   <skill name="sneeze" trained="0" master="0" misc="0"/>
   <attribute name="sunburned" level="0" details="1d3 fire damage on touch"/>
+  <feat name="dnd player" level="0" details="-2 CHA checks with girls, +4 with nerds"/>
   <spellbook></spellbook>
   <daily_spells></daily_spells>
   <item name="pencil" description="No. 2" weight="0.1">
