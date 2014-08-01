@@ -148,14 +148,29 @@ public class Charsheet extends javax.swing.JFrame {
         pnlEquipment = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
+        tbsAttributes = new javax.swing.JTabbedPane();
         sbFeats = new javax.swing.JScrollPane();
         pnlFeats = new javax.swing.JPanel();
         sbRaceFeatures = new javax.swing.JScrollPane();
         pnlRaceFeatures = new javax.swing.JPanel();
+        sbClassAttributes = new javax.swing.JScrollPane();
+        pnlClassAttributes = new javax.swing.JPanel();
+        sbEffectAttributes = new javax.swing.JScrollPane();
+        pnlEffectAttributes = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         pnlSkills = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         jTable4 = new javax.swing.JTable();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        jTable5 = new javax.swing.JTable();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        jTable6 = new javax.swing.JTable();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        jTable7 = new javax.swing.JTable();
+        jScrollPane16 = new javax.swing.JScrollPane();
+        jTable8 = new javax.swing.JTable();
+        jScrollPane17 = new javax.swing.JScrollPane();
+        jTable9 = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
         sbSpellbook = new javax.swing.JScrollPane();
         jPanel21 = new javax.swing.JPanel();
@@ -660,6 +675,8 @@ public class Charsheet extends javax.swing.JFrame {
 
         tbEquipment.addTab("Equipment", pnlEquipment);
 
+        tbsAttributes.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+
         sbFeats.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Feats", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         javax.swing.GroupLayout pnlFeatsLayout = new javax.swing.GroupLayout(pnlFeats);
@@ -670,10 +687,12 @@ public class Charsheet extends javax.swing.JFrame {
         );
         pnlFeatsLayout.setVerticalGroup(
             pnlFeatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 426, Short.MAX_VALUE)
+            .addGap(0, 809, Short.MAX_VALUE)
         );
 
         sbFeats.setViewportView(pnlFeats);
+
+        tbsAttributes.addTab("Feats", sbFeats);
 
         sbRaceFeatures.setBorder(null);
 
@@ -687,43 +706,74 @@ public class Charsheet extends javax.swing.JFrame {
         );
         pnlRaceFeaturesLayout.setVerticalGroup(
             pnlRaceFeaturesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 226, Short.MAX_VALUE)
+            .addGap(0, 809, Short.MAX_VALUE)
         );
 
         sbRaceFeatures.setViewportView(pnlRaceFeatures);
+
+        tbsAttributes.addTab("Race", sbRaceFeatures);
+
+        sbClassAttributes.setBorder(null);
+
+        pnlClassAttributes.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Class Attributes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+
+        javax.swing.GroupLayout pnlClassAttributesLayout = new javax.swing.GroupLayout(pnlClassAttributes);
+        pnlClassAttributes.setLayout(pnlClassAttributesLayout);
+        pnlClassAttributesLayout.setHorizontalGroup(
+            pnlClassAttributesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 522, Short.MAX_VALUE)
+        );
+        pnlClassAttributesLayout.setVerticalGroup(
+            pnlClassAttributesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 431, Short.MAX_VALUE)
+        );
+
+        sbClassAttributes.setViewportView(pnlClassAttributes);
+
+        tbsAttributes.addTab("Class", sbClassAttributes);
+
+        sbEffectAttributes.setBorder(null);
+
+        pnlEffectAttributes.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Effects", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+
+        javax.swing.GroupLayout pnlEffectAttributesLayout = new javax.swing.GroupLayout(pnlEffectAttributes);
+        pnlEffectAttributes.setLayout(pnlEffectAttributesLayout);
+        pnlEffectAttributesLayout.setHorizontalGroup(
+            pnlEffectAttributesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 522, Short.MAX_VALUE)
+        );
+        pnlEffectAttributesLayout.setVerticalGroup(
+            pnlEffectAttributesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 431, Short.MAX_VALUE)
+        );
+
+        sbEffectAttributes.setViewportView(pnlEffectAttributes);
+
+        tbsAttributes.addTab("Effects", sbEffectAttributes);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(sbRaceFeatures, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(sbFeats))
+                .addComponent(tbsAttributes, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(sbFeats, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(sbRaceFeatures, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(tbsAttributes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
         );
 
-        tbEquipment.addTab("Feats", jPanel4);
+        tbEquipment.addTab("Attributes", jPanel4);
+
+        pnlSkills.setLayout(new java.awt.GridLayout(2, 3, 10, 10));
 
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
-                "Skill", "Bonus"
+                "STR Skill", "Bonus"
             }
         ) {
             Class[] types = new Class [] {
@@ -741,24 +791,186 @@ public class Charsheet extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable4.setMaximumSize(new java.awt.Dimension(214748, 0));
+        jTable4.setPreferredSize(new java.awt.Dimension(85, 0));
+        jTable4.getTableHeader().setReorderingAllowed(false);
         jScrollPane7.setViewportView(jTable4);
         if (jTable4.getColumnModel().getColumnCount() > 0) {
             jTable4.getColumnModel().getColumn(0).setPreferredWidth(70);
             jTable4.getColumnModel().getColumn(1).setPreferredWidth(10);
         }
 
-        javax.swing.GroupLayout pnlSkillsLayout = new javax.swing.GroupLayout(pnlSkills);
-        pnlSkills.setLayout(pnlSkillsLayout);
-        pnlSkillsLayout.setHorizontalGroup(
-            pnlSkillsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlSkillsLayout.createSequentialGroup()
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 392, Short.MAX_VALUE))
-        );
-        pnlSkillsLayout.setVerticalGroup(
-            pnlSkillsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        pnlSkills.add(jScrollPane7);
+
+        jTable5.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "DEX Skill", "Bonus"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable5.setMaximumSize(new java.awt.Dimension(214748, 0));
+        jTable5.setPreferredSize(new java.awt.Dimension(85, 0));
+        jTable5.getTableHeader().setReorderingAllowed(false);
+        jScrollPane9.setViewportView(jTable5);
+        if (jTable5.getColumnModel().getColumnCount() > 0) {
+            jTable5.getColumnModel().getColumn(0).setPreferredWidth(70);
+            jTable5.getColumnModel().getColumn(1).setPreferredWidth(10);
+        }
+
+        pnlSkills.add(jScrollPane9);
+
+        jTable6.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "CON Skill", "Bonus"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable6.setMaximumSize(new java.awt.Dimension(214748, 0));
+        jTable6.setPreferredSize(new java.awt.Dimension(85, 0));
+        jTable6.getTableHeader().setReorderingAllowed(false);
+        jScrollPane10.setViewportView(jTable6);
+        if (jTable6.getColumnModel().getColumnCount() > 0) {
+            jTable6.getColumnModel().getColumn(0).setPreferredWidth(70);
+            jTable6.getColumnModel().getColumn(1).setPreferredWidth(10);
+        }
+
+        pnlSkills.add(jScrollPane10);
+
+        jTable7.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "INT Skill", "Bonus"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable7.setMaximumSize(new java.awt.Dimension(214748, 0));
+        jTable7.setPreferredSize(new java.awt.Dimension(85, 0));
+        jTable7.getTableHeader().setReorderingAllowed(false);
+        jScrollPane11.setViewportView(jTable7);
+        if (jTable7.getColumnModel().getColumnCount() > 0) {
+            jTable7.getColumnModel().getColumn(0).setPreferredWidth(70);
+            jTable7.getColumnModel().getColumn(1).setPreferredWidth(10);
+        }
+
+        pnlSkills.add(jScrollPane11);
+
+        jTable8.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "WIS Skill", "Bonus"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable8.setMaximumSize(new java.awt.Dimension(214748, 0));
+        jTable8.setPreferredSize(new java.awt.Dimension(85, 0));
+        jTable8.getTableHeader().setReorderingAllowed(false);
+        jScrollPane16.setViewportView(jTable8);
+        if (jTable8.getColumnModel().getColumnCount() > 0) {
+            jTable8.getColumnModel().getColumn(0).setPreferredWidth(70);
+            jTable8.getColumnModel().getColumn(1).setPreferredWidth(10);
+        }
+
+        pnlSkills.add(jScrollPane16);
+
+        jTable9.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "CHA Skill", "Bonus"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable9.setMaximumSize(new java.awt.Dimension(214748, 0));
+        jTable9.setPreferredSize(new java.awt.Dimension(85, 0));
+        jTable9.getTableHeader().setReorderingAllowed(false);
+        jScrollPane17.setViewportView(jTable9);
+        if (jTable9.getColumnModel().getColumnCount() > 0) {
+            jTable9.getColumnModel().getColumn(0).setPreferredWidth(70);
+            jTable9.getColumnModel().getColumn(1).setPreferredWidth(10);
+        }
+
+        pnlSkills.add(jScrollPane17);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -979,7 +1191,7 @@ public class Charsheet extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tbEquipment)
+                    .addComponent(tbEquipment, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addGap(18, 18, 18)
@@ -1012,7 +1224,7 @@ public class Charsheet extends javax.swing.JFrame {
                         .addComponent(jLabel6)
                         .addComponent(lblCharName)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tbEquipment)
+                .addComponent(tbEquipment, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1182,10 +1394,14 @@ public class Charsheet extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JScrollPane jScrollPane10;
+    public javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
     private javax.swing.JScrollPane jScrollPane14;
     private javax.swing.JScrollPane jScrollPane15;
+    public javax.swing.JScrollPane jScrollPane16;
+    public javax.swing.JScrollPane jScrollPane17;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -1193,11 +1409,17 @@ public class Charsheet extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     public javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
+    public javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     public javax.swing.JTable jTable4;
+    public javax.swing.JTable jTable5;
+    public javax.swing.JTable jTable6;
+    public javax.swing.JTable jTable7;
+    public javax.swing.JTable jTable8;
+    public javax.swing.JTable jTable9;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
     public javax.swing.JLabel lbl2ndClass;
@@ -1241,10 +1463,14 @@ public class Charsheet extends javax.swing.JFrame {
     public javax.swing.JLabel lblWISVal;
     public javax.swing.JLabel lblWeight;
     public javax.swing.JLabel lblWeightCapacityVal;
+    public javax.swing.JPanel pnlClassAttributes;
+    public javax.swing.JPanel pnlEffectAttributes;
     public javax.swing.JPanel pnlEquipment;
     public javax.swing.JPanel pnlFeats;
     public javax.swing.JPanel pnlRaceFeatures;
     public javax.swing.JPanel pnlSkills;
+    public javax.swing.JScrollPane sbClassAttributes;
+    public javax.swing.JScrollPane sbEffectAttributes;
     public javax.swing.JScrollPane sbEquipment;
     public javax.swing.JScrollPane sbFeats;
     public javax.swing.JScrollPane sbRaceFeatures;
@@ -1260,5 +1486,6 @@ public class Charsheet extends javax.swing.JFrame {
     private javax.swing.JPanel tbCharacter;
     public javax.swing.JTabbedPane tbEquipment;
     public javax.swing.JScrollPane tblEquipment;
+    public javax.swing.JTabbedPane tbsAttributes;
     // End of variables declaration//GEN-END:variables
 }

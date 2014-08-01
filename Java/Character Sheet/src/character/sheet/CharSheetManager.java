@@ -286,7 +286,7 @@ public class CharSheetManager {
         if (tblFeats.getColumnModel().getColumnCount() > 0) {
             tblFeats.getColumnModel().getColumn(0).setPreferredWidth(75);
             tblFeats.getColumnModel().getColumn(1).setPreferredWidth(10);
-            tblFeats.getColumnModel().getColumn(2).setPreferredWidth(400);
+            tblFeats.getColumnModel().getColumn(2).setPreferredWidth(375);
             tblFeats.getColumnModel().getColumn(0).setCellRenderer(new MyCellRenderer());
             tblFeats.getColumnModel().getColumn(1).setCellRenderer(new MyCellRenderer());
             tblFeats.getColumnModel().getColumn(2).setCellRenderer(new MyCellRenderer());
@@ -307,7 +307,7 @@ public class CharSheetManager {
         pnlFeatsLayout.setVerticalGroup(
                 pnlFeatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnlFeatsLayout.createSequentialGroup()
-                        .addComponent(saFeats, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                        .addComponent(saFeats, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
         );
 
@@ -352,7 +352,7 @@ public class CharSheetManager {
 
         if (tblRaceFeatures.getColumnModel().getColumnCount() > 0) {
             tblRaceFeatures.getColumnModel().getColumn(0).setPreferredWidth(75);
-            tblRaceFeatures.getColumnModel().getColumn(1).setPreferredWidth(400);
+            tblRaceFeatures.getColumnModel().getColumn(1).setPreferredWidth(350);
             tblRaceFeatures.getColumnModel().getColumn(0).setCellRenderer(new MyCellRenderer());
             tblRaceFeatures.getColumnModel().getColumn(1).setCellRenderer(new MyCellRenderer());
         }
@@ -372,7 +372,7 @@ public class CharSheetManager {
         pnlRaceFeaturesLayout.setVerticalGroup(
                 pnlRaceFeaturesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnlRaceFeaturesLayout.createSequentialGroup()
-                        .addComponent(saRaceFeatures, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                        .addComponent(saRaceFeatures, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
         );
 
