@@ -55,6 +55,7 @@ public class Character
     public List<String> notes     = new ArrayList<>();
     public HashMap<String,Integer> resistance = new HashMap<>();
 
+    public List<Skill>     skills     = new ArrayList<>();
     public List<Attribute> attributes = new ArrayList<>();
     public List<Attribute> feats      = new ArrayList<>();
     public List<Item>      equipment  = new ArrayList<>();
@@ -188,6 +189,11 @@ public class Character
         Node node = nodeList.item(i);
         if (null != node.getNodeName())switch (node.getNodeName()) 
         {
+          case "skill":
+            Skill skill = new Skill();
+            skill.readXML(doc, node);
+            skills.add(skill);
+            break;
           case "attribute":
             Attribute attr = new Attribute();
             attr.readXML(doc, node);
@@ -286,6 +292,12 @@ public class Character
       attr = doc.createAttribute("flaws"    );attr.setValue(parser.strjoin(flaws    ,",, "));character.setAttributeNode(attr);
       attr = doc.createAttribute("notes"    );attr.setValue(parser.strjoin(notes    ,",, "));character.setAttributeNode(attr);
     
+      for (Skill skill:skills)
+      {
+        Element newnode = doc.createElement("skill");
+        skill.writeXML(doc, newnode);
+        character.appendChild(newnode);
+      }
       for (Attribute atrib:attributes)
       {
         Element newnode = doc.createElement("attribute");
