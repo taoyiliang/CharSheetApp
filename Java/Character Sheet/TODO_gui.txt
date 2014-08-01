@@ -1,0 +1,7 @@
+- Add table pulling Class Attributes to Class tab
+- Pull Spells into Spellbook tab table
+
+
+- Discuss how to do Effects tabs
+- Add functionality to pull Skills into right tables (after it is being saved first)
+- Figure out how to pull About data better
