@@ -5,7 +5,6 @@
  */
 package character.sheet;
 
-
 import java.io.File;
 import java.lang.reflect.Field;
 import java.net.URL;
@@ -21,7 +20,7 @@ public class CharacterSheet {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IllegalAccessException {
-                try {
+        try {
             // Set System L&F
             UIManager.setLookAndFeel(
                     UIManager.getSystemLookAndFeelClassName());
@@ -34,7 +33,7 @@ public class CharacterSheet {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Charsheet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-
+        
         System.out.println("Hi.");
         ParseTools parser = new ParseTools();
         Character bob = new Character("DnD Dave");
@@ -42,14 +41,22 @@ public class CharacterSheet {
         bob.readXML(charfile);
         System.out.println(parser.classToString(bob));
 
+        //Create charsheet and manager
+        Charsheet charsheet = new Charsheet();
+        CharSheetManager manager = new CharSheetManager();
+
+        //assign charsheet and character
+        manager.setCharSheet(charsheet);
+        manager.setCharacter(bob);
+
         //run Character Sheet
-        //Charsheet newcharsheet = new Charsheet();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Charsheet().setVisible(true);
+                charsheet.setVisible(true);
+                charsheet.setLocationRelativeTo(null);
             }
         });
-
+        
     }
-
+    
 }
