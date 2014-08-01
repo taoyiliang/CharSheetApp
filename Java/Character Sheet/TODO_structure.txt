@@ -1,3 +1,4 @@
+ - Store skills
 
  - Currency needs to be able to return a double and accept a double
 
