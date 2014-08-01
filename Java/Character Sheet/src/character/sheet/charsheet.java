@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package character.sheet;
 
 import java.io.File;
@@ -13,11 +12,7 @@ import javax.swing.UIManager;
  *
  * @author Reid
  */
-
-
-
 public class Charsheet extends javax.swing.JFrame {
-    
 
     /**
      * Creates new form Charsheet
@@ -27,8 +22,6 @@ public class Charsheet extends javax.swing.JFrame {
     }
 
     //Open up the Charsheet form
-
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -157,11 +150,12 @@ public class Charsheet extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         sbFeats = new javax.swing.JScrollPane();
         pnlFeats = new javax.swing.JPanel();
-        jPanel19 = new javax.swing.JPanel();
-        lblClassAbilityName = new javax.swing.JLabel();
-        lblClassAbilityVal = new javax.swing.JLabel();
+        sbRaceFeatures = new javax.swing.JScrollPane();
+        pnlRaceFeatures = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         pnlSkills = new javax.swing.JPanel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jTable4 = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
         sbSpellbook = new javax.swing.JScrollPane();
         jPanel21 = new javax.swing.JPanel();
@@ -660,7 +654,7 @@ public class Charsheet extends javax.swing.JFrame {
         pnlEquipmentLayout.setVerticalGroup(
             pnlEquipmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlEquipmentLayout.createSequentialGroup()
-                .addContainerGap(426, Short.MAX_VALUE)
+                .addContainerGap(415, Short.MAX_VALUE)
                 .addComponent(jButton1))
         );
 
@@ -676,46 +670,95 @@ public class Charsheet extends javax.swing.JFrame {
         );
         pnlFeatsLayout.setVerticalGroup(
             pnlFeatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 334, Short.MAX_VALUE)
+            .addGap(0, 426, Short.MAX_VALUE)
         );
 
         sbFeats.setViewportView(pnlFeats);
 
-        jPanel19.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Class Ability", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
-        jPanel19.setLayout(new java.awt.GridLayout(1, 2));
+        sbRaceFeatures.setBorder(null);
 
-        lblClassAbilityName.setText("Ability Name");
-        jPanel19.add(lblClassAbilityName);
+        pnlRaceFeatures.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Race Features", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
-        lblClassAbilityVal.setText("Value");
-        jPanel19.add(lblClassAbilityVal);
+        javax.swing.GroupLayout pnlRaceFeaturesLayout = new javax.swing.GroupLayout(pnlRaceFeatures);
+        pnlRaceFeatures.setLayout(pnlRaceFeaturesLayout);
+        pnlRaceFeaturesLayout.setHorizontalGroup(
+            pnlRaceFeaturesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 567, Short.MAX_VALUE)
+        );
+        pnlRaceFeaturesLayout.setVerticalGroup(
+            pnlRaceFeaturesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 226, Short.MAX_VALUE)
+        );
+
+        sbRaceFeatures.setViewportView(pnlRaceFeatures);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(sbFeats, javax.swing.GroupLayout.DEFAULT_SIZE, 569, Short.MAX_VALUE)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(sbRaceFeatures, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(sbFeats))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+            .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(sbFeats, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(sbFeats, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
-                .addGap(38, 38, 38))
+                .addComponent(sbRaceFeatures, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         tbEquipment.addTab("Feats", jPanel4);
 
-        pnlSkills.setLayout(new java.awt.GridLayout(1, 0));
+        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Skill", "Bonus"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane7.setViewportView(jTable4);
+        if (jTable4.getColumnModel().getColumnCount() > 0) {
+            jTable4.getColumnModel().getColumn(0).setPreferredWidth(70);
+            jTable4.getColumnModel().getColumn(1).setPreferredWidth(10);
+        }
+
+        javax.swing.GroupLayout pnlSkillsLayout = new javax.swing.GroupLayout(pnlSkills);
+        pnlSkills.setLayout(pnlSkillsLayout);
+        pnlSkillsLayout.setHorizontalGroup(
+            pnlSkillsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlSkillsLayout.createSequentialGroup()
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 392, Short.MAX_VALUE))
+        );
+        pnlSkillsLayout.setVerticalGroup(
+            pnlSkillsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -730,7 +773,7 @@ public class Charsheet extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pnlSkills, javax.swing.GroupLayout.DEFAULT_SIZE, 427, Short.MAX_VALUE)
+                .addComponent(pnlSkills, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -749,7 +792,7 @@ public class Charsheet extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(sbSpellbook, javax.swing.GroupLayout.DEFAULT_SIZE, 427, Short.MAX_VALUE)
+                .addComponent(sbSpellbook, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -972,11 +1015,9 @@ public class Charsheet extends javax.swing.JFrame {
                 .addComponent(tbEquipment)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnLaunchToolsWindow)
-                            .addComponent(btnExitCharacter))
-                        .addGap(5, 5, 5))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnLaunchToolsWindow)
+                        .addComponent(btnExitCharacter))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
@@ -1018,7 +1059,6 @@ public class Charsheet extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(ToolWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
 
-        
         //run Tools Window
         //Charsheet newcharsheet = new Charsheet();
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -1126,7 +1166,6 @@ public class Charsheet extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
-    public javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel21;
@@ -1152,11 +1191,13 @@ public class Charsheet extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    public javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
+    public javax.swing.JTable jTable4;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
     public javax.swing.JLabel lbl2ndClass;
@@ -1169,8 +1210,6 @@ public class Charsheet extends javax.swing.JFrame {
     public javax.swing.JLabel lblCarriedWeightVal;
     public javax.swing.JLabel lblCharName;
     public javax.swing.JLabel lblClass;
-    public javax.swing.JLabel lblClassAbilityName;
-    public javax.swing.JLabel lblClassAbilityVal;
     public javax.swing.JLabel lblCopperVal;
     public javax.swing.JLabel lblCurrHPVal;
     public javax.swing.JLabel lblCurrentXP;
@@ -1204,9 +1243,11 @@ public class Charsheet extends javax.swing.JFrame {
     public javax.swing.JLabel lblWeightCapacityVal;
     public javax.swing.JPanel pnlEquipment;
     public javax.swing.JPanel pnlFeats;
+    public javax.swing.JPanel pnlRaceFeatures;
     public javax.swing.JPanel pnlSkills;
     public javax.swing.JScrollPane sbEquipment;
     public javax.swing.JScrollPane sbFeats;
+    public javax.swing.JScrollPane sbRaceFeatures;
     public javax.swing.JScrollPane sbSpellbook;
     public javax.swing.JTextArea taBond;
     private javax.swing.JTextArea taBonds;

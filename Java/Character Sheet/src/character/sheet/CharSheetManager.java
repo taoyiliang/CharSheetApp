@@ -75,7 +75,6 @@ public class CharSheetManager {
         charsheet.lblDeity.setText(character.deity);
         charsheet.lblEyes.setText(character.eyes);
     }
-
     public void refreshAbilityScores() {
         //Abilities
         charsheet.lblSTRVal.setText(String.valueOf(character.STR));
@@ -84,7 +83,6 @@ public class CharSheetManager {
         charsheet.lblINTVal.setText(String.valueOf(character.INT));
         charsheet.lblWISVal.setText(String.valueOf(character.WIS));
         charsheet.lblCHAVal.setText(String.valueOf(character.CHA));
-
         //Ability Mods
         charsheet.lblSTRModVal.setText(String.valueOf(character.strmod));
         charsheet.lblDEXModVal.setText(String.valueOf(character.dexmod));
@@ -92,15 +90,12 @@ public class CharSheetManager {
         charsheet.lblINTModVal.setText(String.valueOf(character.intmod));
         charsheet.lblWISModVal.setText(String.valueOf(character.wismod));
         charsheet.lblCHAModVal.setText(String.valueOf(character.chamod));
-
     }
-
     public void refreshExperience() {
         charsheet.lblExpLevel.setText(String.valueOf(character.level));
         charsheet.lblCurrentXP.setText(String.valueOf(character.curxp));
         charsheet.lblNextLvlXP.setText(String.valueOf(character.nextxp));
     }
-
     public void refreshMoney() {
         charsheet.lblGoldVal.setText(String.valueOf(character.pp));
         charsheet.lblSilverVal.setText(String.valueOf(character.gp));
@@ -108,30 +103,24 @@ public class CharSheetManager {
         charsheet.lblTotalMoneyVal.setText(String.valueOf(character.totalCurrency()));
         //Total money calc? or in a var?
     }
-
     public void refreshHP() {
         charsheet.lblCurrHPVal.setText(String.valueOf(character.curhp));
         charsheet.lblMaxHPVal.setText(String.valueOf(character.maxhp));
     }
-
     public void refreshCarriedWeight() {
         charsheet.lblCarriedWeightVal.setText(String.valueOf(character.carrying));
         charsheet.lblWeightCapacityVal.setText(String.valueOf(character.capacity));
     }
-
     public void refreshSpeed() {
         charsheet.lblSpeedVal.setText(String.valueOf(character.speed));
     }
-
     public void refreshDTH() {
         charsheet.lblDifficultyToHitVal.setText(String.valueOf(character.DTH));
     }
-
     public void refreshSpecialVision() {
         charsheet.lblSpecialVisionVal.setText(String.valueOf(character.vision)
                 .substring(1, String.valueOf(character.vision).length() - 1));
     }
-
     public void refreshLanguages() {
         charsheet.lblLanguagesVal.setText(String.valueOf(character.languages)
                 .substring(1, String.valueOf(character.languages).length() - 1));
@@ -219,12 +208,10 @@ public class CharSheetManager {
         DefaultTableModel model = (DefaultTableModel) tblEquip.getModel();
         model.addRow(new Object[]{newItem.name, newItem.desc, newItem.quantity, newItem.weight, "test"});
     }
-
     public void addItemsToEquipment(Weapon newItem) {
         DefaultTableModel model = (DefaultTableModel) tblEquip.getModel();
         model.addRow(new Object[]{newItem.name, newItem.desc, newItem.quantity, newItem.weight, newItem.worn});
     }
-
     public void addItemsToEquipment(Armor newItem) {
         DefaultTableModel model = (DefaultTableModel) tblEquip.getModel();
         model.addRow(new Object[]{newItem.name, newItem.desc, newItem.quantity, newItem.weight, newItem.worn});
@@ -232,58 +219,44 @@ public class CharSheetManager {
 
     //Create Cell renderer for word wrapping
     Font f = new Font("SansSerif", Font.PLAIN, 11);
-    
+
     public class MyCellRenderer extends JTextArea implements TableCellRenderer {
-     public MyCellRenderer() {
-       setLineWrap(true);
-       setWrapStyleWord(true);
+
+        public MyCellRenderer() {
+            setLineWrap(true);
+            setWrapStyleWord(true);
+        }
+
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+            setText(String.valueOf(value));
+            setSize(table.getColumnModel().getColumn(column).getWidth(),
+                    getPreferredSize().height);
+            if (table.getRowHeight(row) != getPreferredSize().height) {
+                table.setRowHeight(row, getPreferredSize().height);
+            }
+            this.setFont(f);
+            return this;
+        }
     }
 
-   public Component getTableCellRendererComponent(JTable table, Object
-           value, boolean isSelected, boolean hasFocus, int row, int column) {
-       setText(String.valueOf(value)); //or something in value, like value.getNote()...
-       setSize(table.getColumnModel().getColumn(column).getWidth(),
-               getPreferredSize().height);
-       if (table.getRowHeight(row) != getPreferredSize().height) {
-               table.setRowHeight(row, getPreferredSize().height);
-       }
-       this.setFont(f);
-       return this;
-   }
-} 
-    
     //------------Feats Tab-----------
+    public javax.swing.JTable tblFeats;
+    public javax.swing.JTable tblRaceFeatures;
+
     //public javax.swing.JScrollPane sbFeats;
-
     public void refreshFeatsTab() {
-        charsheet.lblClassAbilityVal.setText(String.valueOf(""));
-
         //Feats list
-        //charsheet.sbFeats = new javax.swing.JScrollPane();
-        JScrollPane scrollbox;
-        JTextArea textarea;
-        JLabel lblName;
-        JLabel lblLvl;
-        JPanel pnlLabels;
-        //JPanel pnlFeatGroup;
-        
-        Integer featSize = character.cclass.attributes.size() + character.cclass.subclass.attributes.size();
-        //charsheet.pnlFeats.setLayout(new java.awt.);
-        SpringLayout layout = new SpringLayout();
-        //GridLayout glayout = new GridLayout(0, 1, 5, 5);
-        GridLayout glayoutLbls;
-        //GridLayout glayoutFeat;
-        charsheet.pnlFeats.setLayout(layout);
+        Integer featSize = character.cclass.attributes.size() /*+ character.cclass.subclass.attributes.size()*/;
+
         charsheet.sbFeats.setViewportView(charsheet.pnlFeats);
-        
+
         javax.swing.JScrollPane saFeats;
-        javax.swing.JTable tblFeats;
-        
+
         tblFeats = new javax.swing.JTable();
 
         tblFeats.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][]{ {"Extra Hit", 1, "Does cool Stuff that goes on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and doesn't stop"},
-                 {"Awesomely Fast", 3, "This feat makes it so that you are considered Awesomely Fast and can move up to 10 extra feet each round"}},
+                new Object[][]{//{"Extra Hit", 1, "Does cool Stuff that goes on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and evntually stops"},
+                /*{"Awesomely Fast", 3, "This feat makes it so that you are considered Awesomely Fast and can move up to 10 extra feet each round"}*/},
                 new String[]{
                     "Feat Name", "Lvl", "Description"
                 }
@@ -312,8 +285,8 @@ public class CharSheetManager {
 
         if (tblFeats.getColumnModel().getColumnCount() > 0) {
             tblFeats.getColumnModel().getColumn(0).setPreferredWidth(75);
-            tblFeats.getColumnModel().getColumn(1).setPreferredWidth(2);
-            tblFeats.getColumnModel().getColumn(2).setPreferredWidth(425);
+            tblFeats.getColumnModel().getColumn(1).setPreferredWidth(10);
+            tblFeats.getColumnModel().getColumn(2).setPreferredWidth(400);
             tblFeats.getColumnModel().getColumn(0).setCellRenderer(new MyCellRenderer());
             tblFeats.getColumnModel().getColumn(1).setCellRenderer(new MyCellRenderer());
             tblFeats.getColumnModel().getColumn(2).setCellRenderer(new MyCellRenderer());
@@ -321,12 +294,12 @@ public class CharSheetManager {
         //Make not selectable
         tblFeats.setFocusable(false);
         tblFeats.setRowSelectionAllowed(false);
-        
+
         javax.swing.GroupLayout pnlFeatsLayout = new javax.swing.GroupLayout(charsheet.pnlFeats);
         charsheet.pnlFeats.setLayout(pnlFeatsLayout);
         pnlFeatsLayout.setHorizontalGroup(
                 pnlFeatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(saFeats, javax.swing.GroupLayout.DEFAULT_SIZE, 589, Short.MAX_VALUE)
+                .addComponent(saFeats, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
                 .addGroup(pnlFeatsLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -334,83 +307,107 @@ public class CharSheetManager {
         pnlFeatsLayout.setVerticalGroup(
                 pnlFeatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnlFeatsLayout.createSequentialGroup()
-                        .addComponent(saFeats, javax.swing.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE)
+                        .addComponent(saFeats, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
         );
-        //Font f = new Font("SansSerif", Font.PLAIN, 12);
-        //tblFeats.setFont(f);
-        
-        for (int i = 0; i < 10; i++) {
-            
-            
-            
-            
-            
-            /*
-            scrollbox = new JScrollPane();
-            //scrollbox.setSize(300, 200);
-            textarea = new JTextArea();
-            textarea.setColumns(20);
-            textarea.setRows(5);
-            //textarea.setEditable(false);
-            //textarea.setSize(100, 50);
-            lblName = new JLabel();
-            lblName.setText("Test Name"); 
-            lblName.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-            //lblName.setPreferredSize(new Dimension(5,10));
-            lblLvl = new JLabel();
-            lblLvl.setText(String.valueOf("Level " + i));
-            
-            pnlLabels = new JPanel();
-            
-            /*
-            pnlFeatGroup = new JPanel();
-            
-            
-            glayoutFeat = new GridLayout(1, 2, 2, 2);
-            */
-            /*
-            glayoutLbls = new GridLayout(2, 1, 0, 0);
-            
-            pnlLabels.setLayout(glayoutLbls);
-            
-            //pnlLabels.setSize(25, 10);
-            pnlLabels.add(lblName);
-            pnlLabels.add(lblLvl);
-            */
-            /*
-            //scrollbox.add(textarea);
-            scrollbox.setViewportView(textarea);
-            
-            pnlFeatGroup.setLayout(glayoutFeat);
-            pnlFeatGroup.add(pnlLabels);
-            pnlFeatGroup.add(scrollbox);
-            
-            charsheet.pnlFeats.add(pnlFeatGroup);
-            charsheet.sbFeats.setViewportView(pnlFeatGroup);*/
-            //charsheet.sbFeats.setViewportView(pnlAllFeats);
-            //pnlFeatGroup.setVisible(true);
-            /*
-            charsheet.pnlFeats.add(lblName);
-            charsheet.pnlFeats.add(lblLvl);
-            //charsheet.pnlFeats.add(pnlLabels);
-            charsheet.pnlFeats.add(scrollbox);
-            layout.putConstraint(SpringLayout.WEST, scrollbox, 5, SpringLayout.EAST, lblLvl);
-            
-            /*
-            layout.putConstraint(SpringLayout.WEST, pnlLabels, 5, SpringLayout.WEST, charsheet.pnlFeats);
-            layout.putConstraint(SpringLayout.NORTH, pnlLabels, 5, SpringLayout.NORTH, charsheet.pnlFeats);
-            layout.putConstraint(SpringLayout.WEST, scrollbox, 10, SpringLayout.EAST, charsheet.pnlFeats);
-            layout.putConstraint(SpringLayout.NORTH, scrollbox, 5, SpringLayout.NORTH, charsheet.pnlFeats);
-            */
-            //charsheet.pnlFeats.setVisible(true);
-            
-            
+
+        //Insert data into Feats table
+        for (int i = 0; i < featSize; i++) {
+            for (Attribute newFeat : character.feats) {
+                addFeatToFeats(newFeat);
+            }
         }
-        //SpringUtilities.makeCompactGrid(charsheet.pnlFeats, 10, 2, 3, 3, 0, 10);
+        //Create Race Features table
+        charsheet.sbRaceFeatures.setViewportView(charsheet.pnlRaceFeatures);
+
+        tblRaceFeatures = new javax.swing.JTable();
+        tblRaceFeatures.setModel(new javax.swing.table.DefaultTableModel(
+                new Object[][]{//{"Extra Hit", 1, "Does cool Stuff that goes on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and on and evntually stops"},
+                /*{"Awesomely Fast", 3, "This feat makes it so that you are considered Awesomely Fast and can move up to 10 extra feet each round"}*/},
+                new String[]{
+                    "Race Feature Name", "Description"
+                }
+        ) {
+            Class[] types = new Class[]{
+                java.lang.String.class, java.lang.String.class, java.lang.String.class,
+                java.lang.String.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean[]{
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types[columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit[columnIndex];
+            }
+        });
+
+        tblRaceFeatures.getTableHeader().setReorderingAllowed(false);
+
+        JScrollPane saRaceFeatures = new javax.swing.JScrollPane();
+        saRaceFeatures.setViewportView(tblRaceFeatures);
+
+        if (tblRaceFeatures.getColumnModel().getColumnCount() > 0) {
+            tblRaceFeatures.getColumnModel().getColumn(0).setPreferredWidth(75);
+            tblRaceFeatures.getColumnModel().getColumn(1).setPreferredWidth(400);
+            tblRaceFeatures.getColumnModel().getColumn(0).setCellRenderer(new MyCellRenderer());
+            tblRaceFeatures.getColumnModel().getColumn(1).setCellRenderer(new MyCellRenderer());
+        }
+        //Make not selectable
+        tblRaceFeatures.setFocusable(false);
+        tblRaceFeatures.setRowSelectionAllowed(false);
+
+        javax.swing.GroupLayout pnlRaceFeaturesLayout = new javax.swing.GroupLayout(charsheet.pnlRaceFeatures);
+        charsheet.pnlRaceFeatures.setLayout(pnlRaceFeaturesLayout);
+        pnlRaceFeaturesLayout.setHorizontalGroup(
+                pnlRaceFeaturesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(saRaceFeatures, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+                .addGroup(pnlRaceFeaturesLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlRaceFeaturesLayout.setVerticalGroup(
+                pnlRaceFeaturesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlRaceFeaturesLayout.createSequentialGroup()
+                        .addComponent(saRaceFeatures, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+        );
+
+        //Insert Data into Race Features table
+        Integer raceFeatureSize = character.race.attributes.size();
+        Integer subraceFeatureSize = character.race.subrace.attributes.size();
+
+        for (int i = 0; i < raceFeatureSize; i++) {
+            for (Attribute newFeature : character.race.attributes) {
+                addRaceFeatureToFeatures(newFeature);
+            }
+        }
+        for (int i = 0; i < subraceFeatureSize; i++) {
+            for (Attribute newFeature : character.race.subrace.attributes) {
+                addRaceFeatureToFeatures(newFeature);
+            }
+        }
+    }
+
+    public void addFeatToFeats(Attribute newFeat) {
+        tblFeats.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblFeats.getModel();
+        model.addRow(new Object[]{newFeat.name, newFeat.level, newFeat.details});
+    }
+
+    public void addRaceFeatureToFeatures(Attribute newFeature) {
+        tblRaceFeatures.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblRaceFeatures.getModel();
+        model.addRow(new Object[]{newFeature.name, newFeature.details});
     }
 
     //------------Skills Tab----------
+    
+    
+    
     //------------Spellbook Tab-------
     //------------About Tab-----------
     public void refreshAboutTab() {
