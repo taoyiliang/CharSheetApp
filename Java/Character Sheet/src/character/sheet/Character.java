@@ -99,6 +99,12 @@ public class Character
       //else {return (int) ceil((abl-10)/2);}
     }
     
+    public Integer getSkillMod(Skill skill) throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException
+    {
+      Integer i = skills.indexOf(skill);
+      return skillmod(i);
+    }
+    
     public Integer skillmod(Integer i) throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException
     {
       Integer tot=0;
@@ -118,22 +124,6 @@ public class Character
     public Integer proficiency()
     {
       return cclass.getProficiency(level);
-    }
-    
-    public void setMods()
-    {
-      if (STR-10>0){strmod = (int) floor((STR-10.)/2.);}
-      else {strmod = (int) ceil((STR-10)/2);}
-      if (DEX-10>0){dexmod = (int) floor((DEX-10.)/2.);}
-      else {dexmod = (int) ceil((DEX-10)/2);}
-      if (CON-10>0){conmod = (int) floor((CON-10.)/2.);}
-      else {conmod = (int) ceil((CON-10)/2);}
-      if (INT-10>0){intmod = (int) floor((INT-10.)/2.);}
-      else {intmod = (int) ceil((INT-10)/2);}
-      if (WIS-10>0){wismod = (int) floor((WIS-10.)/2.);}
-      else {wismod = (int) ceil((WIS-10)/2);}
-      if (CHA-10>0){chamod = (int) floor((CHA-10.)/2.);}
-      else {chamod = (int) ceil((CHA-10)/2);}
     }
     
     //Lawful and good parses
@@ -215,8 +205,6 @@ public class Character
               case "notes"    : notes     = Arrays.asList(attr.getTextContent().split(",,"));break;
           }
       }
-      //set statistics
-      setMods();
       
       for (int i=0;i<nodeList.getLength();i++)
       {
