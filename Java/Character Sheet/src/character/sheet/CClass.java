@@ -22,16 +22,32 @@ import org.w3c.dom.NodeList;
  * @author TaoYiLiang
  */
 public class CClass {
+  public Integer level;
   public String name, hitdie;
   public List<String> profs  = new ArrayList<>();
   public List<String> skills  = new ArrayList<>();
   public List<Attribute> attributes  = new ArrayList<>();
   public Subclass subclass;
   public CClass(){}
+  
+  public void levelUp()
+  {
+    Integer lvl = level+1;
+    levelUp(lvl);
+  }
+  public void levelUp(Integer lvl)
+  {
+    //update class level
+    level+=1;
+    //update attributes
+    for (Attribute attr:attributes){attr.active = attr.level<=lvl;}
+    subclass.levelUp(lvl);
+  }
     
   public void writeXML(Document doc,Element elem)
   {
     elem.setAttribute("name"  ,               name   );
+    elem.setAttribute("level" ,String.valueOf(level) );
     elem.setAttribute("hitdie",String.valueOf(hitdie));
     elem.setAttribute("profs" ,String.valueOf(profs ).substring(1,String.valueOf(profs ).length()-1));
     elem.setAttribute("skills",String.valueOf(skills).substring(1,String.valueOf(skills).length()-1));
@@ -57,6 +73,7 @@ public class CClass {
       {
         case "name"  :name   =                 nodeMap.item(i).getTextContent()            ;break;
         case "hitdie":hitdie =                 nodeMap.item(i).getTextContent()            ;break;
+        case "level" :level  = Integer.valueOf(nodeMap.item(i).getTextContent())           ;break;
         case "profs" :profs  = Arrays.asList(  nodeMap.item(i).getTextContent().split(","));break;
         case "skills":skills = Arrays.asList(  nodeMap.item(i).getTextContent().split(","));break;
       }
