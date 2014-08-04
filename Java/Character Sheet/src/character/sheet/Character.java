@@ -13,6 +13,8 @@ import static java.lang.Math.floor;
 
 import java.lang.reflect.Field;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -84,6 +86,38 @@ public class Character
       {
         rollhist = rollhist.subList(0, 20);
       }
+    }
+    
+    public Integer getAbilityMod(String ablName) throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException
+    {
+      Field ablf = this.getClass().getDeclaredField(ablName);
+      Integer abl=0;
+      abl = ablf.getInt(this);
+      //Integer abl = Integer.valueOf(ablf.toString());
+      return (int) floor((abl-10.)/2.);
+      //if (abl-10>0){return (int) floor((abl-10.)/2.);}
+      //else {return (int) ceil((abl-10)/2);}
+    }
+    
+    public Integer skillmod(Integer i) throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException
+    {
+      Integer tot=0;
+      if (skills.get(i).trained)
+      {
+        tot+=proficiency();
+        if (skills.get(i).master)
+        {
+          tot+=proficiency();
+        }
+      }
+      tot+=skills.get(i).expert;
+      tot+=getAbilityMod(skills.get(i).ability);
+      return tot;
+    }
+    
+    public Integer proficiency()
+    {
+      return cclass.getProficiency(level);
     }
     
     public void setMods()

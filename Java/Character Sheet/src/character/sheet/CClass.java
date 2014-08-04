@@ -44,6 +44,12 @@ public class CClass {
     subclass.levelUp(lvl);
   }
     
+  public Integer getProficiency(Integer level)
+  {
+    Integer prof;
+    return level;
+  }
+  
   public void writeXML(Document doc,Element elem)
   {
     elem.setAttribute("name"  ,               name   );
