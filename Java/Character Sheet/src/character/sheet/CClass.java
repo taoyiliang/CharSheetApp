@@ -29,6 +29,12 @@ public class CClass {
   public Subclass subclass;
   public CClass(){}
     
+  public Integer getProficiency(Integer level)
+  {
+    Integer prof;
+    return level;
+  }
+  
   public void writeXML(Document doc,Element elem)
   {
     elem.setAttribute("name"  ,               name   );
