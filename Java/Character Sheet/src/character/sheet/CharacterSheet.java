@@ -19,7 +19,7 @@ public class CharacterSheet {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws IllegalAccessException {
+    public static void main(String[] args) throws IllegalAccessException, NoSuchFieldException {
         try {
             // Set System L&F
             UIManager.setLookAndFeel(
@@ -41,13 +41,17 @@ public class CharacterSheet {
         bob.readXML(charfile);
         System.out.println(parser.classToString(bob));
 
-        //Create charsheet and manager
+        //Create charsheet, charsheet manager, and toolwindow manager
         Charsheet charsheet = new Charsheet();
         CharSheetManager manager = new CharSheetManager();
-
+        ToolWindow toolwindow = new ToolWindow();
+        ToolWindowManager toolmanager = new ToolWindowManager();
+        
         //assign charsheet and character
         manager.setCharSheet(charsheet);
         manager.setCharacter(bob);
+        toolmanager.setToolWindow(toolwindow);
+        toolmanager.setCharacter(bob);
 
         //run Character Sheet
         java.awt.EventQueue.invokeLater(new Runnable() {

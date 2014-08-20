@@ -417,7 +417,7 @@ public class CharSheetManager {
     }
 
     public void refreshClassAttributesTab() {
-        
+
     }
 
     public void refreshEffectsTab() {
@@ -438,13 +438,31 @@ public class CharSheetManager {
 
     //------------Skills Tab----------
     public void refreshSkillsTab() throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
-        System.out.println("showing skills: " + String.valueOf(character.skills.size()));
+        //System.out.println("showing skills: " + String.valueOf(character.skills.size()));
         String str = "STR";
         String dex = "DEX";
         String con = "CON";
         String inte = "INT";
         String wis = "WIS";
         //String cha = "CHA";
+
+        charsheet.tblSkillSTR.setFocusable(false);
+        charsheet.tblSkillSTR.setRowSelectionAllowed(false);
+
+        charsheet.tblSkillDEX.setFocusable(false);
+        charsheet.tblSkillDEX.setRowSelectionAllowed(false);
+
+        charsheet.tblSkillCON.setFocusable(false);
+        charsheet.tblSkillCON.setRowSelectionAllowed(false);
+
+        charsheet.tblSkillINT.setFocusable(false);
+        charsheet.tblSkillINT.setRowSelectionAllowed(false);
+
+        charsheet.tblSkillWIS.setFocusable(false);
+        charsheet.tblSkillWIS.setRowSelectionAllowed(false);
+
+        charsheet.tblSkillCHA.setFocusable(false);
+        charsheet.tblSkillCHA.setRowSelectionAllowed(false);
 
         for (Skill skill : character.skills) {
 
@@ -457,9 +475,6 @@ public class CharSheetManager {
                 charsheet.tblSkillDEX.getModel();
                 DefaultTableModel model2 = (DefaultTableModel) charsheet.tblSkillDEX.getModel();
                 model2.addRow(new Object[]{skill.name, character.getSkillMod(skill)});
-                {
-                    System.out.println(skill.ability);
-                }
             } else if (s.equals(con)) {
                 charsheet.tblSkillCON.getModel();
                 DefaultTableModel model3 = (DefaultTableModel) charsheet.tblSkillCON.getModel();
@@ -476,23 +491,36 @@ public class CharSheetManager {
                 charsheet.tblSkillCHA.getModel();
                 DefaultTableModel model6 = (DefaultTableModel) charsheet.tblSkillCHA.getModel();
                 model6.addRow(new Object[]{skill.name, character.getSkillMod(skill)});
-                {
-                    System.out.println(skill.ability);
-                }
             }
         }
     }
 
     //------------Spellbook Tab-------
     //------------About Tab-----------
+    private final static String newline = "\n";
+
     public void refreshAboutTab() {
-        charsheet.taTrait.setText(String.valueOf(character.traits)
-                .substring(1, String.valueOf(character.traits).length() - 1));
-        charsheet.taIdeal.setText(String.valueOf(character.ideals)
-                .substring(1, String.valueOf(character.ideals).length() - 1));
-        charsheet.taBond.setText(String.valueOf(character.bonds)
-                .substring(1, String.valueOf(character.bonds).length() - 1));
-        charsheet.taFlaw.setText(String.valueOf(character.flaws)
-                .substring(1, String.valueOf(character.flaws).length() - 1));
+        String trait = new String();
+        String ideal = new String();
+        String bond = new String();
+        String flaw = new String();
+
+        for (int i = 0; i < character.traits.size(); i++) {
+            trait += character.traits.get(i).trim() + newline;
+        }
+        for (int i = 0; i < character.ideals.size(); i++) {
+            ideal += character.ideals.get(i).trim() + newline;
+        }
+        for (int i = 0; i < character.bonds.size(); i++) {
+            bond += character.bonds.get(i).trim() + newline;
+        }
+        for (int i = 0; i < character.flaws.size(); i++) {
+            flaw += character.flaws.get(i).trim() + newline;
+        }
+
+        charsheet.taTrait.setText(trait);
+        charsheet.taIdeal.setText(ideal);
+        charsheet.taBond.setText(bond);
+        charsheet.taFlaw.setText(flaw);
     }
 }
