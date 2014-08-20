@@ -25,7 +25,7 @@ public class CharSheetManager {
         charsheet = newsheet;
     }
 
-    public void setCharacter(Character newchar) {
+    public void setCharacter(Character newchar) throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
         if (charsheet != null) {
             character = newchar;
             refreshCharacter();
@@ -34,7 +34,7 @@ public class CharSheetManager {
         }
     }
 
-    public void refreshCharacter() {
+    public void refreshCharacter() throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
         refreshCharacterName();
         refreshCharacteristics();
         refreshAbilityScores();
@@ -48,7 +48,8 @@ public class CharSheetManager {
         refreshLanguages();
 
         refreshEquipment();
-        refreshFeatsTab();
+        refreshAttributesTab();
+        refreshSkillsTab();
         refreshAboutTab();
     }
 
@@ -75,7 +76,8 @@ public class CharSheetManager {
         charsheet.lblDeity.setText(character.deity);
         charsheet.lblEyes.setText(character.eyes);
     }
-    public void refreshAbilityScores() {
+
+    public void refreshAbilityScores() throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
         //Abilities
         charsheet.lblSTRVal.setText(String.valueOf(character.STR));
         charsheet.lblDEXVal.setText(String.valueOf(character.DEX));
@@ -84,18 +86,21 @@ public class CharSheetManager {
         charsheet.lblWISVal.setText(String.valueOf(character.WIS));
         charsheet.lblCHAVal.setText(String.valueOf(character.CHA));
         //Ability Mods
-        charsheet.lblSTRModVal.setText(String.valueOf(character.strmod));
-        charsheet.lblDEXModVal.setText(String.valueOf(character.dexmod));
-        charsheet.lblCONModVal.setText(String.valueOf(character.conmod));
-        charsheet.lblINTModVal.setText(String.valueOf(character.intmod));
-        charsheet.lblWISModVal.setText(String.valueOf(character.wismod));
-        charsheet.lblCHAModVal.setText(String.valueOf(character.chamod));
+
+        charsheet.lblSTRModVal.setText(String.valueOf(character.getAbilityMod("STR")));
+        charsheet.lblDEXModVal.setText(String.valueOf(character.getAbilityMod("DEX")));
+        charsheet.lblCONModVal.setText(String.valueOf(character.getAbilityMod("CON")));
+        charsheet.lblINTModVal.setText(String.valueOf(character.getAbilityMod("INT")));
+        charsheet.lblWISModVal.setText(String.valueOf(character.getAbilityMod("WIS")));
+        charsheet.lblCHAModVal.setText(String.valueOf(character.getAbilityMod("CHA")));
     }
+
     public void refreshExperience() {
         charsheet.lblExpLevel.setText(String.valueOf(character.level));
         charsheet.lblCurrentXP.setText(String.valueOf(character.curxp));
         charsheet.lblNextLvlXP.setText(String.valueOf(character.nextxp));
     }
+
     public void refreshMoney() {
         charsheet.lblGoldVal.setText(String.valueOf(character.pp));
         charsheet.lblSilverVal.setText(String.valueOf(character.gp));
@@ -103,24 +108,30 @@ public class CharSheetManager {
         charsheet.lblTotalMoneyVal.setText(String.valueOf(character.totalCurrency()));
         //Total money calc? or in a var?
     }
+
     public void refreshHP() {
         charsheet.lblCurrHPVal.setText(String.valueOf(character.curhp));
         charsheet.lblMaxHPVal.setText(String.valueOf(character.maxhp));
     }
+
     public void refreshCarriedWeight() {
         charsheet.lblCarriedWeightVal.setText(String.valueOf(character.carrying));
         charsheet.lblWeightCapacityVal.setText(String.valueOf(character.capacity));
     }
+
     public void refreshSpeed() {
         charsheet.lblSpeedVal.setText(String.valueOf(character.speed));
     }
+
     public void refreshDTH() {
         charsheet.lblDifficultyToHitVal.setText(String.valueOf(character.DTH));
     }
+
     public void refreshSpecialVision() {
         charsheet.lblSpecialVisionVal.setText(String.valueOf(character.vision)
                 .substring(1, String.valueOf(character.vision).length() - 1));
     }
+
     public void refreshLanguages() {
         charsheet.lblLanguagesVal.setText(String.valueOf(character.languages)
                 .substring(1, String.valueOf(character.languages).length() - 1));
@@ -208,10 +219,12 @@ public class CharSheetManager {
         DefaultTableModel model = (DefaultTableModel) tblEquip.getModel();
         model.addRow(new Object[]{newItem.name, newItem.desc, newItem.quantity, newItem.weight, "test"});
     }
+
     public void addItemsToEquipment(Weapon newItem) {
         DefaultTableModel model = (DefaultTableModel) tblEquip.getModel();
         model.addRow(new Object[]{newItem.name, newItem.desc, newItem.quantity, newItem.weight, newItem.worn});
     }
+
     public void addItemsToEquipment(Armor newItem) {
         DefaultTableModel model = (DefaultTableModel) tblEquip.getModel();
         model.addRow(new Object[]{newItem.name, newItem.desc, newItem.quantity, newItem.weight, newItem.worn});
@@ -239,11 +252,18 @@ public class CharSheetManager {
         }
     }
 
-    //------------Feats Tab-----------
+    //------------Attributes Tab-----------
     public javax.swing.JTable tblFeats;
     public javax.swing.JTable tblRaceFeatures;
 
     //public javax.swing.JScrollPane sbFeats;
+    public void refreshAttributesTab() {
+        refreshFeatsTab();
+        refreshRaceFeaturesTab();
+        refreshClassAttributesTab();
+        refreshEffectsTab();
+    }
+
     public void refreshFeatsTab() {
         //Feats list
         Integer featSize = character.cclass.attributes.size() /*+ character.cclass.subclass.attributes.size()*/;
@@ -317,6 +337,10 @@ public class CharSheetManager {
                 addFeatToFeats(newFeat);
             }
         }
+    }
+
+    //Populate Race Features Table
+    public void refreshRaceFeaturesTab() {
         //Create Race Features table
         charsheet.sbRaceFeatures.setViewportView(charsheet.pnlRaceFeatures);
 
@@ -392,6 +416,14 @@ public class CharSheetManager {
         }
     }
 
+    public void refreshClassAttributesTab() {
+        
+    }
+
+    public void refreshEffectsTab() {
+
+    }
+
     public void addFeatToFeats(Attribute newFeat) {
         tblFeats.getModel();
         DefaultTableModel model = (DefaultTableModel) tblFeats.getModel();
@@ -405,9 +437,52 @@ public class CharSheetManager {
     }
 
     //------------Skills Tab----------
-    
-    
-    
+    public void refreshSkillsTab() throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
+        System.out.println("showing skills: " + String.valueOf(character.skills.size()));
+        String str = "STR";
+        String dex = "DEX";
+        String con = "CON";
+        String inte = "INT";
+        String wis = "WIS";
+        //String cha = "CHA";
+
+        for (Skill skill : character.skills) {
+
+            String s = String.valueOf(skill.ability);
+            if (s.equals(str)) {
+                charsheet.tblSkillSTR.getModel();
+                DefaultTableModel model = (DefaultTableModel) charsheet.tblSkillSTR.getModel();
+                model.addRow(new Object[]{skill.name, character.getSkillMod(skill)});
+            } else if (s.equals(dex)) {
+                charsheet.tblSkillDEX.getModel();
+                DefaultTableModel model2 = (DefaultTableModel) charsheet.tblSkillDEX.getModel();
+                model2.addRow(new Object[]{skill.name, character.getSkillMod(skill)});
+                {
+                    System.out.println(skill.ability);
+                }
+            } else if (s.equals(con)) {
+                charsheet.tblSkillCON.getModel();
+                DefaultTableModel model3 = (DefaultTableModel) charsheet.tblSkillCON.getModel();
+                model3.addRow(new Object[]{skill.name, character.getSkillMod(skill)});
+            } else if (s.equals(inte)) {
+                charsheet.tblSkillINT.getModel();
+                DefaultTableModel model4 = (DefaultTableModel) charsheet.tblSkillINT.getModel();
+                model4.addRow(new Object[]{skill.name, character.getSkillMod(skill)});
+            } else if (s.equals(wis)) {
+                charsheet.tblSkillWIS.getModel();
+                DefaultTableModel model5 = (DefaultTableModel) charsheet.tblSkillWIS.getModel();
+                model5.addRow(new Object[]{skill.name, character.getSkillMod(skill)});
+            } else /*if (s == "CHA")*/ {
+                charsheet.tblSkillCHA.getModel();
+                DefaultTableModel model6 = (DefaultTableModel) charsheet.tblSkillCHA.getModel();
+                model6.addRow(new Object[]{skill.name, character.getSkillMod(skill)});
+                {
+                    System.out.println(skill.ability);
+                }
+            }
+        }
+    }
+
     //------------Spellbook Tab-------
     //------------About Tab-----------
     public void refreshAboutTab() {
