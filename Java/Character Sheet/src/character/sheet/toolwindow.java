@@ -12,7 +12,7 @@ package character.sheet;
  */
 public class ToolWindow extends javax.swing.JFrame {
 
-    private Character character;
+    private Character character3;
     
     /**
      * Creates new form toolwindow
@@ -22,7 +22,7 @@ public class ToolWindow extends javax.swing.JFrame {
     }
 
     public void setCharacter(Character newchar) {
-        character = newchar;
+        character3 = newchar;
     }
     
     /**

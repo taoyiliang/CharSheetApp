@@ -17,10 +17,10 @@ import javax.swing.UIManager;
  */
 public class Charsheet extends javax.swing.JFrame {
 
-    private Character character;
+    private Character character2;
     
     public void setCharacter(Character chara) {
-            character = chara;
+            character2 = chara;
     }
     
     /**
@@ -1304,10 +1304,10 @@ public class Charsheet extends javax.swing.JFrame {
             public void run() {
                 ToolWindowManager manager = new ToolWindowManager();
                 ToolWindow window = new ToolWindow();
-                manager.setToolWindow(new ToolWindow());
-                window.setCharacter(character);
+                manager.setToolWindow(window);
+                window.setCharacter(character2);
                 try {
-                    manager.setCharacter(character);
+                    manager.setCharacter(character2);
                     //new ToolWindow().setVisible(true);
                 } catch (NoSuchFieldException ex) {
                     Logger.getLogger(Charsheet.class.getName()).log(Level.SEVERE, null, ex);
@@ -1316,6 +1316,7 @@ public class Charsheet extends javax.swing.JFrame {
                 } catch (IllegalAccessException ex) {
                     Logger.getLogger(Charsheet.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                
                 window.setVisible(true);
             }
         });

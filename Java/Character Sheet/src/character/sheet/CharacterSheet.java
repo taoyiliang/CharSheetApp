@@ -44,14 +44,14 @@ public class CharacterSheet {
         //Create charsheet, charsheet manager, and toolwindow manager
         Charsheet charsheet = new Charsheet();
         CharSheetManager manager = new CharSheetManager();
-        ToolWindow toolwindow = new ToolWindow();
-        ToolWindowManager toolmanager = new ToolWindowManager();
+        //ToolWindow toolwindow = new ToolWindow();
+        //ToolWindowManager toolmanager = new ToolWindowManager();
         
         //assign charsheet and character
         manager.setCharSheet(charsheet);
         manager.setCharacter(bob);
-        toolmanager.setToolWindow(toolwindow);
-        toolmanager.setCharacter(bob);
+        //toolmanager.setToolWindow(toolwindow);
+        //toolmanager.setCharacter(bob);
 
         //run Character Sheet
         java.awt.EventQueue.invokeLater(new Runnable() {
