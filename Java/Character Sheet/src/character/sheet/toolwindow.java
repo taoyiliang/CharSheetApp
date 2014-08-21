@@ -12,6 +12,8 @@ package character.sheet;
  */
 public class ToolWindow extends javax.swing.JFrame {
 
+    private Character character;
+    
     /**
      * Creates new form toolwindow
      */
@@ -19,6 +21,10 @@ public class ToolWindow extends javax.swing.JFrame {
         initComponents();
     }
 
+    public void setCharacter(Character newchar) {
+        character = newchar;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

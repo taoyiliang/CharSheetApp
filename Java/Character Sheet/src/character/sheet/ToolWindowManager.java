@@ -32,23 +32,17 @@ public class ToolWindowManager {
     public void refreshToolWindow() {
         refreshNotes();
     }
-    
+
     private final static String newline = "\n";
-    
+
     public void refreshNotes() {
-        //for (int i=0; i<character.notes.size(); i++) {
-        //    character.notes.
-        //}
         String notes = new String();
-        
-        for (int i=0; i<character.notes.size(); i++) {
-            notes += character.notes.get(i) + newline;
+
+        for (int i = 0; i < character.notes.size(); i++) {
+            notes += character.notes.get(i).trim() + newline;
         }
-        toolWindow.taNotes.setLineWrap(true);
-        toolWindow.taNotes.setWrapStyleWord(true);
-        
+
         toolWindow.taNotes.setText(notes);
-        
-                //.substring(1, String.valueOf(character.notes).length() - 1));
+        System.out.println(notes);
     }
 }

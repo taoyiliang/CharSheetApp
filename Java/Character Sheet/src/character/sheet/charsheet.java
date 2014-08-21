@@ -6,6 +6,9 @@
 package character.sheet;
 
 import java.io.File;
+import java.util.EmptyStackException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.UIManager;
 
 /**
@@ -14,6 +17,12 @@ import javax.swing.UIManager;
  */
 public class Charsheet extends javax.swing.JFrame {
 
+    private Character character;
+    
+    public void setCharacter(Character chara) {
+            character = chara;
+    }
+    
     /**
      * Creates new form Charsheet
      */
@@ -1293,7 +1302,21 @@ public class Charsheet extends javax.swing.JFrame {
         //Charsheet newcharsheet = new Charsheet();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ToolWindow().setVisible(true);
+                ToolWindowManager manager = new ToolWindowManager();
+                ToolWindow window = new ToolWindow();
+                manager.setToolWindow(new ToolWindow());
+                window.setCharacter(character);
+                try {
+                    manager.setCharacter(character);
+                    //new ToolWindow().setVisible(true);
+                } catch (NoSuchFieldException ex) {
+                    Logger.getLogger(Charsheet.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalArgumentException ex) {
+                    Logger.getLogger(Charsheet.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalAccessException ex) {
+                    Logger.getLogger(Charsheet.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                window.setVisible(true);
             }
         });
     }//GEN-LAST:event_btnLaunchToolsWindowActionPerformed

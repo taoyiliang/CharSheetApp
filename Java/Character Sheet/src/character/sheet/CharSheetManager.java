@@ -7,7 +7,6 @@ package character.sheet;
 
 import java.awt.*;
 import java.util.EmptyStackException;
-import java.util.List;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
@@ -23,11 +22,13 @@ public class CharSheetManager {
 
     public void setCharSheet(Charsheet newsheet) {
         charsheet = newsheet;
+        
     }
 
     public void setCharacter(Character newchar) throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
         if (charsheet != null) {
             character = newchar;
+            charsheet.setCharacter(newchar);
             refreshCharacter();
         } else {
             throw new EmptyStackException();
