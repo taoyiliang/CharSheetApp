@@ -63,13 +63,34 @@ public class Roll {
       Integer mincrit = Integer.valueOf(String.valueOf(rollist.get(3)));
       
       String[] rollsplit = sroll.split("d");
+      System.out.println("DEBUG: "+rollsplit);
       Integer num = 1;
-      if (!rollsplit[0].isEmpty()){num = Integer.valueOf(rollsplit[0]);}
+      Boolean subtract = false;
+      String mod="";
+      if (rollsplit[0].startsWith("-"))
+      {
+        subtract = true;
+        mod="-";
+        rollsplit[0]=rollsplit[0].substring(1);
+      }
+      if (!rollsplit[0].isEmpty())
+      {
+        num = Integer.parseInt(rollsplit[0]);
+      }
       Integer size = Integer.valueOf(sroll.split("d")[1]);
       List<Integer> rollL = rlr.roll(num, size,adv,ccrit,mincrit);
       Integer roll = rollL.get(0);
-      res+= roll;
-      reslist.put(key+" ("+sroll+")",roll);
+      if (subtract)
+      {
+        res -= roll;
+        reslist.put(key+" ("+sroll+")",-1*roll);
+      }
+      else
+      {
+        res+= roll;
+        reslist.put(key+" ("+sroll+")",roll);
+      }
+      
       if (adv!=0)
       {
         reslist.put("(2nd "+key+")",rollL.get(2));
