@@ -189,11 +189,11 @@ public class ToolWindow extends javax.swing.JFrame {
         lblRollType = new javax.swing.JLabel();
         jLabel42 = new javax.swing.JLabel();
         lblRollResult = new javax.swing.JLabel();
-        saRollBreakdown = new javax.swing.JScrollPane();
-        tblRollBreakdown = new javax.swing.JTable();
         btnSubmitRoll = new javax.swing.JButton();
         jLabel56 = new javax.swing.JLabel();
         txtRollOverride = new javax.swing.JTextField();
+        saRollBreakdown1 = new javax.swing.JScrollPane();
+        tblRollBreakdown = new javax.swing.JTable();
         jPanel22 = new javax.swing.JPanel();
         saRollHistory = new javax.swing.JScrollPane();
         tblRollHistory = new javax.swing.JTable();
@@ -255,6 +255,11 @@ public class ToolWindow extends javax.swing.JFrame {
         jLabel2.setText("Misc. Mods");
 
         btnRollInit.setText("Roll");
+        btnRollInit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRollInitActionPerformed(evt);
+            }
+        });
 
         cbAdvantageInit.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Advantage", "None", "Disadvantage" }));
         cbAdvantageInit.setSelectedIndex(1);
@@ -310,6 +315,11 @@ public class ToolWindow extends javax.swing.JFrame {
         cbAdvantageAttack.setSelectedIndex(1);
 
         btnRollAttack.setText("Roll");
+        btnRollAttack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRollAttackActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Misc. Mods");
 
@@ -353,6 +363,11 @@ public class ToolWindow extends javax.swing.JFrame {
         cbCriticalsDamage.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "MAX" }));
 
         btnRollDamage.setText("Roll");
+        btnRollDamage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRollDamageActionPerformed(evt);
+            }
+        });
 
         jLabel9.setText("Misc. Mods");
 
@@ -1137,6 +1152,21 @@ public class ToolWindow extends javax.swing.JFrame {
 
         lblRollResult.setText("Value");
 
+        btnSubmitRoll.setText("Submit");
+        btnSubmitRoll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitRollActionPerformed(evt);
+            }
+        });
+
+        jLabel56.setText("Override:");
+
+        txtRollOverride.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRollOverrideActionPerformed(evt);
+            }
+        });
+
         tblRollBreakdown.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -1154,27 +1184,22 @@ public class ToolWindow extends javax.swing.JFrame {
             }
         });
         tblRollBreakdown.setRowSelectionAllowed(false);
-        saRollBreakdown.setViewportView(tblRollBreakdown);
+        saRollBreakdown1.setViewportView(tblRollBreakdown);
         if (tblRollBreakdown.getColumnModel().getColumnCount() > 0) {
-            tblRollBreakdown.getColumnModel().getColumn(0).setPreferredWidth(100);
-            tblRollBreakdown.getColumnModel().getColumn(1).setPreferredWidth(5);
+            tblRollBreakdown.getColumnModel().getColumn(0).setPreferredWidth(120);
+            tblRollBreakdown.getColumnModel().getColumn(1).setPreferredWidth(1);
         }
-
-        btnSubmitRoll.setText("Submit");
-
-        jLabel56.setText("Override:");
-
-        txtRollOverride.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtRollOverrideActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
         jPanel21.setLayout(jPanel21Layout);
         jPanel21Layout.setHorizontalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(saRollBreakdown, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
+                .addComponent(jLabel56)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtRollOverride, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSubmitRoll))
             .addGroup(jPanel21Layout.createSequentialGroup()
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel21Layout.createSequentialGroup()
@@ -1184,13 +1209,8 @@ public class ToolWindow extends javax.swing.JFrame {
                             .addComponent(lblRollResult)
                             .addComponent(lblRollType)))
                     .addComponent(jLabel42))
-                .addGap(0, 67, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
-                .addComponent(jLabel56)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtRollOverride)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSubmitRoll))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(saRollBreakdown1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         jPanel21Layout.setVerticalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1202,8 +1222,8 @@ public class ToolWindow extends javax.swing.JFrame {
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel42)
                     .addComponent(lblRollResult))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(saRollBreakdown, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(saRollBreakdown1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSubmitRoll)
@@ -1276,10 +1296,9 @@ public class ToolWindow extends javax.swing.JFrame {
                                 .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                            .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1332,9 +1351,24 @@ public class ToolWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_chkFirstRoundActionPerformed
 
     private void btnRollGenericActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRollGenericActionPerformed
-        //Grab text from generic roll and type and store
         twmManager.rollGenericRoller();
     }//GEN-LAST:event_btnRollGenericActionPerformed
+
+    private void btnSubmitRollActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitRollActionPerformed
+        twmManager.submitRoll();
+    }//GEN-LAST:event_btnSubmitRollActionPerformed
+
+    private void btnRollDamageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRollDamageActionPerformed
+        twmManager.rollDamage();
+    }//GEN-LAST:event_btnRollDamageActionPerformed
+
+    private void btnRollAttackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRollAttackActionPerformed
+        twmManager.rollAttack();
+    }//GEN-LAST:event_btnRollAttackActionPerformed
+
+    private void btnRollInitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRollInitActionPerformed
+        twmManager.rollInit();
+    }//GEN-LAST:event_btnRollInitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1491,7 +1525,7 @@ public class ToolWindow extends javax.swing.JFrame {
     public javax.swing.JLabel lblSkillChosen;
     public javax.swing.JList liSpellArsenal;
     public javax.swing.JList liSpellsPossible;
-    private javax.swing.JScrollPane saRollBreakdown;
+    private javax.swing.JScrollPane saRollBreakdown1;
     private javax.swing.JScrollPane saRollHistory;
     public javax.swing.JTextArea taNotes;
     public javax.swing.JTable tblRollBreakdown;
