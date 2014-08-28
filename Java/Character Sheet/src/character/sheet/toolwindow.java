@@ -13,6 +13,7 @@ package character.sheet;
 public class ToolWindow extends javax.swing.JFrame {
 
     private Character character3;
+    private ToolWindowManager twmManager;
     
     /**
      * Creates new form toolwindow
@@ -23,6 +24,10 @@ public class ToolWindow extends javax.swing.JFrame {
 
     public void setCharacter(Character newchar) {
         character3 = newchar;
+    }
+    
+    public void setManager(ToolWindowManager newman) {
+        twmManager = newman;
     }
     
     /**
@@ -1055,6 +1060,11 @@ public class ToolWindow extends javax.swing.JFrame {
         jLabel18.setText("(e.g. 2d6+-2+1)");
 
         btnRollGeneric.setText("Roll");
+        btnRollGeneric.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRollGenericActionPerformed(evt);
+            }
+        });
 
         jLabel38.setText("What is the roll for?");
 
@@ -1320,6 +1330,11 @@ public class ToolWindow extends javax.swing.JFrame {
     private void chkFirstRoundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkFirstRoundActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_chkFirstRoundActionPerformed
+
+    private void btnRollGenericActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRollGenericActionPerformed
+        //Grab text from generic roll and type and store
+        twmManager.rollGenericRoller();
+    }//GEN-LAST:event_btnRollGenericActionPerformed
 
     /**
      * @param args the command line arguments

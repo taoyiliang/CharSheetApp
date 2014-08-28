@@ -39,6 +39,7 @@ public class Roll {
     {
       String[] rollsplit = dice.get(key).split("d");
       Integer num = 1;
+      System.out.println(dice.get(key));
       if (!rollsplit[0].isEmpty()){num = Integer.valueOf(rollsplit[0]);}
       Integer size = Integer.valueOf(dice.get(key).split("d")[1]);
       Integer roll = rlr.roll(num, size);

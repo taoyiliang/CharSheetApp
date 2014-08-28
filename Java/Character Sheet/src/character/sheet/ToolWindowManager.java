@@ -6,6 +6,7 @@
 package character.sheet;
 
 import java.util.EmptyStackException;
+import java.util.List;
 
 /**
  *
@@ -13,13 +14,21 @@ import java.util.EmptyStackException;
  */
 public class ToolWindowManager {
 
-    private ToolWindow toolWindow;
+    public ToolWindow toolWindow;
     private Character character4;
-
+    public Roller roller;
+    
+    public ToolWindowManager(){
+        roller = new Roller();
+    }
+    
     public void setToolWindow(ToolWindow newwindow) {
         toolWindow = newwindow;
+        newwindow.setManager(this);
     }
 
+    
+    
     public void setCharacter(Character newchar) throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
         if (toolWindow != null) {
             character4 = newchar;
@@ -34,6 +43,35 @@ public class ToolWindowManager {
         
     }
 
+    public void rollGenericRoller(){
+        String genRoll;
+        String genType;
+        String total;
+        String label;
+        
+        
+        label = "Generic";
+        
+        genRoll = String.valueOf(toolWindow.txtGenericRollInput);
+        genType = String.valueOf(toolWindow.txtGenericRollWhatFor);
+        
+        //Parse input into parts, place into list
+        List<String> rollInputs = roller.parseRolls(genRoll);
+        
+        Roll roll = new Roll();
+        
+        roll.addList(label, rollInputs);
+        roll.roll(roller);
+        
+        total = String.valueOf(roll.res);
+        
+        //Set display
+        toolWindow.lblRollResult.setText(total);
+        toolWindow.txtRollOverride.setText(total);
+        toolWindow.lblRollType.setText(genType);
+    }
+    
+    
     private final static String newline = "\n";
 
     public void refreshNotes() {
