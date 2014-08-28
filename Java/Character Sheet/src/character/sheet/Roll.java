@@ -75,7 +75,7 @@ public class Roll {
       }
       else //TODO test for ability to become an integer!
       {
-        addMod(label,Integer.valueOf(entry));
+        addMod(label+"_"+String.valueOf(i),Integer.valueOf(entry));
       }
     }
   }
