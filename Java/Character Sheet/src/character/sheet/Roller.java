@@ -40,6 +40,41 @@ public class Roller {
     return res;
   }
   
+  public List<Integer> rollAdvCrit(Integer size, Integer Adv, Boolean checkCrit, Integer mincrit)
+  {
+    List<Integer> ret = new ArrayList<>();
+    ret.add(0); //index 0 is result
+    ret.add(0); //index 1 is crit status
+    ret.add(0); //index 2 is alternate roll
+    Integer rollres = roll(1,size);
+    if (Adv!=0)
+    {
+      Integer rollres1 = rollres;
+      Integer rollres2 = roll(1,size);
+      if (Adv==1)
+      {
+        ret.set(0,Math.max(rollres1, rollres2));
+        ret.set(2,Math.min(rollres1, rollres2));
+      }
+      else if (Adv==-1)
+      {
+        ret.set(2,Math.max(rollres1, rollres2));
+        ret.set(0,Math.min(rollres1, rollres2));
+      }
+    }
+    if (checkCrit)
+    {
+      if (rollres>=mincrit)
+      {
+        ret.set(1,1); //it crit!
+      }
+      else if (rollres==1)
+      {
+        ret.set(1,-1);
+      }
+    }
+  }
+  
   public List<String> parseRolls(String str)
   {
     List<String> res = new ArrayList<>();
