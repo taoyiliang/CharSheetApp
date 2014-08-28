@@ -41,6 +41,7 @@ public class Roll {
     putlist.add(mincrit);
     dice.put(source,putlist);
   }
+  
   public void addMod(String source, Integer scalar)
   {
     if (scalars.containsKey(source))
@@ -56,9 +57,9 @@ public class Roll {
     for (String key : dice.keySet())
     {
       List<Object> rollist = dice.get(key);
-      String sroll    =                 String.valueOf(rollist.get(0) );
+      String  sroll   =                 String.valueOf(rollist.get(0) );
       Integer adv     = Integer.valueOf(String.valueOf(rollist.get(1)));
-      Boolean ccrit    = Boolean.valueOf(String.valueOf(rollist.get(2)));
+      Boolean ccrit   = Boolean.valueOf(String.valueOf(rollist.get(2)));
       Integer mincrit = Integer.valueOf(String.valueOf(rollist.get(3)));
       
       String[] rollsplit = sroll.split("d");
@@ -71,7 +72,7 @@ public class Roll {
       reslist.put(key+" ("+sroll+")",roll);
       if (adv!=0)
       {
-        reslist.put(key+" (2nd)",rollL.get(2));
+        reslist.put("(2nd "+key+")",rollL.get(2));
       }
       if (ccrit)
       {
@@ -101,7 +102,7 @@ public class Roll {
       }
       else //TODO test for ability to become an integer!
       {
-        addMod(label+"_"+String.valueOf(i),Integer.valueOf(entry));
+        addMod(label+"_"+String.valueOf(i),Integer.parseInt(entry));
       }
     }
   }

@@ -62,6 +62,7 @@ public class Roller {
         ret.set(0,Math.min(rollres1, rollres2));
       }
     }
+    else {ret.set(0,rollres);}
     if (checkCrit)
     {
       if (rollres>=mincrit)
@@ -85,9 +86,16 @@ public class Roller {
       //if minus in there, break it up
       if (entry.contains("-"))
       {
-        for (String e:entry.split("-"))
+        String[] elist = entry.split("-");
+        for (Integer i=0;i<elist.length;i++) //String e:entry.split("-"))
         {
-          if (!e.isEmpty()){res.add(e.trim());};
+          String mod="-";
+          if (i==0)
+          {
+            if (!entry.startsWith("-")){mod="";}
+          }
+          String e = elist[i];
+          if (!e.isEmpty()){res.add(mod+e.trim());};
         }
       }
       else
