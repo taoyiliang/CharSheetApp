@@ -53,4 +53,19 @@ public class Roll {
     reslist.put("result",res);
     return reslist;
   }
+  
+  public void addList(String label,List<String> entries)
+  {
+    for (String entry:entries)
+    {
+      if (entry.contains("d"))
+      {
+        addRoll(label,entry);
+      }
+      else //TODO test for ability to become an integer!
+      {
+        addMod(label,Integer.valueOf(entry));
+      }
+    }
+  }
 }
