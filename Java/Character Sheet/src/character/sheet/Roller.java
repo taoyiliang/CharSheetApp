@@ -30,7 +30,7 @@ public class Roller {
     return res;
   }
   
-  public Integer roll(Integer num,Integer size)
+  public Integer rollSimple(Integer num,Integer size)
   {
     Integer res = 0;
     for (int i=0;i<num;i++)
@@ -38,19 +38,19 @@ public class Roller {
       res+=randInt(1,size);
     }
     return res;
-  }
+  } //do it better in roll below
   
-  public List<Integer> rollAdvCrit(Integer size, Integer Adv, Boolean checkCrit, Integer mincrit)
+  public List<Integer> roll(Integer num, Integer size, Integer Adv, Boolean checkCrit, Integer mincrit)
   {
     List<Integer> ret = new ArrayList<>();
     ret.add(0); //index 0 is result
     ret.add(0); //index 1 is crit status
     ret.add(0); //index 2 is alternate roll
-    Integer rollres = roll(1,size);
+    Integer rollres = rollSimple(1,size);
     if (Adv!=0)
     {
       Integer rollres1 = rollres;
-      Integer rollres2 = roll(1,size);
+      Integer rollres2 = rollSimple(1,size);
       if (Adv==1)
       {
         ret.set(0,Math.max(rollres1, rollres2));
@@ -73,6 +73,7 @@ public class Roller {
         ret.set(1,-1);
       }
     }
+    return ret;
   }
   
   public List<String> parseRolls(String str)
