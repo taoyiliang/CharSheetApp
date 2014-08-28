@@ -39,7 +39,7 @@ public class Roll {
     {
       String[] rollsplit = dice.get(key).split("d");
       Integer num = 1;
-      System.out.println(dice.get(key));
+      System.out.println("debug: "+dice.get(key));
       if (!rollsplit[0].isEmpty()){num = Integer.valueOf(rollsplit[0]);}
       Integer size = Integer.valueOf(dice.get(key).split("d")[1]);
       Integer roll = rlr.roll(num, size);
@@ -57,11 +57,13 @@ public class Roll {
   
   public void addList(String label,List<String> entries)
   {
+    Integer i = 0;
     for (String entry:entries)
     {
+      i+=1;
       if (entry.contains("d"))
       {
-        addRoll(label,entry);
+        addRoll(label+"_"+String.valueOf(i),entry);
       }
       else //TODO test for ability to become an integer!
       {
