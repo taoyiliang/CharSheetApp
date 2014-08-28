@@ -43,17 +43,76 @@ public class ToolWindowManager {
         
     }
 
+    public void rollInit(){
+        String initMiscRoll;
+        String weaponUsed;
+        String total;
+        String label;
+        String adv;
+        Boolean firstRound;
+        Boolean prepared;
+        
+        label = "Initiative";
+        
+        initMiscRoll = String.valueOf(toolWindow.txtMiscModInit);
+        
+        
+        //Parse input into parts, place into list
+        List<String> rollInputs = roller.parseRolls(initMiscRoll);
+        
+        Roll roll = new Roll();
+        
+        roll.addList(label, rollInputs);
+        roll.roll(roller);
+        
+        total = String.valueOf(roll.res);
+        
+        //Set display
+        toolWindow.lblRollResult.setText(total);
+        toolWindow.txtRollOverride.setText(total);
+        toolWindow.lblRollType.setText("Initiative");
+    }
+    
+    public void rollAttack(){
+        String attMiscRoll;
+        String weaponUsed;
+        String total;
+        String label;
+        String adv;
+        
+        
+        label = "Attack";
+        
+        attMiscRoll = String.valueOf(toolWindow.txtMiscModAttack);
+        
+        
+        //Parse input into parts, place into list
+        List<String> rollInputs = roller.parseRolls(attMiscRoll);
+        
+        Roll roll = new Roll();
+        
+        roll.addList(label, rollInputs);
+        roll.roll(roller);
+        
+        total = String.valueOf(roll.res);
+        
+        //Set display
+        toolWindow.lblRollResult.setText(total);
+        toolWindow.txtRollOverride.setText(total);
+        toolWindow.lblRollType.setText("Attack");
+    }
+    
     public void rollGenericRoller(){
         String genRoll;
         String genType;
         String total;
         String label;
-        
+        String adv;
         
         label = "Generic";
         
-        genRoll = String.valueOf(toolWindow.txtGenericRollInput);
-        genType = String.valueOf(toolWindow.txtGenericRollWhatFor);
+        genRoll = toolWindow.txtGenericRollInput.getText();
+        genType = toolWindow.txtGenericRollWhatFor.getText();
         
         //Parse input into parts, place into list
         List<String> rollInputs = roller.parseRolls(genRoll);
