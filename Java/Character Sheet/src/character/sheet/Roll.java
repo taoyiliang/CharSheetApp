@@ -25,10 +25,18 @@ public class Roll {
   public Roll(){}
   public void addRoll(String source, String roll)
   {
+    if (dice.containsKey(source))
+    {
+      source+="_1";
+    }
     dice.put(source,roll);
   }
   public void addMod(String source, Integer scalar)
   {
+    if (scalars.containsKey(source))
+    {
+      source+="_1";
+    }
     scalars.put(source,scalar);
   }
   
