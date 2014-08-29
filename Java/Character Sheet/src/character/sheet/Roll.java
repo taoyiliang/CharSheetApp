@@ -53,10 +53,21 @@ public class Roll {
   
   public void addWeaponDamage(Weapon wpn, Integer crits)
   {
-    addRoll(String.valueOf("Weapon Damage"),wpn.dmg,null,null,null);
-    for (Integer i=0;i<crits;i++)
+    
+    if (crits<4)
     {
-      addRoll(String.valueOf("Weapon Crit ")+String.valueOf(i),wpn.dmg,null,null,null);
+      addRoll(String.valueOf("Weapon Damage"),wpn.dmg,null,null,null);
+      for (Integer i=0;i<crits;i++)
+      {
+        addRoll(String.valueOf("Weapon Crit ")+String.valueOf(i),wpn.dmg,null,null,null);
+      }
+    }
+    else //max damage at 4 crits
+    {
+      String[] sdmg = wpn.dmg.split("d");
+      Integer mult = 4*Integer.valueOf(sdmg[0]);
+      Integer dmg1 = Integer.valueOf(sdmg[1]);
+      addMod(String.valueOf("MAX Weapon Damage"),mult*dmg1);
     }
   }
   public HashMap<String, Integer> roll(Roller rlr)
