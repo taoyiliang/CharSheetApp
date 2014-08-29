@@ -27,6 +27,7 @@ public class Weapon extends Item{
   
   public void setDefaults()
   {
+    name = "Simple Action";
     dmg = "0";
     dmgtype = "none";
     init=0;
