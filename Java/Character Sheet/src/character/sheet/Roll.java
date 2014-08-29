@@ -51,6 +51,14 @@ public class Roll {
     scalars.put(source,scalar);
   }
   
+  public void addWeaponDamage(Weapon wpn, Integer crits)
+  {
+    addRoll(String.valueOf("Weapon Damage"),wpn.dmg,null,null,null);
+    for (Integer i=0;i<crits;i++)
+    {
+      addRoll(String.valueOf("Weapon Crit ")+String.valueOf(i),wpn.dmg,null,null,null);
+    }
+  }
   public HashMap<String, Integer> roll(Roller rlr)
   {
     res = 0;
