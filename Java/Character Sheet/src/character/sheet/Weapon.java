@@ -24,6 +24,20 @@ public class Weapon extends Item{
   public Integer init,prep,enh,crit,range;
   public Boolean prof,master;
   public Weapon(){}
+  
+  public void setDefaults()
+  {
+    dmg = "0";
+    dmgtype = "none";
+    init=0;
+    prep=0;
+    enh=0;
+    crit=20;
+    range=0;
+    prof=false;
+    master=false;
+  }
+  
   @Override
   public void writeXML(Document doc,Element elem)
   {
