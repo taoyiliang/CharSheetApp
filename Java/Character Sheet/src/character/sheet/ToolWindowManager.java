@@ -7,8 +7,12 @@ package character.sheet;
 
 import java.awt.Component;
 import java.awt.Font;
+import java.util.ArrayList;
 import java.util.EmptyStackException;
 import java.util.List;
+import javax.swing.JButton;
+import javax.swing.JList;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
@@ -44,7 +48,8 @@ public class ToolWindowManager {
 
     public void refreshToolWindow() {
         refreshNotes();
-
+        refreshWeaponList();
+        refreshHP();
     }
 
     //Create Cell renderer for word wrapping
@@ -68,9 +73,85 @@ public class ToolWindowManager {
             return this;
         }
     }
+    
+    public class MyCellRendererList extends JTextArea implements TableCellRenderer {
 
-    public void rollInit() {
+        public MyCellRendererList() {
+            setLineWrap(true);
+            setWrapStyleWord(true);
+        }
+
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+            setText(String.valueOf(value));
+            setSize(table.getColumnModel().getColumn(column).getWidth(),
+                    getPreferredSize().height);
+            if (table.getRowHeight(row) != getPreferredSize().height) {
+                table.setRowHeight(row, getPreferredSize().height);
+            }
+            this.setFont(f);
+            return this;
+        }
+    }
+    
+    JTable tblWeapons = new javax.swing.JTable();
+    
+    public void refreshWeaponList() {
+        List<Weapon> list = new ArrayList<>();
+        list = character4.weapons;
         
+        
+        
+        tblWeapons.setModel(new javax.swing.table.DefaultTableModel(
+                new Object[][]{ /*{"Axe of Awesomeness", "Does cool stuff", 1, 4, "Yes"},
+                 {null, null, null, null, null}*/},
+                new String[]{
+                    "Weapon"
+                }
+        ) {
+            Class[] types = new Class[]{
+                java.lang.String.class, java.lang.String.class, java.lang.String.class,
+                java.lang.String.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean[]{
+                false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types[columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit[columnIndex];
+            }
+        });
+        tblWeapons.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tblWeapons.getTableHeader().setReorderingAllowed(false);
+
+        toolWindow.spWeapon.setViewportView(tblWeapons);
+
+        if (tblWeapons.getColumnModel().getColumnCount() > 0) {
+            tblWeapons.getColumnModel().getColumn(0).setPreferredWidth(300);
+        }
+        
+        DefaultTableModel model = (DefaultTableModel) tblWeapons.getModel();
+        model.addRow(new Object[]{"Simple Action"});
+        
+        //add items to list
+        for (Weapon item : character4.weapons) {
+            addWeaponToWeaponsList(item);
+        }
+        tblWeapons.setRowSelectionInterval(0,0);
+    }
+    
+    public void addWeaponToWeaponsList(Weapon newItem) {
+        DefaultTableModel model = (DefaultTableModel) tblWeapons.getModel();
+        model.addRow(new Object[]{newItem.name});
+    
+    }
+
+    
+    public void rollInit() throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
+
         if (toolWindow.tblRollBreakdown.getColumnModel().getColumnCount() > 0) {
             toolWindow.tblRollBreakdown.getColumnModel().getColumn(0).setPreferredWidth(120);
             toolWindow.tblRollBreakdown.getColumnModel().getColumn(1).setPreferredWidth(1);
@@ -84,84 +165,145 @@ public class ToolWindowManager {
         String label;
         Integer adv;
         Boolean firstRound;
+        Integer firstRoundMod;
         Boolean prepared;
-
-        adv = -1*(toolWindow.cbAdvantageInit.getSelectedIndex()-1);
+        Integer preparedMod;
+        Integer rowSelected;
+        Weapon weapon;
+        Weapon wpn;
+        Integer notPrepared;
+        Integer weaponInit;
+        
+        adv = -1 * (toolWindow.cbAdvantageInit.getSelectedIndex() - 1);
         label = "Miscellaneous";
-
+        firstRoundMod = -character4.getAbilityMod("DEX");
+        firstRound = toolWindow.chkFirstRound.isSelected();
+        prepared = toolWindow.chkPrepared.isSelected();
         initMiscRoll = toolWindow.txtMiscModInit.getText();
         
+        
         //TODO need functionality for weaponUsed
-
+        rowSelected = tblWeapons.getSelectedRow();
+        
+        if (rowSelected == 0) {
+            wpn = new Weapon();
+            wpn.setDefaults();
+            weapon = wpn;
+        }
+        else {
+            weapon = character4.weapons.get(rowSelected-1);
+        }
+        
+        preparedMod = weapon.prep;
+        //notPrepared = weapon.notprep;
+        weaponUsed = weapon.name;
+        weaponInit = weapon.init;
+        System.out.println(rowSelected);
+        
         //Parse input into parts, place into list
         List<String> rollInputs = roller.parseRolls(initMiscRoll);
 
         Roll roll = new Roll();
 
         roll.addList(label, rollInputs);
-        roll.addRoll(label, "1d10", adv, null, null);
+        roll.addRoll("Base Initiative", "1d10", adv, null, null);
+        roll.addMod("Weapon Initiative", weaponInit);
+        if (firstRound == Boolean.TRUE) {
+            roll.addMod("DEX Mod", firstRoundMod);
+        } else {
+            
+        }
+        if (prepared == Boolean.TRUE) {
+            
+        } 
+        else {
+            roll.addMod("Not Prepared", preparedMod);
+        }
+        
         roll.roll(roller);
 
         total = String.valueOf(roll.res);
-        
+
         updateRollComponents(roll);
 
         //Set display
         toolWindow.lblRollResult.setText(total);
         toolWindow.txtRollOverride.setText(total);
-        toolWindow.lblRollType.setText("Initiative");
+        toolWindow.lblRollType.setText("Initiative (" + weaponUsed +")");
     }
 
     public void rollAttack() {
-        
+
         if (toolWindow.tblRollBreakdown.getColumnModel().getColumnCount() > 0) {
             toolWindow.tblRollBreakdown.getColumnModel().getColumn(0).setPreferredWidth(120);
             toolWindow.tblRollBreakdown.getColumnModel().getColumn(1).setPreferredWidth(1);
             toolWindow.tblRollBreakdown.getColumnModel().getColumn(0).setCellRenderer(new MyCellRenderer());
             toolWindow.tblRollBreakdown.getColumnModel().getColumn(1).setCellRenderer(new MyCellRenderer());
         }
-        
+
         String attMiscRoll;
         String weaponUsed;
         String total;
         String label;
         Integer adv;
+        Integer proficiency;
+        Integer rowSelected;
+        Weapon weapon;
+        Weapon wpn;
 
-        adv = -1*(toolWindow.cbAdvantageAttack.getSelectedIndex()-1);
+        adv = -1 * (toolWindow.cbAdvantageAttack.getSelectedIndex() - 1);
 
         label = "Miscellaneous";
+        proficiency = character4.proficiency();
 
         attMiscRoll = toolWindow.txtMiscModAttack.getText();
 
-        //TODO need functionality for weaponUsed
+        rowSelected = tblWeapons.getSelectedRow();
         
+        if (rowSelected == 0) {
+            wpn = new Weapon();
+            wpn.setDefaults();
+            weapon = wpn;
+        }
+        else {
+            weapon = character4.weapons.get(rowSelected-1);
+        }
+        
+        weaponUsed = weapon.name;
         //Parse input into parts, place into list
         List<String> rollInputs = roller.parseRolls(attMiscRoll);
 
         Roll roll = new Roll();
 
         roll.addList(label, rollInputs);
+        roll.addRoll("Base Attack", "d20", adv, null, null);
+        if (weapon.prof == Boolean.TRUE) {
+        roll.addMod("Proficiency", proficiency);
+        }
+        else {
+            
+        }
         roll.roll(roller);
 
         total = String.valueOf(roll.res);
-        
+
         updateRollComponents(roll);
 
         //Set display
         toolWindow.lblRollResult.setText(total);
         toolWindow.txtRollOverride.setText(total);
-        toolWindow.lblRollType.setText("Attack");
+        toolWindow.lblRollType.setText("Attack (" + weaponUsed + ")");
     }
 
     public void rollDamage() {
-        
+
         if (toolWindow.tblRollBreakdown.getColumnModel().getColumnCount() > 0) {
             toolWindow.tblRollBreakdown.getColumnModel().getColumn(0).setPreferredWidth(120);
             toolWindow.tblRollBreakdown.getColumnModel().getColumn(1).setPreferredWidth(1);
             toolWindow.tblRollBreakdown.getColumnModel().getColumn(0).setCellRenderer(new MyCellRenderer());
             toolWindow.tblRollBreakdown.getColumnModel().getColumn(1).setCellRenderer(new MyCellRenderer());
         }
-        
+
         String dmgMiscRoll;
         String dmgClassRoll;
         String weaponUsed;
@@ -169,14 +311,31 @@ public class ToolWindowManager {
         String labelMisc;
         String labelClass;
         Integer criticals;
+        Weapon weapon;
+        Weapon wpn;
+        Integer rowSelected;
+        Integer proficiency;
 
         labelMisc = "Miscellaneous";
         labelClass = "Class Misc";
-        weaponUsed = "FIX WEAPON";
         criticals = toolWindow.cbCriticalsDamage.getSelectedIndex();
+        proficiency = character4.proficiency();
         //TODO need functionality for criticals dropdown
         
-        //TODO need functionality for weaponUsed
+        
+        rowSelected = tblWeapons.getSelectedRow();
+        
+        
+        if (rowSelected == 0) {
+            wpn = new Weapon();
+            wpn.setDefaults();
+            weapon = wpn;
+        }
+        else {
+            weapon = character4.weapons.get(rowSelected-1);
+        }
+        
+        weaponUsed = weapon.name;
         
         dmgMiscRoll = toolWindow.txtMiscModDamage.getText();
         dmgClassRoll = toolWindow.txtClassModDamage.getText();
@@ -187,20 +346,44 @@ public class ToolWindowManager {
 
         Roll roll = new Roll();
 
+        if (weapon.prof == Boolean.TRUE) {
+            roll.addMod("Proficiency", proficiency);
+        }
+        else {
+            
+        }
+        
+        if (criticals == 1) {
+            roll.addWeaponDamage(weapon, 1);
+        }
+        else if (criticals == 2) {
+            roll.addWeaponDamage(weapon, 2);
+        }
+        else if (criticals == 3) {
+            roll.addWeaponDamage(weapon, 3);
+        }
+        else if (criticals == 4) {
+            roll.addWeaponDamage(weapon, 4);
+        }
+        else {
+            roll.addWeaponDamage(weapon, 0);
+        }
+        
         roll.addList(labelMisc, rollMiscInputs);
         roll.addList(labelClass, rollClassInputs);
+        
         roll.roll(roller);
 
         total = String.valueOf(roll.res);
-        
+
         updateRollComponents(roll);
 
         //Set display
         toolWindow.lblRollResult.setText(total);
         toolWindow.txtRollOverride.setText(total);
-        toolWindow.lblRollType.setText("Damage " + weaponUsed);
+        toolWindow.lblRollType.setText("Damage (" + weaponUsed + ")");
     }
-    
+
     public void rollGenericRoller() {
 
         if (toolWindow.tblRollBreakdown.getColumnModel().getColumnCount() > 0) {
@@ -214,9 +397,7 @@ public class ToolWindowManager {
         String genType;
         String total;
         String label;
-        Integer adv;
-
-        adv = -1*(toolWindow.cbAdvantageGeneric.getSelectedIndex()-1);
+        
         label = "Generic";
 
         genRoll = toolWindow.txtGenericRollInput.getText();
@@ -228,7 +409,7 @@ public class ToolWindowManager {
         Roll roll = new Roll();
 
         roll.addList(label, rollInputs);
-        
+
         roll.roll(roller);
 
         total = String.valueOf(roll.res);
@@ -260,9 +441,9 @@ public class ToolWindowManager {
 
         }
     }
-    
-    public void submitRoll(){
-        
+
+    public void submitRoll() {
+
     }
 
     private final static String newline = "\n";
@@ -275,10 +456,9 @@ public class ToolWindowManager {
         }
 
         toolWindow.taNotes.setText(notes);
-        System.out.println(toolWindow.taNotes);
 
     }
-    
+
     public void refreshHP() {
         toolWindow.txtCurrHPVal.setText(String.valueOf(character4.curhp));
         toolWindow.txtHPMaxVal.setText(String.valueOf(character4.maxhp));

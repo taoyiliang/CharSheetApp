@@ -6,6 +6,9 @@
 
 package character.sheet;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Reid
@@ -52,7 +55,8 @@ public class ToolWindow extends javax.swing.JFrame {
         cbSpeedMultiplier = new javax.swing.JComboBox();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        spWeapon = new javax.swing.JScrollPane();
+        pnlWeapons = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         chkFirstRound = new javax.swing.JCheckBox();
         chkPrepared = new javax.swing.JCheckBox();
@@ -181,8 +185,6 @@ public class ToolWindow extends javax.swing.JFrame {
         btnRollGeneric = new javax.swing.JButton();
         jLabel38 = new javax.swing.JLabel();
         txtGenericRollWhatFor = new javax.swing.JTextField();
-        cbAdvantageGeneric = new javax.swing.JComboBox();
-        jLabel41 = new javax.swing.JLabel();
         btnExitToolWindow = new javax.swing.JButton();
         jPanel21 = new javax.swing.JPanel();
         jLabel40 = new javax.swing.JLabel();
@@ -239,7 +241,20 @@ public class ToolWindow extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Choose Weapon", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        spWeapon.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Choose Weapon", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+
+        javax.swing.GroupLayout pnlWeaponsLayout = new javax.swing.GroupLayout(pnlWeapons);
+        pnlWeapons.setLayout(pnlWeaponsLayout);
+        pnlWeaponsLayout.setHorizontalGroup(
+            pnlWeaponsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 109, Short.MAX_VALUE)
+        );
+        pnlWeaponsLayout.setVerticalGroup(
+            pnlWeaponsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 238, Short.MAX_VALUE)
+        );
+
+        spWeapon.setViewportView(pnlWeapons);
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Initiative", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
@@ -294,7 +309,7 @@ public class ToolWindow extends javax.swing.JFrame {
                 .addComponent(chkFirstRound)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(chkPrepared)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel39)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cbAdvantageInit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -419,7 +434,7 @@ public class ToolWindow extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(spWeapon, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -433,7 +448,7 @@ public class ToolWindow extends javax.swing.JFrame {
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane1)
+            .addComponent(spWeapon)
         );
 
         jTabbedPane1.addTab("Adventure", jPanel1);
@@ -1089,11 +1104,6 @@ public class ToolWindow extends javax.swing.JFrame {
             }
         });
 
-        cbAdvantageGeneric.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Advantage", "None", "Disadvantage" }));
-        cbAdvantageGeneric.setSelectedIndex(1);
-
-        jLabel41.setText("Advantage");
-
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
@@ -1104,13 +1114,11 @@ public class ToolWindow extends javax.swing.JFrame {
                     .addComponent(txtGenericRollInput)
                     .addComponent(btnRollGeneric, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtGenericRollWhatFor)
-                    .addComponent(cbAdvantageGeneric, 0, 0, Short.MAX_VALUE)
                     .addGroup(jPanel13Layout.createSequentialGroup()
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel17)
                             .addComponent(jLabel18)
-                            .addComponent(jLabel38)
-                            .addComponent(jLabel41))
+                            .addComponent(jLabel38))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -1127,10 +1135,6 @@ public class ToolWindow extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtGenericRollWhatFor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel41)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbAdvantageGeneric, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addComponent(btnRollGeneric)
                 .addContainerGap())
         );
@@ -1367,7 +1371,15 @@ public class ToolWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRollAttackActionPerformed
 
     private void btnRollInitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRollInitActionPerformed
-        twmManager.rollInit();
+        try {
+            twmManager.rollInit();
+        } catch (NoSuchFieldException ex) {
+            Logger.getLogger(ToolWindow.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(ToolWindow.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(ToolWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnRollInitActionPerformed
 
     /**
@@ -1425,7 +1437,6 @@ public class ToolWindow extends javax.swing.JFrame {
     public javax.swing.JButton btnSaveSpellArsenal;
     public javax.swing.JButton btnSubmitRoll;
     public javax.swing.JComboBox cbAdvantageAttack;
-    public javax.swing.JComboBox cbAdvantageGeneric;
     public javax.swing.JComboBox cbAdvantageInit;
     public javax.swing.JComboBox cbAdvantageSave;
     public javax.swing.JComboBox cbAdvantageSkill;
@@ -1469,7 +1480,6 @@ public class ToolWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
-    private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
@@ -1509,7 +1519,6 @@ public class ToolWindow extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    public javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -1525,8 +1534,10 @@ public class ToolWindow extends javax.swing.JFrame {
     public javax.swing.JLabel lblSkillChosen;
     public javax.swing.JList liSpellArsenal;
     public javax.swing.JList liSpellsPossible;
+    public javax.swing.JPanel pnlWeapons;
     private javax.swing.JScrollPane saRollBreakdown1;
     private javax.swing.JScrollPane saRollHistory;
+    public javax.swing.JScrollPane spWeapon;
     public javax.swing.JTextArea taNotes;
     public javax.swing.JTable tblRollBreakdown;
     public javax.swing.JTable tblRollHistory;
