@@ -123,7 +123,14 @@ public class Character
     
     public Integer proficiency()
     {
-      return cclass.getProficiency(level);
+      Integer prof;
+      if      (level <= 4 ){prof=2;}
+      else if (level <= 8 ){prof=3;}
+      else if (level <= 12){prof=4;}
+      else if (level <= 16){prof=5;}
+      else                 {prof=6;}
+      return prof;
+      // TODOD someday...return cclass.getProficiency(level);
     }
     
     //Lawful and good parses
