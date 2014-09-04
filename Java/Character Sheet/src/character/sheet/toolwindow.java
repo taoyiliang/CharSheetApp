@@ -167,7 +167,7 @@ public class ToolWindow extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         txtHPMaxVal = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        cbDamageType = new javax.swing.JComboBox();
         jLabel16 = new javax.swing.JLabel();
         txtResistance = new javax.swing.JTextField();
         txtDamage = new javax.swing.JTextField();
@@ -969,7 +969,12 @@ public class ToolWindow extends javax.swing.JFrame {
 
         jLabel15.setText("Damage Type");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "None", "Bludgeon", "Piercing", "Slashing", "Acid", "Cold", "Fire", "Force", "Lighning", "Necrotic", "Poison", "Psychic", "Radiant", "Thunder" }));
+        cbDamageType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "None", "Bludgeon", "Piercing", "Slashing", "Acid", "Cold", "Fire", "Force", "Lighning", "Necrotic", "Poison", "Psychic", "Radiant", "Thunder" }));
+        cbDamageType.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbDamageTypeActionPerformed(evt);
+            }
+        });
 
         jLabel16.setText("Resistance:");
 
@@ -983,14 +988,24 @@ public class ToolWindow extends javax.swing.JFrame {
         });
 
         btnDamage.setText("Damage");
+        btnDamage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDamageActionPerformed(evt);
+            }
+        });
 
         btnHeal.setText("Heal");
+        btnHeal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHealActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(cbDamageType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel11Layout.createSequentialGroup()
@@ -1037,7 +1052,7 @@ public class ToolWindow extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel15)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbDamageType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
@@ -1382,6 +1397,18 @@ public class ToolWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnRollInitActionPerformed
 
+    private void cbDamageTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDamageTypeActionPerformed
+        twmManager.refreshDR();
+    }//GEN-LAST:event_cbDamageTypeActionPerformed
+
+    private void btnDamageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDamageActionPerformed
+        twmManager.takeDamage();
+    }//GEN-LAST:event_btnDamageActionPerformed
+
+    private void btnHealActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHealActionPerformed
+        twmManager.heal();
+    }//GEN-LAST:event_btnHealActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1443,13 +1470,13 @@ public class ToolWindow extends javax.swing.JFrame {
     public javax.swing.JComboBox cbChooseAbility;
     public javax.swing.JComboBox cbChooseSkill;
     public javax.swing.JComboBox cbCriticalsDamage;
+    public javax.swing.JComboBox cbDamageType;
     public javax.swing.JComboBox cbSave;
     private javax.swing.JComboBox cbSpeedMultiplier;
     public javax.swing.JComboBox cbSpellSort;
     private javax.swing.JCheckBox chkAlertness;
     public javax.swing.JCheckBox chkFirstRound;
     public javax.swing.JCheckBox chkPrepared;
-    public javax.swing.JComboBox jComboBox1;
     public javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
