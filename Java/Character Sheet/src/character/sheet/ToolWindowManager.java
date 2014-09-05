@@ -28,6 +28,11 @@ public class ToolWindowManager {
     private Character character4;
     public Roller roller;
     public Integer damageReduction = 0;
+    Integer abilMod = 10;
+    String saveAbil;
+    Integer abilUsed;
+    String rollHistType;
+    Integer rollHistNum;
 
     public ToolWindowManager() {
         roller = new Roller();
@@ -225,6 +230,10 @@ public class ToolWindowManager {
         toolWindow.lblRollResult.setText(total);
         toolWindow.txtRollOverride.setText(total);
         toolWindow.lblRollType.setText("Initiative (" + weaponUsed + ")");
+        
+        rollHistType = "Initiative (" + weaponUsed + ")";
+        rollHistNum = roll.res;
+        updateRollHistory();
     }
 
     public void rollAttack() {
@@ -286,6 +295,10 @@ public class ToolWindowManager {
         toolWindow.lblRollResult.setText(total);
         toolWindow.txtRollOverride.setText(total);
         toolWindow.lblRollType.setText("Attack (" + weaponUsed + ")");
+        
+        rollHistType = "Attack (" + weaponUsed + ")";
+        rollHistNum = roll.res;
+        updateRollHistory();
     }
 
     public void rollDamage() {
@@ -367,6 +380,10 @@ public class ToolWindowManager {
         toolWindow.lblRollResult.setText(total);
         toolWindow.txtRollOverride.setText(total);
         toolWindow.lblRollType.setText("Damage (" + weaponUsed + ")");
+        
+        rollHistType = "Damage (" + weaponUsed + ")";
+        rollHistNum = roll.res;
+        updateRollHistory();
     }
 
     public void rollGenericRoller() {
@@ -405,6 +422,10 @@ public class ToolWindowManager {
         toolWindow.lblRollResult.setText(total);
         toolWindow.txtRollOverride.setText(total);
         toolWindow.lblRollType.setText(genType);
+        
+        rollHistType = genType;
+        rollHistNum = roll.res;
+        updateRollHistory();
 
     }
 
@@ -425,6 +446,11 @@ public class ToolWindowManager {
             model.addRow(new Object[]{label, res});
 
         }
+    }
+    
+    public void updateRollHistory() {
+        DefaultTableModel model = (DefaultTableModel) toolWindow.tblRollHistory.getModel();
+        model.insertRow(0, new Object[]{rollHistType, rollHistNum} );
     }
 
     public void submitRoll() {
@@ -497,4 +523,74 @@ public class ToolWindowManager {
         toolWindow.txtHeal.setText(null);
         refreshHP();
     }
+
+    public void rollSave() {
+        if (toolWindow.tblRollBreakdown.getColumnModel().getColumnCount() > 0) {
+            toolWindow.tblRollBreakdown.getColumnModel().getColumn(0).setPreferredWidth(120);
+            toolWindow.tblRollBreakdown.getColumnModel().getColumn(1).setPreferredWidth(1);
+            toolWindow.tblRollBreakdown.getColumnModel().getColumn(0).setCellRenderer(new MyCellRenderer());
+            toolWindow.tblRollBreakdown.getColumnModel().getColumn(1).setCellRenderer(new MyCellRenderer());
+        }
+
+        String saveMiscRoll;
+        String total;
+        String label;
+        Integer adv;
+        
+        adv = -1 * (toolWindow.cbAdvantageSave.getSelectedIndex() - 1);
+
+        label = "Miscellaneous";
+
+        saveMiscRoll = toolWindow.txtMiscModSave.getText();
+
+        //Parse input into parts, place into list
+        List<String> rollInputs = roller.parseRolls(saveMiscRoll);
+
+        Roll roll = new Roll();
+
+        roll.addList(label, rollInputs);
+        roll.addRoll("Base Save", "d20", adv, null, null);
+
+        roll.addMod(saveAbil + " Mod", abilMod);
+
+        roll.roll(roller);
+
+        total = String.valueOf(roll.res);
+
+        updateRollComponents(roll);
+
+        //Set display
+        toolWindow.lblRollResult.setText(total);
+        toolWindow.txtRollOverride.setText(total);
+        toolWindow.lblRollType.setText("Save (" + saveAbil + ")");
+    }
+    
+    public void refreshSaveMod() throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
+        abilUsed = toolWindow.cbSave.getSelectedIndex();
+        
+        if (abilUsed == 1) {
+            abilMod = character4.getAbilityMod("STR");
+            saveAbil = "Strength";
+        } else if (abilUsed == 2) {
+            abilMod = character4.getAbilityMod("DEX");
+            saveAbil = "Dexterity";
+        } else if (abilUsed == 3) {
+            abilMod = character4.getAbilityMod("CON");
+            saveAbil = "Constitution";
+        } else if (abilUsed == 4) {
+            abilMod = character4.getAbilityMod("INT");
+            saveAbil = "Intelligence";
+        } else if (abilUsed == 5) {
+            abilMod = character4.getAbilityMod("WIS");
+            saveAbil = "Wisdom";
+        } else if (abilUsed == 6) {
+            abilMod = character4.getAbilityMod("CHA");
+            saveAbil = "Charisma";
+        } else {
+            abilMod = 0;
+            saveAbil = "Not Set";
+        }
+        toolWindow.txtSaveMod.setText(String.valueOf(abilMod));
+    }
+
 }

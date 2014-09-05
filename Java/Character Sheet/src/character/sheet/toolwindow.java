@@ -536,6 +536,11 @@ public class ToolWindow extends javax.swing.JFrame {
         jLabel28.setText("Choose Save");
 
         cbSave.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "- Choose -", "Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma" }));
+        cbSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbSaveActionPerformed(evt);
+            }
+        });
 
         txtSaveMod.setEditable(false);
         txtSaveMod.setText("0");
@@ -545,6 +550,11 @@ public class ToolWindow extends javax.swing.JFrame {
         jLabel30.setText("Advantage");
 
         btnRollSave.setText("Roll");
+        btnRollSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRollSaveActionPerformed(evt);
+            }
+        });
 
         jLabel31.setText("Misc. Mods");
 
@@ -1408,6 +1418,22 @@ public class ToolWindow extends javax.swing.JFrame {
     private void btnHealActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHealActionPerformed
         twmManager.heal();
     }//GEN-LAST:event_btnHealActionPerformed
+
+    private void cbSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSaveActionPerformed
+        try {
+            twmManager.refreshSaveMod();
+        } catch (NoSuchFieldException ex) {
+            Logger.getLogger(ToolWindow.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(ToolWindow.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(ToolWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_cbSaveActionPerformed
+
+    private void btnRollSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRollSaveActionPerformed
+        twmManager.rollSave();
+    }//GEN-LAST:event_btnRollSaveActionPerformed
 
     /**
      * @param args the command line arguments
