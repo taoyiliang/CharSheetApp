@@ -5,6 +5,7 @@
  */
 package character.sheet;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public class ToolWindowManager {
     private Character character4;
     public Roller roller;
     public Integer damageReduction = 0;
-    Integer abilMod = 10;
+    Integer abilMod = 0;
     String saveAbil;
     Integer abilUsed;
     String rollHistType;
@@ -79,32 +80,10 @@ public class ToolWindowManager {
             return this;
         }
     }
-
-    public class MyCellRendererList extends JTextArea implements TableCellRenderer {
-
-        public MyCellRendererList() {
-            setLineWrap(true);
-            setWrapStyleWord(true);
-        }
-
-        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-            setText(String.valueOf(value));
-            setSize(table.getColumnModel().getColumn(column).getWidth(),
-                    getPreferredSize().height);
-            if (table.getRowHeight(row) != getPreferredSize().height) {
-                table.setRowHeight(row, getPreferredSize().height);
-            }
-            this.setFont(f);
-            return this;
-        }
-    }
-
+    
     JTable tblWeapons = new javax.swing.JTable();
 
     public void refreshWeaponList() {
-        List<Weapon> list = new ArrayList<>();
-        list = character4.weapons;
-
         tblWeapons.setModel(new javax.swing.table.DefaultTableModel(
                 new Object[][]{ /*{"Axe of Awesomeness", "Does cool stuff", 1, 4, "Yes"},
                  {null, null, null, null, null}*/},
@@ -199,7 +178,6 @@ public class ToolWindowManager {
         //notPrepared = weapon.notprep;
         weaponUsed = weapon.name;
         weaponInit = weapon.init;
-        System.out.println(rowSelected);
 
         //Parse input into parts, place into list
         List<String> rollInputs = roller.parseRolls(initMiscRoll);
@@ -230,7 +208,7 @@ public class ToolWindowManager {
         toolWindow.lblRollResult.setText(total);
         toolWindow.txtRollOverride.setText(total);
         toolWindow.lblRollType.setText("Initiative (" + weaponUsed + ")");
-        
+
         rollHistType = "Initiative (" + weaponUsed + ")";
         rollHistNum = roll.res;
         updateRollHistory();
@@ -254,6 +232,8 @@ public class ToolWindowManager {
         Integer rowSelected;
         Weapon weapon;
         Weapon wpn;
+        Integer minCrit;
+        Integer crit;
 
         adv = -1 * (toolWindow.cbAdvantageAttack.getSelectedIndex() - 1);
 
@@ -272,6 +252,7 @@ public class ToolWindowManager {
             weapon = character4.weapons.get(rowSelected - 1);
         }
 
+        minCrit = weapon.crit;
         weaponUsed = weapon.name;
         //Parse input into parts, place into list
         List<String> rollInputs = roller.parseRolls(attMiscRoll);
@@ -279,7 +260,7 @@ public class ToolWindowManager {
         Roll roll = new Roll();
 
         roll.addList(label, rollInputs);
-        roll.addRoll("Base Attack", "d20", adv, null, null);
+        roll.addRoll("Base Attack", "d20", adv, Boolean.TRUE, minCrit);
         if (weapon.prof == Boolean.TRUE) {
             roll.addMod("Proficiency", proficiency);
         } else {
@@ -287,15 +268,26 @@ public class ToolWindowManager {
         }
         roll.roll(roller);
 
+        crit = roll.crit;
+
         total = String.valueOf(roll.res);
 
         updateRollComponents(roll);
 
         //Set display
-        toolWindow.lblRollResult.setText(total);
         toolWindow.txtRollOverride.setText(total);
         toolWindow.lblRollType.setText("Attack (" + weaponUsed + ")");
-        
+        if (crit == 1) {
+            toolWindow.lblRollResult.setText(total + "   CRIT!");
+            toolWindow.lblRollResult.setForeground(Color.blue);
+        } else if (crit == -1) {
+            toolWindow.lblRollResult.setText(total + "   FAIL!");
+            toolWindow.lblRollResult.setForeground(Color.red);
+        } else {
+            toolWindow.lblRollResult.setText(total);
+            toolWindow.lblRollResult.setForeground(Color.black);
+        }
+
         rollHistType = "Attack (" + weaponUsed + ")";
         rollHistNum = roll.res;
         updateRollHistory();
@@ -380,7 +372,7 @@ public class ToolWindowManager {
         toolWindow.lblRollResult.setText(total);
         toolWindow.txtRollOverride.setText(total);
         toolWindow.lblRollType.setText("Damage (" + weaponUsed + ")");
-        
+
         rollHistType = "Damage (" + weaponUsed + ")";
         rollHistNum = roll.res;
         updateRollHistory();
@@ -422,7 +414,7 @@ public class ToolWindowManager {
         toolWindow.lblRollResult.setText(total);
         toolWindow.txtRollOverride.setText(total);
         toolWindow.lblRollType.setText(genType);
-        
+
         rollHistType = genType;
         rollHistNum = roll.res;
         updateRollHistory();
@@ -447,10 +439,10 @@ public class ToolWindowManager {
 
         }
     }
-    
+
     public void updateRollHistory() {
         DefaultTableModel model = (DefaultTableModel) toolWindow.tblRollHistory.getModel();
-        model.insertRow(0, new Object[]{rollHistType, rollHistNum} );
+        model.insertRow(0, new Object[]{rollHistType, rollHistNum});
     }
 
     public void submitRoll() {
@@ -536,7 +528,7 @@ public class ToolWindowManager {
         String total;
         String label;
         Integer adv;
-        
+
         adv = -1 * (toolWindow.cbAdvantageSave.getSelectedIndex() - 1);
 
         label = "Miscellaneous";
@@ -563,11 +555,15 @@ public class ToolWindowManager {
         toolWindow.lblRollResult.setText(total);
         toolWindow.txtRollOverride.setText(total);
         toolWindow.lblRollType.setText("Save (" + saveAbil + ")");
+
+        rollHistType = "Save (" + saveAbil + ")";
+        rollHistNum = roll.res;
+        updateRollHistory();
     }
-    
+
     public void refreshSaveMod() throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
         abilUsed = toolWindow.cbSave.getSelectedIndex();
-        
+
         if (abilUsed == 1) {
             abilMod = character4.getAbilityMod("STR");
             saveAbil = "Strength";
