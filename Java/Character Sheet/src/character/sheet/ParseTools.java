@@ -42,11 +42,11 @@ public class ParseTools {
     {
       try {
         String name = field.getName();
+        System.out.print("name: "+name);
         Object value = field.get(item);
+        System.out.println("  val: "+value);
         str+= "  "+name+": "+value.toString()+"\n";
-      } catch (IllegalArgumentException ex) {
-        Logger.getLogger(ParseTools.class.getName()).log(Level.SEVERE, null, ex);
-      } catch (IllegalAccessException ex) {
+      } catch (IllegalArgumentException | IllegalAccessException ex) {
         Logger.getLogger(ParseTools.class.getName()).log(Level.SEVERE, null, ex);
       }
     }

@@ -10,14 +10,11 @@ package character.sheet;
  *
  * @author TaoYiLiang
  */
-public abstract class Subrace extends Race
+public class GenericAttribute extends Attribute
 {
-  private String subrace;
-  public Race race;
-  public Subrace(){}
-  public Subrace(Race race)
-  {
-    this.race = race;
-    this.subrace = null;
-  }
+  public String attribtype = "generic";
+  
+  public void setModifier(Integer mod){}
+  public Integer apply(Integer mod){return mod;}
+  
 }

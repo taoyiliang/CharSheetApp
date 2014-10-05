@@ -21,28 +21,25 @@ import org.w3c.dom.NodeList;
  *
  * @author TaoYiLiang
  */
-public class CClass {
+public abstract class CClass {
   public Integer level;
   public String name, hitdie;
   public List<String> profs  = new ArrayList<>();
   public List<String> skills  = new ArrayList<>();
-  public List<Attribute> attributes  = new ArrayList<>();
+  public List<Effect> effects  = new ArrayList<>();
   public Subclass subclass;
+  
   public CClass(){}
+  
+  public abstract void setSubclass(String str);
   
   public void levelUp()
   {
     Integer lvl = level+1;
-    levelUp(lvl);
+    doLevelUp(lvl);
+    subclass.doLevelUp(lvl);
   }
-  public void levelUp(Integer lvl)
-  {
-    //update class level
-    level+=1;
-    //update attributes
-    for (Attribute attr:attributes){attr.active = attr.level<=lvl;}
-    subclass.levelUp(lvl);
-  }
+  public abstract void doLevelUp(Integer lvl);
     
   public Integer getProficiency(Integer level)
   {
@@ -57,9 +54,9 @@ public class CClass {
     elem.setAttribute("hitdie",String.valueOf(hitdie));
     elem.setAttribute("profs" ,String.valueOf(profs ).substring(1,String.valueOf(profs ).length()-1));
     elem.setAttribute("skills",String.valueOf(skills).substring(1,String.valueOf(skills).length()-1));
-    for (Attribute attribute : attributes) {
-      Element newnode = doc.createElement("attribute");
-      attribute.writeXML(doc, newnode);
+    for (Effect eff : effects) {
+      Element newnode = doc.createElement("effect");
+      eff.writeXML(doc, newnode);
       elem.appendChild(newnode);
     }
     if (subclass!=null)
@@ -90,15 +87,15 @@ public class CClass {
       Node snode = nodeList.item(i);
       switch (snode.getNodeName())
       {
-        case "attribute":
-          Attribute attr = new Attribute();
-          attr.readXML(doc, snode);
-          attributes.add(attr);
+        case "effect":
+          Effect eff = new Effect();
+          eff.readXML(doc, snode);
+          effects.add(eff);
         break;
-        case "subclass":
-          subclass = new Subclass(this);
+        /*case "subclass": //DO THIS in specific classes, not abstract
+          subclass = new Subclass(this);//TODO how to read in subclass?
           subclass.readXML(doc,snode);
-        break;
+        break;*/
       }
     }
   }
@@ -109,9 +106,9 @@ public class CClass {
   {
     String str = "{name="+name+", hitdie="+String.valueOf(hitdie)+", profs="+String.valueOf(profs)
             +", skills="+String.valueOf(skills);
-    for (Attribute attr: attributes)
+    for (Effect eff: effects)
     {
-      str+=", attr["+attr.toString()+"]";
+      str+=", effect["+eff.toString()+"]";
     }
     if (subclass!=null){str+=", subclass: "+subclass.toString();}
     return str+"}";

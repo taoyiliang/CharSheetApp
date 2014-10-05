@@ -10,13 +10,15 @@ package character.sheet;
  *
  * @author TaoYiLiang
  */
-public class Subclass extends CClass
+public abstract class Subclass extends CClass
 {
-  private String subclass;
   public CClass cclass;
+  public Subclass(){}
   public Subclass(CClass cclass)
   {
     this.cclass = cclass;
     this.subclass = null;
   }
+  public void setSubclass(String str){};
+  
 }

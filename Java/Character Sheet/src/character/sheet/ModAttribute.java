@@ -10,14 +10,18 @@ package character.sheet;
  *
  * @author TaoYiLiang
  */
-public abstract class Subrace extends Race
+public class ModAttribute extends Attribute
 {
-  private String subrace;
-  public Race race;
-  public Subrace(){}
-  public Subrace(Race race)
+  protected Integer to_add;
+  public String attribtype = "modifier";
+  
+  public void setModifier(Integer mod)
   {
-    this.race = race;
-    this.subrace = null;
+    to_add=mod;
+  }
+  
+  public Integer apply(Integer mod)
+  {
+    return to_add + mod;
   }
 }
