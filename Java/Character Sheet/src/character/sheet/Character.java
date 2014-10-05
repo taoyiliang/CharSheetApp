@@ -6,7 +6,7 @@
 
 package character.sheet;
 
-import com.google.common.collect.Iterables;
+//import com.google.common.collect.Iterables;
 import java.io.File;
 import java.io.IOException;
 import static java.lang.Math.ceil;
@@ -111,10 +111,10 @@ public class Character
     public Double getCarrying()
     {
       Double tot=0.;
-      for (Item item:Iterables.unmodifiableIterable(Iterables.concat(equipment,weapons,armor)))
+      /*for (Item item:Iterables.unmodifiableIterable(Iterables.concat(equipment,weapons,armor)))
       {
         tot+=item.weight;
-      }
+      }*/
       return tot;
     }
     
@@ -154,7 +154,8 @@ public class Character
       List<Attribute> applies = getApplicableAttributes(ablName);
       tot=applyAttributes(applies,tot);
       //calcualte mod
-      return (int) floor((tot-10.)/2.);      
+      return Integer.valueOf((int) floor((tot-10.)/2.));
+      //return (int) floor((tot-10.)/2.);
     }
     
     public Integer getSavingMod(String ablName) throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException

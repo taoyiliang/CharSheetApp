@@ -41,6 +41,8 @@ public class CharacterSheet {
         bob.readXML(charfile);
         System.out.println(parser.classToString(bob));
 
+        System.out.println(String.valueOf(bob.getAbilityMod("STR")));
+        //System.out.println(String.valueOf(Integer.valueOf(2)));
         //Create charsheet, charsheet manager, and toolwindow manager
         final Charsheet charsheet = new Charsheet();
         CharSheetManager manager = new CharSheetManager();

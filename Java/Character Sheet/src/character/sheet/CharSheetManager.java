@@ -62,7 +62,7 @@ public class CharSheetManager {
     public void refreshCharacteristics() {
         charsheet.lblRace.setText(character.race.name);
         charsheet.lblClass.setText(character.cclass.name);
-        charsheet.lbl2ndClass.setText(character.cclass.subclass.name);
+        charsheet.lbl2ndClass.setText("Punkster"/*character.cclass.subclass.name*/);
         charsheet.lblHeight.setText(String.valueOf(character.height));
         charsheet.lblWeight.setText(String.valueOf(character.weight));
         charsheet.lblSize.setText(character.race.size);
@@ -97,9 +97,9 @@ public class CharSheetManager {
     }
 
     public void refreshExperience() {
-        charsheet.lblExpLevel.setText(String.valueOf(character.level));
+        charsheet.lblExpLevel.setText(String.valueOf(character.getLevel()));
         charsheet.lblCurrentXP.setText(String.valueOf(character.curxp));
-        charsheet.lblNextLvlXP.setText(String.valueOf(character.nextxp));
+        charsheet.lblNextLvlXP.setText(String.valueOf(character.getNextLevelXP()));
     }
 
     public void refreshMoney() {
@@ -116,16 +116,16 @@ public class CharSheetManager {
     }
 
     public void refreshCarriedWeight() {
-        charsheet.lblCarriedWeightVal.setText(String.valueOf(character.carrying));
-        charsheet.lblWeightCapacityVal.setText(String.valueOf(character.capacity));
+        charsheet.lblCarriedWeightVal.setText(String.valueOf(character.getCarrying()));
+        charsheet.lblWeightCapacityVal.setText(String.valueOf(character.getCarryCapacity()));
     }
 
     public void refreshSpeed() {
-        charsheet.lblSpeedVal.setText(String.valueOf(character.speed));
+        charsheet.lblSpeedVal.setText(String.valueOf(character.getSpeed()));
     }
 
     public void refreshDTH() {
-        charsheet.lblDifficultyToHitVal.setText(String.valueOf(character.DTH));
+        charsheet.lblDifficultyToHitVal.setText(String.valueOf(character.getAC()));
     }
 
     public void refreshSpecialVision() {
@@ -223,12 +223,12 @@ public class CharSheetManager {
 
     public void addItemsToEquipment(Weapon newItem) {
         DefaultTableModel model = (DefaultTableModel) tblEquip.getModel();
-        model.addRow(new Object[]{newItem.name, newItem.desc, newItem.quantity, newItem.weight, newItem.worn});
+        model.addRow(new Object[]{newItem.name, newItem.desc, newItem.quantity, newItem.weight, newItem.equipped});
     }
 
     public void addItemsToEquipment(Armor newItem) {
         DefaultTableModel model = (DefaultTableModel) tblEquip.getModel();
-        model.addRow(new Object[]{newItem.name, newItem.desc, newItem.quantity, newItem.weight, newItem.worn});
+        model.addRow(new Object[]{newItem.name, newItem.desc, newItem.quantity, newItem.weight, newItem.equipped});
     }
 
     //Create Cell renderer for word wrapping
@@ -267,7 +267,7 @@ public class CharSheetManager {
 
     public void refreshFeatsTab() {
         //Feats list
-        Integer featSize = character.cclass.attributes.size() /*+ character.cclass.subclass.attributes.size()*/;
+        Integer featSize = character.cclass.effects.size() /*+ character.cclass.subclass.attributes.size()*/;
 
         charsheet.sbFeats.setViewportView(charsheet.pnlFeats);
 
@@ -334,7 +334,7 @@ public class CharSheetManager {
 
         //Insert data into Feats table
         for (int i = 0; i < featSize; i++) {
-            for (Attribute newFeat : character.feats) {
+            for (Effect newFeat : character.feats) {
                 addFeatToFeats(newFeat);
             }
         }
@@ -402,16 +402,16 @@ public class CharSheetManager {
         );
 
         //Insert Data into Race Features table
-        Integer raceFeatureSize = character.race.attributes.size();
-        Integer subraceFeatureSize = character.race.subrace.attributes.size();
+        Integer raceFeatureSize = character.race.effects.size();
+        Integer subraceFeatureSize = character.race.subrace.effects.size();
 
         for (int i = 0; i < raceFeatureSize; i++) {
-            for (Attribute newFeature : character.race.attributes) {
+            for (Effect newFeature : character.race.effects) {
                 addRaceFeatureToFeatures(newFeature);
             }
         }
         for (int i = 0; i < subraceFeatureSize; i++) {
-            for (Attribute newFeature : character.race.subrace.attributes) {
+            for (Effect newFeature : character.race.subrace.effects) {
                 addRaceFeatureToFeatures(newFeature);
             }
         }
@@ -425,16 +425,20 @@ public class CharSheetManager {
 
     }
 
-    public void addFeatToFeats(Attribute newFeat) {
+    public void addFeatToFeats(Effect newFeat) {
         tblFeats.getModel();
         DefaultTableModel model = (DefaultTableModel) tblFeats.getModel();
-        model.addRow(new Object[]{newFeat.name, newFeat.level, newFeat.details});
+        for (Attribute attrib : newFeat.attributes) {
+        model.addRow(new Object[]{attrib.name, attrib.source, attrib.details});
+        }
     }
 
-    public void addRaceFeatureToFeatures(Attribute newFeature) {
+    public void addRaceFeatureToFeatures(Effect newFeature) {
         tblRaceFeatures.getModel();
         DefaultTableModel model = (DefaultTableModel) tblRaceFeatures.getModel();
-        model.addRow(new Object[]{newFeature.name, newFeature.details});
+        for (Attribute attrib : newFeature.attributes) {
+        model.addRow(new Object[]{attrib.name, attrib.details});
+        }
     }
 
     //------------Skills Tab----------
