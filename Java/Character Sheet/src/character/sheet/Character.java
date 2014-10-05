@@ -148,8 +148,16 @@ public class Character
     public Integer getAbilityMod(String ablName) throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException
     {
       //get base ability
-      Field ablf = this.getClass().getDeclaredField(ablName);
-      Integer tot=ablf.getInt(this);
+      Integer tot=0;
+      switch (ablName)
+      {
+        case "STR":tot=STR;break;
+        case "DEX":tot=DEX;break;
+        case "CON":tot=CON;break;
+        case "INT":tot=INT;break;
+        case "WIS":tot=WIS;break;
+        case "CHA":tot=CHA;break;
+      }
       //look for attributes that might modify it
       List<Attribute> applies = getApplicableAttributes(ablName);
       tot=applyAttributes(applies,tot);
