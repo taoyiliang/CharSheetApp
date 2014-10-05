@@ -42,7 +42,7 @@ public class CharacterSheet {
         System.out.println(parser.classToString(bob));
 
         //Create charsheet, charsheet manager, and toolwindow manager
-        Charsheet charsheet = new Charsheet();
+        final Charsheet charsheet = new Charsheet();
         CharSheetManager manager = new CharSheetManager();
         //ToolWindow toolwindow = new ToolWindow();
         //ToolWindowManager toolmanager = new ToolWindowManager();

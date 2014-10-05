@@ -1,16 +1,17 @@
 Character Sheet
 	- Add table pulling Class Attributes to Class tab
 	- Pull Spells into Spellbook tab table
-
-	- Discuss how to do Effects tabs
+	- Add place for TempHP
+	- Discuss how to do Effects tabs (also a button to delete the desired effect row, maybe number effect rows)
 
 
 Tools Window
 	- Add functionality for Roll History
 	Adventure Tab
 		- Add functionality for Rollers (Init, Attack, Damage, Generic)
-		
+		- Add place for TempHP, clear TempHP button
 		- Add UI and functionality for Weapon selector
 		- Add functionality for Init Tracker
 		- Add functionality for HP Tracker
 		- Add functionality for Notes
+	
