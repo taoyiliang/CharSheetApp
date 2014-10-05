@@ -22,22 +22,21 @@ import org.w3c.dom.NodeList;
 public class Item {
     public String name,desc;
     public double weight;
-    public List<Attribute> attributes = new ArrayList<>();
-    public Boolean worn = false;
+    public Boolean equipped = false;
     public Integer quantity = 1;
+    public Effect effect = new Effect();
     public Item(){}
     
     public void writeXML(Document doc,Element elem)
     {
-        elem.setAttribute("name"  ,               name   );
-        elem.setAttribute("desc"  ,               desc   );
-        elem.setAttribute("weight",String.valueOf(weight));
-      for (Attribute attribute : attributes) 
-      {
-        Element newnode = doc.createElement("attribute");
-        attribute.writeXML(doc, newnode);
+        elem.setAttribute("name"    ,               name     );
+        elem.setAttribute("desc"    ,               desc     );
+        elem.setAttribute("weight"  ,String.valueOf(weight  ));
+        elem.setAttribute("equipped",String.valueOf(equipped));
+        
+        Element newnode = doc.createElement("effect");
+        effect.writeXML(doc, newnode);
         elem.appendChild(newnode);
-      }
     }
     public void readXML(Document doc,Node node)
     {
@@ -45,9 +44,10 @@ public class Item {
       for (int i=0;i<nodeMap.getLength();i++)
       {
         switch (nodeMap.item(i).getNodeName()){
-              case "name"       :name   =                nodeMap.item(i).getTextContent() ;break;
-              case "description":desc   =                nodeMap.item(i).getTextContent() ;break;
-              case "weight"     :weight = Double.valueOf(nodeMap.item(i).getTextContent());break;
+              case "name"       :name    =                nodeMap.item(i).getTextContent() ;break;
+              case "description":desc    =                nodeMap.item(i).getTextContent() ;break;
+              case "weight"     :weight  = Double.valueOf(nodeMap.item(i).getTextContent());break;
+              case "equipped"   :equipped=Boolean.valueOf(nodeMap.item(i).getTextContent());break;
         }
       }
       NodeList nodeList = node.getChildNodes();
@@ -56,10 +56,10 @@ public class Item {
         Node snode = nodeList.item(i);
         switch (snode.getNodeName())
         {
-         case "attribute":
-            Attribute attr = new Attribute();
-            attr.readXML(doc, snode);
-            attributes.add(attr);
+         case "effect":
+            Effect eff = new Effect();
+            eff.readXML(doc, snode);
+            effect = eff;
           break;
         }
       }
@@ -69,10 +69,7 @@ public class Item {
     public String toString()
     {
       String str = "{name="+name+", weight="+String.valueOf(weight)+", description="+desc;
-      for (Attribute attr: attributes)
-      {
-        str+=", attr["+attr.toString()+"]";
-      }
+      str+=", effect["+effect.toString()+"]";
       return str+"}";
     }
 }

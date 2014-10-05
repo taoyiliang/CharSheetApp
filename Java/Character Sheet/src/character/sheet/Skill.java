@@ -10,12 +10,14 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 /**
  *
  * @author PaulTalbot
  */
-public class Skill {
+public class Skill 
+{
     public String name;
     public Boolean trained;
     public Boolean master;
@@ -34,17 +36,18 @@ public class Skill {
     }
     public void readXML(Document doc,Node node)
     {
-        NamedNodeMap nodeMap = node.getAttributes();
-        for (int i=0;i<nodeMap.getLength();i++)
+      NamedNodeMap nodeMap = node.getAttributes();
+      for (int i=0;i<nodeMap.getLength();i++)
+      {
+        if (null != nodeMap.item(i).getNodeName())switch (nodeMap.item(i).getNodeName()) 
         {
-          if      (null != nodeMap.item(i).getNodeName())switch (nodeMap.item(i).getNodeName()) {
-            case "name"   :name   =                nodeMap.item(i).getTextContent() ;break;
-            case "trained":trained=Boolean.valueOf(nodeMap.item(i).getTextContent());break;
-            case "master" :master =Boolean.valueOf(nodeMap.item(i).getTextContent());break;
-            case "expert" :expert =Integer.valueOf(nodeMap.item(i).getTextContent());break;
-            case "ability":ability=                nodeMap.item(i).getTextContent() ;break;
-            }
+          case "name"   :name   =                nodeMap.item(i).getTextContent() ;break;
+          case "trained":trained=Boolean.valueOf(nodeMap.item(i).getTextContent());break;
+          case "master" :master =Boolean.valueOf(nodeMap.item(i).getTextContent());break;
+          case "expert" :expert =Integer.valueOf(nodeMap.item(i).getTextContent());break;
+          case "ability":ability=                nodeMap.item(i).getTextContent() ;break;
         }
+      }
     }
     
     @Override

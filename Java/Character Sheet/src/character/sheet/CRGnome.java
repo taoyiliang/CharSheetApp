@@ -10,14 +10,6 @@ package character.sheet;
  *
  * @author TaoYiLiang
  */
-public abstract class Subrace extends Race
-{
-  private String subrace;
-  public Race race;
-  public Subrace(){}
-  public Subrace(Race race)
-  {
-    this.race = race;
-    this.subrace = null;
-  }
+public class CRGnome extends Race{
+  
 }

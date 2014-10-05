@@ -10,14 +10,12 @@ package character.sheet;
  *
  * @author TaoYiLiang
  */
-public abstract class Subrace extends Race
-{
-  private String subrace;
-  public Race race;
-  public Subrace(){}
-  public Subrace(Race race)
+public abstract class LimitAttribute extends Attribute{
+  protected Integer limit;
+  public String attribtype = "upper limit";
+  
+  public void setModifier(Integer mod)
   {
-    this.race = race;
-    this.subrace = null;
+    limit=mod;
   }
 }

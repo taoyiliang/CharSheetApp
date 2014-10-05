@@ -17,10 +17,10 @@ import org.w3c.dom.NodeList;
  *
  * @author TaoYiLiang
  */
-public class Race {
+public abstract class Race {
   public String name,size;
   public Integer speed;
-  public List<Attribute> attributes  = new ArrayList<>();
+  public List<Effect> effects  = new ArrayList<>();
   public Subrace subrace;
   
   public Race(){}
@@ -30,9 +30,9 @@ public class Race {
     elem.setAttribute("name"  ,               name   );
     elem.setAttribute("size"  ,               size   );
     elem.setAttribute("speed" ,String.valueOf(speed ));
-    for (Attribute attribute : attributes) {
+    for (Effect eff : effects) {
       Element newnode = doc.createElement("attribute");
-      attribute.writeXML(doc, newnode);
+      eff.writeXML(doc, newnode);
       elem.appendChild(newnode);
     }
     if (subrace!=null)
@@ -61,15 +61,15 @@ public class Race {
       Node snode = nodeList.item(i);
       switch (snode.getNodeName())
       {
-        case "attribute":
-          Attribute attr = new Attribute();
-          attr.readXML(doc, snode);
-          attributes.add(attr);
+        case "effect":
+          Effect eff = new Effect();
+          eff.readXML(doc, snode);
+          effects.add(eff);
         break;
-        case "subrace":
-          subrace = new Subrace(this);
-          subrace.readXML(doc,snode);
-        break;
+        //case "subrace": //TODO do in individual races
+        //  subrace = new Subrace(this);
+        //  subrace.readXML(doc,snode);
+        //break;
       }
     }
   }
@@ -79,9 +79,9 @@ public class Race {
   public String toString()
   {
     String str = "{name="+name+", size="+size+", speed="+String.valueOf(speed);
-    for (Attribute attr: attributes)
+    for (Effect eff: effects)
     {
-      str+=", attr["+attr.toString()+"]";
+      str+=", effect["+eff.toString()+"]";
     }
     if (subrace!=null){str+=", subrace: "+subrace.toString();}
     return str+"}";

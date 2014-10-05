@@ -6,6 +6,7 @@
 
 package character.sheet;
 
+import com.google.common.collect.Iterables;
 import java.io.File;
 import java.io.IOException;
 import static java.lang.Math.ceil;
@@ -41,10 +42,11 @@ import org.w3c.dom.NodeList;
 public class Character
 {
     public String name,gender,player,deity,hair,eyes;
-    public double height,weight,carrying,capacity,speed;
-    public int age,level,curxp,nextxp,init,pp,gp,sp,curhp,maxhp,DTH;
-    public int STR,DEX,CON,INT,WIS,CHA,strmod,dexmod,conmod,intmod,wismod,chamod;
-    public int lawful,good;
+    public Double height,weight;
+    public Integer age,curxp,pp,gp,sp,curhp,temphp;
+    public Integer maxhp;
+    public Integer STR,DEX,CON,INT,WIS,CHA;
+    public Integer lawful,good;
     
     public List<String> special_names   = new ArrayList<>();
     public List<Integer> special_values = new ArrayList<>();
@@ -58,26 +60,228 @@ public class Character
     public HashMap<String,Integer> resistance = new HashMap<>();
 
     public List<Skill>     skills     = new ArrayList<>();
-    public List<Attribute> attributes = new ArrayList<>();
-    public List<Attribute> feats      = new ArrayList<>();
+    public List<Effect>    effects    = new ArrayList<>();
+    public List<Effect>    feats      = new ArrayList<>();
     public List<Item>      equipment  = new ArrayList<>();
     public List<Weapon>    weapons    = new ArrayList<>();
-    public List<Armor>     armor    = new ArrayList<>();
+    public List<Armor>     armor      = new ArrayList<>();
     
-    public CClass cclass = new CClass();
-    public Race   race   = new Race();
+    public CClass cclass;
+    public Race   race;
     public Spellbook spellbook = new Spellbook();
     public Spellbook dailyspells = new Spellbook();
 
     public List<Roll> rollhist     = new ArrayList<>();
     
-    public Character(String playername){player=playername;}
-    public void addXp(int xp){curxp+=xp;}
- 
+    public Character(String playername)
+    {
+      player=playername;
+      resistance.put("acid"     ,0);
+      resistance.put("bludgeon" ,0);
+      resistance.put("cold"     ,0);
+      resistance.put("fire"     ,0);
+      resistance.put("force"    ,0);
+      resistance.put("lightning",0);
+      resistance.put("necrotic" ,0);
+      resistance.put("piercing" ,0);
+      resistance.put("poison"   ,0);
+      resistance.put("psychic"  ,0);
+      resistance.put("radiant"  ,0);
+      resistance.put("slashing" ,0);
+      resistance.put("thunder"  ,0);
+    }
+    
+    ////////////////////////////////////////////////////////////////
+    //                   GETTERS                                  //
+    ////////////////////////////////////////////////////////////////
+    public Double getCarryCapacity()
+    {
+      Double tot = 0.;
+      switch(race.size)
+      {
+        case "tiny" :tot*=0.5 ;break;
+        case "small":tot*=0.75;break;
+        case "large":tot*=1.25;break;
+        case "huge" :tot*=1.5 ;break;
+        case "gargantuan":tot*=2.0;break;
+      }
+      return tot;
+    }
+    
+    public Double getCarrying()
+    {
+      Double tot=0.;
+      for (Item item:Iterables.unmodifiableIterable(Iterables.concat(equipment,weapons,armor)))
+      {
+        tot+=item.weight;
+      }
+      return tot;
+    }
+    
+    public Integer getSpeed()
+    {
+      Integer tot=race.speed;
+      List<Attribute> applies = getApplicableAttributes("speed");
+      tot=applyAttributes(applies,tot);
+      return tot;
+    }
+    
+    public Integer getLevel()
+    {
+      Integer tot = cclass.level;
+      return tot; //TODO multiclassing!
+    }
+    
+    public Integer getNextLevelXP()
+    {
+      return 0; //TODO FIXME
+    }
+    
+    public Integer getInit() throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException
+    {
+      Integer tot = getAbilityMod("DEX");
+      List<Attribute> applies = getApplicableAttributes("init");
+      tot=applyAttributes(applies,tot);
+      return tot;
+    }
+    
+    public Integer getAbilityMod(String ablName) throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException
+    {
+      //get base ability
+      Field ablf = this.getClass().getDeclaredField(ablName);
+      Integer tot=ablf.getInt(this);
+      //look for attributes that might modify it
+      List<Attribute> applies = getApplicableAttributes(ablName);
+      tot=applyAttributes(applies,tot);
+      //calcualte mod
+      return (int) floor((tot-10.)/2.);      
+    }
+    
+    public Integer getSavingMod(String ablName) throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException
+    {
+      //get base ability
+      Integer tot = getAbilityMod(ablName);
+      //look for attributes that might modify it
+      List<Attribute> applies = getApplicableAttributes(ablName+"save");
+      tot=applyAttributes(applies,tot);
+      return tot;
+    }
+    
+    public Integer getSkillMod(Skill skill) throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException
+    {
+      //get basic stat
+      Integer i = skills.indexOf(skill);
+      Integer tot=0;
+      if (skills.get(i).trained)
+      {
+        tot+=proficiency();
+        if (skills.get(i).master){tot+=proficiency();}
+      }
+      tot+=skills.get(i).expert;
+      tot+=getAbilityMod(skills.get(i).ability);
+      //get attribute mods
+      List<Attribute> applies = getApplicableAttributes(skill.name);
+      tot=applyAttributes(applies,tot);
+      return tot;
+    }
+    
+    public Integer getResistance(String res)
+    {
+      Integer tot = resistance.get(res);
+      List<Attribute> applies = getApplicableAttributes(res);
+      tot=applyAttributes(applies,tot);
+      return tot;
+    }
+    
+    public Integer getTotalHP()
+    {
+      Integer tot = maxhp;
+      List<Attribute> applies = getApplicableAttributes("maxhp");
+      tot=applyAttributes(applies,tot);       
+      return tot;
+    }
+    
+    public Integer getAC()
+    {
+      Integer tot = 10;
+      List<Attribute> applies = getApplicableAttributes("maxhp");
+      tot=applyAttributes(applies,tot);
+      return tot;
+    }
+    
+    public Integer proficiency()
+    {
+      Integer prof;
+      Integer lvl = getLevel();
+      if      (lvl <= 4 ){prof=2;}
+      else if (lvl <= 8 ){prof=3;}
+      else if (lvl <= 12){prof=4;}
+      else if (lvl <= 16){prof=5;}
+      else                 {prof=6;}
+      List<Attribute> applies = getApplicableAttributes("prof");
+      prof=applyAttributes(applies,prof);
+      return prof;
+      // TODOD someday...return cclass.getProficiency(level);
+    }
+    
     public Double totalCurrency()
     {
       return 100*pp+gp+sp/100.;
     }
+
+    ////////////////////////////////////////////////////////////////
+    //                   UTILITY                                  //
+    ////////////////////////////////////////////////////////////////
+    public List<Item> getAllEquipped()
+    {
+      List<Item> equip = new ArrayList<>();
+      for (Item item:equipment)
+      {
+        if (item.equipped){equip.add(item);}
+      }
+      for (Item item:weapons)
+      {
+        if (item.equipped){equip.add(item);}
+      }
+      for (Item item:armor)
+      {
+        if (item.equipped){equip.add(item);}
+      }
+      return equip;
+    }
+    
+    public List<Attribute> getApplicableAttributes(String needapply)
+    {
+      List<Attribute> applicable = new ArrayList<>();
+      //temporary/status effects
+      for (Effect eff:effects)
+      {
+        for (Attribute attrib:eff.attributes){if (attrib.appliesTo(needapply) && attrib.active){applicable.add(attrib);}}
+      }
+      //equipment
+      for (Item item: getAllEquipped())
+      {
+        for (Attribute attrib:item.effect.attributes){if (attrib.appliesTo(needapply) && attrib.active){applicable.add(attrib);}}
+      }
+      //race, class
+      for (Effect eff:race.effects)
+      {
+        for (Attribute attrib:eff.attributes){if (attrib.appliesTo(needapply) && attrib.active){applicable.add(attrib);}}
+      }
+      for (Effect eff:cclass.effects)
+      {
+        for (Attribute attrib:eff.attributes){if (attrib.appliesTo(needapply) && attrib.active){applicable.add(attrib);}}
+      }
+      return applicable;
+    }
+     
+    public Integer applyAttributes(List<Attribute> attribs,Integer mod)
+    {
+      for (Attribute attrib:attribs){mod=attrib.apply(mod);}
+      return mod;
+    }
+    
+    public void addXp(int xp){curxp+=xp;}
     
     public void addToHistory(Roll roll)
     {
@@ -88,52 +292,7 @@ public class Character
       }
     }
     
-    public Integer getAbilityMod(String ablName) throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException
-    {
-      Field ablf = this.getClass().getDeclaredField(ablName);
-      Integer abl=0;
-      abl = ablf.getInt(this);
-      //Integer abl = Integer.valueOf(ablf.toString());
-      return (int) floor((abl-10.)/2.);
-      //if (abl-10>0){return (int) floor((abl-10.)/2.);}
-      //else {return (int) ceil((abl-10)/2);}
-    }
-    
-    public Integer getSkillMod(Skill skill) throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException
-    {
-      Integer i = skills.indexOf(skill);
-      return skillmod(i);
-    }
-    
-    public Integer skillmod(Integer i) throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException
-    {
-      Integer tot=0;
-      if (skills.get(i).trained)
-      {
-        tot+=proficiency();
-        if (skills.get(i).master)
-        {
-          tot+=proficiency();
-        }
-      }
-      tot+=skills.get(i).expert;
-      tot+=getAbilityMod(skills.get(i).ability);
-      return tot;
-    }
-    
-    public Integer proficiency()
-    {
-      Integer prof;
-      if      (level <= 4 ){prof=2;}
-      else if (level <= 8 ){prof=3;}
-      else if (level <= 12){prof=4;}
-      else if (level <= 16){prof=5;}
-      else                 {prof=6;}
-      return prof;
-      // TODOD someday...return cclass.getProficiency(level);
-    }
-    
-    //Lawful and good parses
+    //Lawful and good parses////////////////////////////////////////////
     public String lawfulParse() {
         String strLawful = "";
         if (lawful > 66) {
@@ -157,6 +316,7 @@ public class Character
         return strGood;
     }
     
+    // XML /////////////////////////////////////////////////////////////
     public void readXML(File file)
     {
       try{
@@ -167,6 +327,9 @@ public class Character
       Node charnode = doc.getChildNodes().item(0);
       NodeList nodeList = charnode.getChildNodes();
       NamedNodeMap attrList = charnode.getAttributes();
+      
+      ClassFactory classfactory = new ClassFactory();
+      RaceFactory racefactory = new RaceFactory();
       
       for (int i=0;i<attrList.getLength();i++)
       {
@@ -184,12 +347,13 @@ public class Character
               case "lawful":lawful = Integer.valueOf(attr.getTextContent());break;
               case "good"  :good   = Integer.valueOf(attr.getTextContent());break;
               
-              case "pp"    :pp   =Integer.valueOf(attr.getTextContent());break;
-              case "gp"    :gp   =Integer.valueOf(attr.getTextContent());break;
-              case "sp"    :sp   =Integer.valueOf(attr.getTextContent());break;
-              case "xp"    :curxp=Integer.valueOf(attr.getTextContent());break;
-              case "hp"    :curhp=Integer.valueOf(attr.getTextContent());break;
-              case "maxhp" :maxhp=Integer.valueOf(attr.getTextContent());break;
+              case "pp"    :pp    =Integer.valueOf(attr.getTextContent());break;
+              case "gp"    :gp    =Integer.valueOf(attr.getTextContent());break;
+              case "sp"    :sp    =Integer.valueOf(attr.getTextContent());break;
+              case "xp"    :curxp =Integer.valueOf(attr.getTextContent());break;
+              case "hp"    :curhp =Integer.valueOf(attr.getTextContent());break;
+              case "temphp":temphp=Integer.valueOf(attr.getTextContent());break;
+              case "maxhp" :maxhp =Integer.valueOf(attr.getTextContent());break;
                   
               case "special_names": special_names = Arrays.asList(attr.getTextContent().split(","));break;
               case "special_values":
@@ -223,13 +387,13 @@ public class Character
             skill.readXML(doc, node);
             skills.add(skill);
             break;
-          case "attribute":
-            Attribute attr = new Attribute();
-            attr.readXML(doc, node);
-            attributes.add(attr);
+          case "effect":
+            Effect effect = new Effect();
+            effect.readXML(doc, node);
+            effects.add(effect);
             break;
          case "feat":
-            Attribute feat = new Attribute();
+            Effect feat = new Effect();
             feat.readXML(doc, node);
             feats.add(feat);
             break;
@@ -248,13 +412,13 @@ public class Character
             newarmor.readXML(doc,node);
             armor.add(newarmor);
             break;
-          case "cclass":
-            CClass newclass = new CClass();
+          case "cclass": //need a classmaking factory for this
+            CClass newclass = classfactory.XMLnewClass(doc,node);
             newclass.readXML(doc,node);
             cclass= newclass;
             break;
           case "race":
-            Race newrace = new Race();
+            Race newrace = racefactory.XMLnewRace(doc,node);
             newrace.readXML(doc,node);
             race= newrace;
             break;
@@ -295,12 +459,13 @@ public class Character
       attr = doc.createAttribute("lawful");attr.setValue(String.valueOf(lawful));character.setAttributeNode(attr);
       attr = doc.createAttribute("good"  );attr.setValue(String.valueOf(good  ));character.setAttributeNode(attr);
            
-      attr = doc.createAttribute("gp"   );attr.setValue(String.valueOf(gp   ));character.setAttributeNode(attr);
-      attr = doc.createAttribute("sp"   );attr.setValue(String.valueOf(sp   ));character.setAttributeNode(attr);
-      attr = doc.createAttribute("pp"   );attr.setValue(String.valueOf(pp   ));character.setAttributeNode(attr);
-      attr = doc.createAttribute("curxp");attr.setValue(String.valueOf(curxp));character.setAttributeNode(attr);
-      attr = doc.createAttribute("curhp");attr.setValue(String.valueOf(curhp));character.setAttributeNode(attr);
-      attr = doc.createAttribute("maxhp");attr.setValue(String.valueOf(maxhp));character.setAttributeNode(attr);
+      attr = doc.createAttribute("gp"   ) ;attr.setValue(String.valueOf(gp   )) ;character.setAttributeNode(attr);
+      attr = doc.createAttribute("sp"   ) ;attr.setValue(String.valueOf(sp   )) ;character.setAttributeNode(attr);
+      attr = doc.createAttribute("pp"   ) ;attr.setValue(String.valueOf(pp   )) ;character.setAttributeNode(attr);
+      attr = doc.createAttribute("curxp") ;attr.setValue(String.valueOf(curxp)) ;character.setAttributeNode(attr);
+      attr = doc.createAttribute("curhp") ;attr.setValue(String.valueOf(curhp)) ;character.setAttributeNode(attr);
+      attr = doc.createAttribute("temphp");attr.setValue(String.valueOf(temphp));character.setAttributeNode(attr);
+      attr = doc.createAttribute("maxhp") ;attr.setValue(String.valueOf(maxhp)) ;character.setAttributeNode(attr);
            
       attr = doc.createAttribute("special_names" );attr.setValue(String.valueOf(special_names ));character.setAttributeNode(attr);
       attr = doc.createAttribute("special_values");attr.setValue(String.valueOf(special_values));character.setAttributeNode(attr);
@@ -327,16 +492,16 @@ public class Character
         skill.writeXML(doc, newnode);
         character.appendChild(newnode);
       }
-      for (Attribute atrib:attributes)
+      for (Effect eff:effects)
       {
-        Element newnode = doc.createElement("attribute");
-        atrib.writeXML(doc, newnode);
+        Element newnode = doc.createElement("effect");
+        eff.writeXML(doc, newnode);
         character.appendChild(newnode);
       }
-      for (Attribute atrib:feats)
+      for (Effect eff:feats)
       {
         Element newnode = doc.createElement("feat");
-        atrib.writeXML(doc, newnode);
+        eff.writeXML(doc, newnode);
         character.appendChild(newnode);
       }
       for (Item item:equipment)

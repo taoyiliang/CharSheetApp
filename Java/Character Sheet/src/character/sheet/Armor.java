@@ -23,6 +23,7 @@ import org.w3c.dom.NodeList;
 public class Armor extends Item{
   public String type,size;
   public Integer maxdex,durability;
+  public Integer AC=0;
   public HashMap<String,Integer> resistance = new HashMap<>();
   public Armor()
   {
@@ -52,7 +53,6 @@ public class Armor extends Item{
     elem.setAttribute("resistance",String.valueOf(resistance));
   }
   
-  //TODO this isn't working yet.  Resists aren't reading in, and super isn't reading in.
   @Override
   public void readXML(Document doc,Node node)
   {

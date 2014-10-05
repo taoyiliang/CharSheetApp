@@ -10,28 +10,28 @@ package character.sheet;
  *
  * @author TaoYiLiang
  */
-public class CCBarbarian extends CClass
-{
-  public CCBarbarian(){}
+public class CCMonk extends CClass{
+  public CCMonk(){}
   
   @Override
   public void setSubclass(String str)
   {
     switch (str)
     {
-      case "Berserker"   :subclass = new SCCBerserker()   ;break;
-      case "TotemWarrior":subclass = new SCCTotemWarrior();break;
+      case "OpenHand"    :subclass = new SCCOpenHand()    ;break;
+      case "Shadow"      :subclass = new SCCShadow()      ;break;
+      case "FourElements":subclass = new SCCFourElements();break;
     }
   }
   
-  @Override
   public void doLevelUp(Integer lvl)
   {
     //TODO
   }
 }
 
-class SCCBerserker extends Subclass
+
+class SCCOpenHand extends Subclass
 {
   @Override
   public void doLevelUp(Integer lvl)
@@ -40,7 +40,16 @@ class SCCBerserker extends Subclass
   }
 }
 
-class SCCTotemWarrior extends Subclass
+class SCCShadow extends Subclass
+{
+  @Override
+  public void doLevelUp(Integer lvl)
+  {
+    //todo
+  }
+}
+
+class SCCFourElements extends Subclass
 {
   @Override
   public void doLevelUp(Integer lvl)

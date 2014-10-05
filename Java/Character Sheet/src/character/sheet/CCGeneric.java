@@ -10,37 +10,26 @@ package character.sheet;
  *
  * @author TaoYiLiang
  */
-public class CCBarbarian extends CClass
-{
-  public CCBarbarian(){}
+public class CCGeneric extends CClass{
+  public CCGeneric(){}
   
   @Override
   public void setSubclass(String str)
   {
     switch (str)
     {
-      case "Berserker"   :subclass = new SCCBerserker()   ;break;
-      case "TotemWarrior":subclass = new SCCTotemWarrior();break;
+      case "Generic":subclass = new SCCGeneric();break;
     }
   }
   
-  @Override
   public void doLevelUp(Integer lvl)
   {
     //TODO
   }
 }
 
-class SCCBerserker extends Subclass
-{
-  @Override
-  public void doLevelUp(Integer lvl)
-  {
-    //todo
-  }
-}
 
-class SCCTotemWarrior extends Subclass
+class SCCGeneric extends Subclass
 {
   @Override
   public void doLevelUp(Integer lvl)

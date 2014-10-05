@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<character CHA="13" CON="11" DEX="10" INT="9" STR="12" WIS="14" age="42" bonds="" temphp="0" curhp="50" curxp="199" deity="Ao" eyes="Brown" flaws="single ,,  white ,,  male" gender="Male" good="45" gp="10" hair="Black" height="6.1" ideals="Don't like getting pushed. ,,  Slippery when wet." languages="Mongolian,  Common" lawful="50" maxhp="75" name="Buff Bob" notes="note 1 ,,  note2 ,,  another note" player="DnD Dave" pp="8" sp="9" special_names="[ki]" special_values="[2]" traits="" vision="Lowlight" weight="240.0">
-  <effect name="sunburned">
-    <UpperLimitAttribute limit="3" appliesTo="DEX" source="sunburned" active="1" name="limited movement"/>
-    <ModAttribute mod="-1" appliesTo="CHA" source="sunburned" active="1" name="bright red"/>
-    <GenericAttribute details="1d3 fire damage on touch" source="sunburned" name="burn damage"/>
+<character CHA="12" CON="12" DEX="10" INT="9" STR="14" WIS="8" age="14" bonds="" temphp="0" curhp="35" curxp="10" deity="Ao" eyes="Brown" flaws="code of chivalry" gender="Male" good="75" gp="10" hair="Black" height="5.3" ideals="Defend the weak ,,  Run from the strong." languages="Child, Common" lawful="45" maxhp="50" name="Mike the Knight" notes="Kid's cartoon ,,  Missing horse ,,  armor blue" player="Gabby Gabe" pp="8" sp="9" special_names="[ki]" special_values="[2]" traits="" vision="normal" weight="125.0">
+  <effect name="charmed">
+    <UpperLimitAttribute limit="1" appliesTo="WIS" source="charmed" active="1" name="impaired jugdement"/>
+    <ModAttribute mod="1" appliesTo="CHA" source="charmed" active="1" name="has that special glow"/>
+    <GenericAttribute details="believes Doug the Dog is his best friend" source="charmed" name="charmed ally"/>
   </effect>
-  <feat details="-2 CHA checks with girls, +4 with nerds" level="0" name="dnd player"/>
+  <feat details="-2 CHA checks with girls, +4 with nerds" level="0" name="blind fighting"/>
   <item desc="No. 2" name="pencil" weight="0.1">
     <attribute details="+2 to SAT checks" level="0" name="sharpened"/>
   </item>

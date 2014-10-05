@@ -7,6 +7,7 @@
 package character.sheet;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -20,9 +21,10 @@ import org.w3c.dom.NodeList;
  *
  * @author TaoYiLiang
  */
-public class Attribute {
+public abstract class Attribute {
     public String name,details;
-    public Integer level;
+    public String source;
+    public String attribtype = "generic";
     public Boolean active=false;
     List<String> applies = new ArrayList<>();
     //TODO appliesTo() and apply() functions
@@ -33,11 +35,23 @@ public class Attribute {
       applies = applications;
     }
     
+    public void addApplication(String str)
+    {
+      applies.add(str);
+    }
+    public void removeApplication(String str)
+    {
+      applies.remove(str);
+    }
+    
+    public void setModifier(Object obj)
+    {
+      //overwrite locally
+    }
+    
     public Boolean appliesTo(String str)
     {
-      if (applies.contains(str)){return true;}
-      else {return false;}
-    }
+      return applies.contains(str);
     /*possible types:
     damage
     initiative
@@ -50,32 +64,37 @@ public class Attribute {
     misc
     Note that these all add or subtract integers, I think...
     */
-    public Integer apply(){return 0;} //need to be overwritten in particular attribute types, TODO
+    }
+
+    public abstract Integer apply(Integer mod);
     
     
     public void writeXML(Document doc,Element elem)
     {
-        elem.setAttribute("name",name);
-        elem.setAttribute("details",details);
-        elem.setAttribute("level", String.valueOf(level));
+      ParseTools parser = new ParseTools();
+      elem.setAttribute("name",name);
+      elem.setAttribute("details",details);
+      elem.setAttribute("source",details);
+      elem.setAttribute("applies",parser.strjoin(applies,",, "));
     }
     public void readXML(Document doc,Node node)
     {
-        NamedNodeMap nodeMap = node.getAttributes();
-        for (int i=0;i<nodeMap.getLength();i++)
-        {
-          if      (null != nodeMap.item(i).getNodeName())switch (nodeMap.item(i).getNodeName()) {
-            case "name"   :name   =                nodeMap.item(i).getTextContent() ;break;
-            case "details":details=                nodeMap.item(i).getTextContent() ;break;
-            case "level"  :level  =Integer.valueOf(nodeMap.item(i).getTextContent());break;
-            }
+      NamedNodeMap nodeMap = node.getAttributes();
+      for (int i=0;i<nodeMap.getLength();i++)
+      {
+        if      (null != nodeMap.item(i).getNodeName())switch (nodeMap.item(i).getNodeName()) {
+          case "name"   :name   = nodeMap.item(i).getTextContent() ;break;
+          case "details":details= nodeMap.item(i).getTextContent() ;break;
+          case "source" :source = nodeMap.item(i).getTextContent() ;break;
+          case "applies":applies= Arrays.asList(nodeMap.item(i).getTextContent().split(","));break;
         }
+      }
     }
     
     @Override
     public String toString()
     {
-      String str = "{name="+name+", level="+String.valueOf(level)+", details="+details+"}";
+      String str = "{name="+name+", details="+details+", source="+source+", "+String.valueOf(applies)+"}";
       return str;
     }
 }
