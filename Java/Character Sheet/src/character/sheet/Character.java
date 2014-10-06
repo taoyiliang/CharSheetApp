@@ -301,6 +301,16 @@ public class Character
       }
     }
     
+    public void addEffect(Effect eff)
+    {
+      effects.add(eff);
+    }
+    
+    public void removeEffect(Effect eff)
+    {
+      effects.remove(eff);
+    }
+    
     //Lawful and good parses////////////////////////////////////////////
     public String lawfulParse() {
         String strLawful = "";

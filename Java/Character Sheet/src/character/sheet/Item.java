@@ -27,6 +27,16 @@ public class Item {
     public Effect effect = new Effect();
     public Item(){}
     
+    public void addEffect(Effect eff)
+    {
+      effect = eff;
+    }
+    
+    public void removeEffect()
+    {
+      effect = new Effect();
+    }
+    
     public void writeXML(Document doc,Element elem)
     {
         elem.setAttribute("name"    ,               name     );
