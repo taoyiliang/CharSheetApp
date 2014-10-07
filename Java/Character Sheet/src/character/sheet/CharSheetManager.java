@@ -403,18 +403,18 @@ public class CharSheetManager {
 
         //Insert Data into Race Features table
         Integer raceFeatureSize = character.race.effects.size();
-        Integer subraceFeatureSize = character.race.subrace.effects.size();
+        //Integer subraceFeatureSize = character.race.subrace.effects.size();
 
         for (int i = 0; i < raceFeatureSize; i++) {
             for (Effect newFeature : character.race.effects) {
                 addRaceFeatureToFeatures(newFeature);
             }
         }
-        for (int i = 0; i < subraceFeatureSize; i++) {
+        /*for (int i = 0; i < subraceFeatureSize; i++) {
             for (Effect newFeature : character.race.subrace.effects) {
                 addRaceFeatureToFeatures(newFeature);
             }
-        }
+        }*/
     }
 
     public void refreshClassAttributesTab() {

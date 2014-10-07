@@ -1232,7 +1232,7 @@ public class Charsheet extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnSaveCharacter)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnChangeCharacter, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnChangeCharacter))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(229, 229, 229)
                         .addComponent(btnLaunchToolsWindow)
@@ -1244,9 +1244,6 @@ public class Charsheet extends javax.swing.JFrame {
                         .addComponent(btnExitCharacter)))
                 .addContainerGap())
         );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnChangeCharacter, btnSaveCharacter});
-
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -1355,8 +1352,8 @@ public class Charsheet extends javax.swing.JFrame {
         //Charsheet newcharsheet = new Charsheet();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                EffectsManager effectManager = new EffectsManager();
-                Effects effectsWindow = new Effects();
+                EffectsManager effectManager = new EffectsManager(character2);
+                EffectsWindow effectsWindow = new EffectsWindow();
                 effectManager.setEffectsWindow(effectsWindow);
                 effectsWindow.setCharacter(character2);
                 try {
