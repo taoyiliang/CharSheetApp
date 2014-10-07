@@ -114,13 +114,17 @@ public class EffectsManager {
         } else if (effectsWin.cbAppliesTo1.getItemAt(effectsWin.cbAppliesTo1.getSelectedIndex()) == "Skill") {
             for (Skill skill : character.skills) {
                 effectsWin.cbAppliesSub1.addItem(skill.name);
-                
+
             }
             effectsWin.cbAppliesSub1.addItem("All");
         } else if (effectsWin.cbAppliesTo1.getItemAt(effectsWin.cbAppliesTo1.getSelectedIndex()) == "Resistance") {
             for (String name : character.resistance.keySet()) {
                 effectsWin.cbAppliesSub1.addItem(name);
             }
+        } else if (effectsWin.cbAppliesTo1.getItemAt(effectsWin.cbAppliesTo1.getSelectedIndex()) == "Attack") {
+            effectsWin.cbAppliesSub1.addItem("Attack");
+        } else if (effectsWin.cbAppliesTo1.getItemAt(effectsWin.cbAppliesTo1.getSelectedIndex()) == "Damage") {
+            effectsWin.cbAppliesSub1.addItem("Damage");
         } else if (effectsWin.cbAppliesTo1.getItemAt(effectsWin.cbAppliesTo1.getSelectedIndex()) == "Max HP") {
             effectsWin.cbAppliesSub1.addItem("Max HP");
         } else if (effectsWin.cbAppliesTo1.getItemAt(effectsWin.cbAppliesTo1.getSelectedIndex()) == "AC") {
@@ -129,8 +133,7 @@ public class EffectsManager {
             effectsWin.cbAppliesSub1.addItem("Initiative");
         } else if (effectsWin.cbAppliesTo1.getItemAt(effectsWin.cbAppliesTo1.getSelectedIndex()) == "Speed") {
             effectsWin.cbAppliesSub1.addItem("Speed");
-        }
-        //Max HP AC Initiative Speed
+        } //Max HP AC Initiative Speed
         else {
             effectsWin.cbAppliesSub1.addItem("---");
         }
@@ -156,13 +159,17 @@ public class EffectsManager {
         } else if (effectsWin.cbAppliesTo2.getItemAt(effectsWin.cbAppliesTo2.getSelectedIndex()) == "Skill") {
             for (Skill skill : character.skills) {
                 effectsWin.cbAppliesSub2.addItem(skill.name);
-                
+
             }
             effectsWin.cbAppliesSub2.addItem("All");
         } else if (effectsWin.cbAppliesTo2.getItemAt(effectsWin.cbAppliesTo2.getSelectedIndex()) == "Resistance") {
             for (String name : character.resistance.keySet()) {
                 effectsWin.cbAppliesSub2.addItem(name);
             }
+        } else if (effectsWin.cbAppliesTo2.getItemAt(effectsWin.cbAppliesTo2.getSelectedIndex()) == "Attack") {
+            effectsWin.cbAppliesSub2.addItem("Attack");
+        } else if (effectsWin.cbAppliesTo2.getItemAt(effectsWin.cbAppliesTo2.getSelectedIndex()) == "Damage") {
+            effectsWin.cbAppliesSub2.addItem("Damage");
         } else if (effectsWin.cbAppliesTo2.getItemAt(effectsWin.cbAppliesTo2.getSelectedIndex()) == "Max HP") {
             effectsWin.cbAppliesSub2.addItem("Max HP");
         } else if (effectsWin.cbAppliesTo2.getItemAt(effectsWin.cbAppliesTo2.getSelectedIndex()) == "AC") {
@@ -202,6 +209,10 @@ public class EffectsManager {
             for (String name : character.resistance.keySet()) {
                 effectsWin.cbAppliesSub3.addItem(name);
             }
+        } else if (effectsWin.cbAppliesTo3.getItemAt(effectsWin.cbAppliesTo3.getSelectedIndex()) == "Attack") {
+            effectsWin.cbAppliesSub3.addItem("Attack");
+        } else if (effectsWin.cbAppliesTo3.getItemAt(effectsWin.cbAppliesTo3.getSelectedIndex()) == "Damage") {
+            effectsWin.cbAppliesSub3.addItem("Damage");
         } else if (effectsWin.cbAppliesTo3.getItemAt(effectsWin.cbAppliesTo3.getSelectedIndex()) == "Max HP") {
             effectsWin.cbAppliesSub3.addItem("Max HP");
         } else if (effectsWin.cbAppliesTo3.getItemAt(effectsWin.cbAppliesTo3.getSelectedIndex()) == "AC") {
@@ -241,6 +252,10 @@ public class EffectsManager {
             for (String name : character.resistance.keySet()) {
                 effectsWin.cbAppliesSub4.addItem(name);
             }
+        } else if (effectsWin.cbAppliesTo4.getItemAt(effectsWin.cbAppliesTo4.getSelectedIndex()) == "Attack") {
+            effectsWin.cbAppliesSub4.addItem("Attack");
+        } else if (effectsWin.cbAppliesTo4.getItemAt(effectsWin.cbAppliesTo4.getSelectedIndex()) == "Damage") {
+            effectsWin.cbAppliesSub4.addItem("Damage");
         } else if (effectsWin.cbAppliesTo4.getItemAt(effectsWin.cbAppliesTo4.getSelectedIndex()) == "Max HP") {
             effectsWin.cbAppliesSub4.addItem("Max HP");
         } else if (effectsWin.cbAppliesTo4.getItemAt(effectsWin.cbAppliesTo4.getSelectedIndex()) == "AC") {
@@ -280,6 +295,10 @@ public class EffectsManager {
             for (String name : character.resistance.keySet()) {
                 effectsWin.cbAppliesSub5.addItem(name);
             }
+        } else if (effectsWin.cbAppliesTo5.getItemAt(effectsWin.cbAppliesTo5.getSelectedIndex()) == "Attack") {
+            effectsWin.cbAppliesSub5.addItem("Attack");
+        } else if (effectsWin.cbAppliesTo5.getItemAt(effectsWin.cbAppliesTo5.getSelectedIndex()) == "Damage") {
+            effectsWin.cbAppliesSub5.addItem("Damage");
         } else if (effectsWin.cbAppliesTo5.getItemAt(effectsWin.cbAppliesTo5.getSelectedIndex()) == "Max HP") {
             effectsWin.cbAppliesSub5.addItem("Max HP");
         } else if (effectsWin.cbAppliesTo5.getItemAt(effectsWin.cbAppliesTo5.getSelectedIndex()) == "AC") {
@@ -320,6 +339,10 @@ public class EffectsManager {
             for (String name : character.resistance.keySet()) {
                 effectsWin.cbAppliesSub6.addItem(name);
             }
+        } else if (effectsWin.cbAppliesTo6.getItemAt(effectsWin.cbAppliesTo6.getSelectedIndex()) == "Attack") {
+            effectsWin.cbAppliesSub6.addItem("Attack");
+        } else if (effectsWin.cbAppliesTo6.getItemAt(effectsWin.cbAppliesTo6.getSelectedIndex()) == "Damage") {
+            effectsWin.cbAppliesSub6.addItem("Damage");
         } else if (effectsWin.cbAppliesTo6.getItemAt(effectsWin.cbAppliesTo6.getSelectedIndex()) == "Max HP") {
             effectsWin.cbAppliesSub6.addItem("Max HP");
         } else if (effectsWin.cbAppliesTo6.getItemAt(effectsWin.cbAppliesTo6.getSelectedIndex()) == "AC") {
@@ -339,59 +362,6 @@ public class EffectsManager {
     }
 
     public void saveEffect() {
-        
-        
-        
-        /*
-        effType.add(null)
-        
-        
-        String effName = effectsWin.txtEffectParentName.getText();
-        String effNotes = effectsWin.txtEffectParentNotes.getText();
-        String eff1Type = String.valueOf(effectsWin.cbType1.getSelectedItem());
-        String eff2Type = String.valueOf(effectsWin.cbType2.getSelectedItem());
-        String eff3Type = String.valueOf(effectsWin.cbType3.getSelectedItem());
-        String eff4Type = String.valueOf(effectsWin.cbType4.getSelectedItem());
-        String eff5Type = String.valueOf(effectsWin.cbType5.getSelectedItem());
-        String eff6Type = String.valueOf(effectsWin.cbType6.getSelectedItem());
-        String eff1Name = effectsWin.txtName1.getText();
-        String eff2Name = effectsWin.txtName2.getText();
-        String eff3Name = effectsWin.txtName3.getText();
-        String eff4Name = effectsWin.txtName4.getText();
-        String eff5Name = effectsWin.txtName5.getText();
-        String eff6Name = effectsWin.txtName6.getText();
-        String eff1ApplyType = String.valueOf(effectsWin.cbAppliesTo1.getSelectedItem());
-        String eff2ApplyType = String.valueOf(effectsWin.cbAppliesTo2.getSelectedItem());
-        String eff3ApplyType = String.valueOf(effectsWin.cbAppliesTo3.getSelectedItem());
-        String eff4ApplyType = String.valueOf(effectsWin.cbAppliesTo4.getSelectedItem());
-        String eff5ApplyType = String.valueOf(effectsWin.cbAppliesTo5.getSelectedItem());
-        String eff6ApplyType = String.valueOf(effectsWin.cbAppliesTo6.getSelectedItem());
-        String eff1ApplySub = String.valueOf(effectsWin.cbAppliesSub1.getSelectedItem());
-        String eff2ApplySub = String.valueOf(effectsWin.cbAppliesSub2.getSelectedItem());
-        String eff3ApplySub = String.valueOf(effectsWin.cbAppliesSub3.getSelectedItem());
-        String eff4ApplySub = String.valueOf(effectsWin.cbAppliesSub4.getSelectedItem());
-        String eff5ApplySub = String.valueOf(effectsWin.cbAppliesSub5.getSelectedItem());
-        String eff6ApplySub = String.valueOf(effectsWin.cbAppliesSub6.getSelectedItem());
-        int eff1Qty = (Integer) effectsWin.spinQty1.getValue();
-        int eff2Qty = (Integer) effectsWin.spinQty2.getValue();
-        int eff3Qty = (Integer) effectsWin.spinQty3.getValue();
-        int eff4Qty = (Integer) effectsWin.spinQty4.getValue();
-        int eff5Qty = (Integer) effectsWin.spinQty5.getValue();
-        int eff6Qty = (Integer) effectsWin.spinQty6.getValue();
-        String eff1Notes = effectsWin.txtNotes1.getText();
-        String eff2Notes = effectsWin.txtNotes2.getText();
-        String eff3Notes = effectsWin.txtNotes3.getText();
-        String eff4Notes = effectsWin.txtNotes4.getText();
-        String eff5Notes = effectsWin.txtNotes5.getText();
-        String eff6Notes = effectsWin.txtNotes6.getText();
-        Attribute attr1;
-        Attribute attr2;
-        Attribute attr3;
-        Attribute attr4;
-        Attribute attr5;
-        Attribute attr6;
-        Effect eff;
-*/
         //UpperLimitAttribute, ModAttribute, LowerLimitAttribute, GenericAttribute
         //Type, Name, ApplyType, AppluSub, qty, notes
         //Attribute = new attribute (look up syntax for attribute)
@@ -409,25 +379,22 @@ public class EffectsManager {
          skill checks (any skill)
          misc
          */
-        
-        
+
         List<String> effTypeVals = new ArrayList<>();
         List<String> effNameVals = new ArrayList<>();
         List<String> effApplyTypeVals = new ArrayList<>();
         List<String> effApplySubVals = new ArrayList<>();
         List<Integer> effQtyVals = new ArrayList<>();
         List<String> effNoteVals = new ArrayList<>();
-        
-        
-        
+
         for (int i = 0; i < effTypes.size(); i++) {
-            if (effApplyTypes.get(i).getSelectedIndex() != 0)  {
-            effTypeVals.add(String.valueOf(effTypes.get(i).getSelectedItem()));
-            effNameVals.add(effNames.get(i).getText());
-            effApplyTypeVals.add(String.valueOf(effApplyTypes.get(i).getSelectedItem()));
-            effApplySubVals.add(String.valueOf(effApplySubs.get(i).getSelectedItem()));
-            effQtyVals.add((Integer) effQtys.get(i).getValue());
-            effNoteVals.add(effNotes.get(i).getText());
+            if (effApplyTypes.get(i).getSelectedIndex() != 0) {
+                effTypeVals.add(String.valueOf(effTypes.get(i).getSelectedItem()));
+                effNameVals.add(effNames.get(i).getText());
+                effApplyTypeVals.add(String.valueOf(effApplyTypes.get(i).getSelectedItem()));
+                effApplySubVals.add(String.valueOf(effApplySubs.get(i).getSelectedItem()));
+                effQtyVals.add((Integer) effQtys.get(i).getValue());
+                effNoteVals.add(effNotes.get(i).getText());
             }
         }
         System.out.println("Previous Success");
@@ -436,7 +403,7 @@ public class EffectsManager {
         for (int j = 0; j < effTypeVals.size(); j++) {
             Attribute attrib;
             switch (effTypeVals.get(j)) {
-                case "Add": 
+                case "Add":
                     attrib = new ModAttribute();
                     break;
                 case "Limit - Upper":
@@ -461,42 +428,11 @@ public class EffectsManager {
         for (int k = 0; k < attribs.size(); k++) {
             System.out.println(attribs.get(k).name);
         }
-        
+
         Effect eff = new Effect(attribs);
+
         
-        
-            
-         /*
-         if (eff1ApplyType != "---") {
-         if (eff1Type == "Add") {
-         attr1 = new ModAttribute();
-         attr1.setModifier(eff1Qty);
-                
-         }
-         else if (eff1Type == "Limit - Upper") {
-         attr1 = new UpperLimitAttribute();
-         }
-         else if (eff1Type == "Limit - Lower") {
-         attr1 = new LowerLimitAttribute();
-                
-         }
-         else {
-         attr1 = new GenericAttribute();
-         }
-         attr1.source = effName;
-         attr1.details = eff1Notes;
-         attr1.name = eff1Name;
-         if (effApplyType == "") {
-                
-         }
-         if ((eff1ApplyType == "Max HP") || (eff1ApplyType == "AC") || (eff1ApplyType == "Initiative") || (eff1ApplyType == "Speed")) {
-         attr1.appliesTo(effNotes)
-         }
-         }
-         */ {
-            //eff = new Effect();
-        }
-        //applyEffectTo.
+
     }
 
     public void closeEffects() {

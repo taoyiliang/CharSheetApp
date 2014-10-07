@@ -142,7 +142,7 @@ public class EffectsWindow extends javax.swing.JFrame {
 
         cbType1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Add", "Limit - Upper", "Limit - Lower", "Other" }));
 
-        cbAppliesTo1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "---", "Ability", "Save", "Skill", "Resistance", "Max HP", "AC", "Initiative", "Speed" }));
+        cbAppliesTo1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "---", "Ability", "Save", "Skill", "Resistance", "Attack", "Damage", "Max HP", "AC", "Initiative", "Speed" }));
         cbAppliesTo1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbAppliesTo1ActionPerformed(evt);
@@ -169,7 +169,7 @@ public class EffectsWindow extends javax.swing.JFrame {
 
         jLabel11.setText("Applies To Type:");
 
-        cbAppliesTo2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "---", "Ability", "Save", "Skill", "Resistance", "Max HP", "AC", "Initiative", "Speed" }));
+        cbAppliesTo2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "---", "Ability", "Save", "Skill", "Resistance", "Attack", "Damage", "Max HP", "AC", "Initiative", "Speed" }));
         cbAppliesTo2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbAppliesTo2ActionPerformed(evt);
@@ -199,7 +199,7 @@ public class EffectsWindow extends javax.swing.JFrame {
 
         jLabel18.setText("Applies To Type:");
 
-        cbAppliesTo3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "---", "Ability", "Save", "Skill", "Resistance", "Max HP", "AC", "Initiative", "Speed" }));
+        cbAppliesTo3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "---", "Ability", "Save", "Skill", "Resistance", "Attack", "Damage", "Max HP", "AC", "Initiative", "Speed" }));
         cbAppliesTo3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbAppliesTo3ActionPerformed(evt);
@@ -229,7 +229,7 @@ public class EffectsWindow extends javax.swing.JFrame {
 
         jLabel25.setText("Applies To Type:");
 
-        cbAppliesTo4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "---", "Ability", "Save", "Skill", "Resistance", "Max HP", "AC", "Initiative", "Speed" }));
+        cbAppliesTo4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "---", "Ability", "Save", "Skill", "Resistance", "Attack", "Damage", "Max HP", "AC", "Initiative", "Speed" }));
         cbAppliesTo4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbAppliesTo4ActionPerformed(evt);
@@ -259,7 +259,7 @@ public class EffectsWindow extends javax.swing.JFrame {
 
         jLabel32.setText("Applies To Type:");
 
-        cbAppliesTo5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "---", "Ability", "Save", "Skill", "Resistance", "Max HP", "AC", "Initiative", "Speed" }));
+        cbAppliesTo5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "---", "Ability", "Save", "Skill", "Resistance", "Attack", "Damage", "Max HP", "AC", "Initiative", "Speed" }));
         cbAppliesTo5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbAppliesTo5ActionPerformed(evt);
@@ -289,7 +289,7 @@ public class EffectsWindow extends javax.swing.JFrame {
 
         jLabel39.setText("Applies To Type:");
 
-        cbAppliesTo6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "---", "Ability", "Save", "Skill", "Resistance", "Max HP", "AC", "Initiative", "Speed" }));
+        cbAppliesTo6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "---", "Ability", "Save", "Skill", "Resistance", "Attack", "Damage", "Max HP", "AC", "Initiative", "Speed" }));
         cbAppliesTo6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbAppliesTo6ActionPerformed(evt);
